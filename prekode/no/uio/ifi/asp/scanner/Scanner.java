@@ -81,7 +81,42 @@ public class Scanner {
 	    scannerError("Unspecified I/O error!");
 	}
 
+  if (ignoreLine(line)){
+    readNextLine();
+  }
 
+  /*
+  For hver linje:
+  1) Sett en teller n til 0.
+  2) For hvert tegn i linjen:
+  Hvis tegnet er en blank, øk n med 1.
+  Hvis tegnet er en TAB, erstatt den med 4 − (n mod 4) blanke; øk n
+  tilsvarende.
+  Ved alle andre tegn avsluttes denne løkken.
+  */
+
+  int countBlank = 0;
+  char[] charLineArray = line.toCharArray();
+  for (int i = 0; i < charLineArray.length; i++){
+    if (charLineArray[i] == ' '){
+      countBlank++;
+    } else if (charLineArray[i] == '\t'){
+        int newBlanks = tabDist - (countBlank % tabDist);
+        char[] emptyArray = new char[newBlanks - 1];
+        charLineArray[i] = ' ';
+        for (int j = 0; j < emptyArray.length; j++){
+          emptyArray[j] = ' ';
+        }
+        charLineArray = (emptyArray.toString() +
+              charLineArray.toString().substring(i, charLineArray.length - 1)).toCharArray();
+
+        countBlank += newBlanks;
+        i += newBlanks - 1;
+      }
+    break;
+  }
+
+  indentHandle(countBlank);
 
 /*	//-- Must be changed in part 1:zzz
   Håndtering av indentering
@@ -104,8 +139,6 @@ public class Scanner {
 (a) For alle verdier på Indents som er > 0, legg et ‘DEDENT’-symbol i
 curLineTokens.*/
 
-//Intent stack handling
-
 
 	// Terminate line:
 	curLineTokens.add(new Token(newLineToken,curLineNum()));
@@ -125,25 +158,38 @@ curLineTokens.*/
 	return indent;
     }
 
-    Pattern comentLine = Pattern.compile("^\\s*#.*");
-    public boolean isCommentLine(String input){
-       Matcher m = comentLine.matcher(input);
-       //return regex.Pattern.matches("^\s*#.*", input);
-       return m.matches();
-     }
+  Pattern comentLine = Pattern.copile("^\\s*#");
+  Pattern blankLine = Pattern.compile("^\\s*$");
 
-    private void IndentsPush(int i){
+  public boolean ignoreLine(String input){
+      Matcher cmtL = comentLine.matcher(s);
+      Matcher blnkL = blankLine.matcher(s);
+      return (cmtL.matches() || blnkL.matches());
+  }
+
+  private void indentsPush(int i){
      indents[numIndents] = i;
      numIndents++;
-    }
-    private void IdentsPop(){
+  }
+  private void identsPop(){
      numIndents--;
-    }
-    private int IndentsTop(){
+  }
+  private int indentsTop(){
      return indents[numIndents-1];
-    }
+  }
 
-    private String expandLeadingTabs(String s) {
+  private void indentHandle(int blanks){
+      if(indentsTop() < blanks){
+          indentPush(blanks);
+          //add token INDENT
+      }
+      else if(indentsTop() > blanks){
+          indentPop();
+          //add token DEDENT
+      }
+  }
+
+  private String expandLeadingTabs(String s) {
 	String newS = "";
 	for (int i = 0;  i < s.length();  i++) {
 	    char c = s.charAt(i);
