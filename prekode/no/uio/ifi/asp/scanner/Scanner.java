@@ -2,6 +2,7 @@ package no.uio.ifi.asp.scanner;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 
 import no.uio.ifi.asp.main.*;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
@@ -80,12 +81,36 @@ public class Scanner {
 	    scannerError("Unspecified I/O error!");
 	}
 
-	//-- Must be changed in part 1:
+
+
+/*	//-- Must be changed in part 1:zzz
+  Håndtering av indentering
+1) Opprett en stakk Indents.
+2) Push verdien 0 på Indents.
+3) For hver linje:z
+    (a) Hvis linjen bare inneholder blanke (og eventuelt en kommentar),
+    ignoreres den.
+    (b) Omform alle innledende TAB-er til blanke.
+    (c) Tell antall innledende blanke: n.
+    (d) Hvis n > Indents.top:
+    i. Push n på Indents.
+    ii. Legg et ‘INDENT’-symbol i curLineTokens.
+    Hvis n < Indents.top:
+    Så lenge n < Indents.top:
+    i. Pop Indents.
+    ii. Legg et ‘DEDENT’-symbol i curLineTokens.
+    Hvis nå n≠Indents.top, har vi indeteringsfeil.
+4) Etter at siste linje er lest:
+(a) For alle verdier på Indents som er > 0, legg et ‘DEDENT’-symbol i
+curLineTokens.*/
+
+//Intent stack handling
+
 
 	// Terminate line:
 	curLineTokens.add(new Token(newLineToken,curLineNum()));
 
-	for (Token t: curLineTokens) 
+	for (Token t: curLineTokens)
 	    Main.log.noteToken(t);
     }
 
@@ -98,6 +123,24 @@ public class Scanner {
 
 	while (indent<s.length() && s.charAt(indent)==' ') indent++;
 	return indent;
+    }
+
+    Pattern comentLine = Pattern.compile("^\\s*#.*");
+    public boolean isCommentLine(String input){
+       Matcher m = comentLine.matcher(input);
+       //return regex.Pattern.matches("^\s*#.*", input);
+       return m.matches();
+     }
+
+    private void IndentsPush(int i){
+     indents[numIndents] = i;
+     numIndents++;
+    }
+    private void IdentsPop(){
+     numIndents--;
+    }
+    private int IndentsTop(){
+     return indents[numIndents-1];
     }
 
     private String expandLeadingTabs(String s) {
@@ -148,7 +191,7 @@ public class Scanner {
 	//-- Must be changed in part 2:
 	return false;
     }
-	
+
 
     public boolean isTermOpr() {
 	TokenKind k = curToken().kind;
