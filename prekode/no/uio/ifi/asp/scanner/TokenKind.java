@@ -104,4 +104,11 @@ public enum TokenKind {
     public String toString() {
 	return image;
     }
+	
+    public static TokenKind getTokenKind(String value){
+	for(TokenKind tk: TokenKind.values()){
+		if(value == tk.image) return tk;
+	}
+        return null;
+    }
 }
