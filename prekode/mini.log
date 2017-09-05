@@ -1,0 +1,7 @@
+   1: # En hyggelig hilsen
+   2: navn = "Dag"
+Scanner: name token on line 2: navn
+Scanner: = token on line 2
+Scanner: string literal token on line 2: '"Dag"'
+Scanner: NEWLINE token on line 2
+   3: print("Hei,", navn)

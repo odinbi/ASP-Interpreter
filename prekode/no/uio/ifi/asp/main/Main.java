@@ -33,11 +33,11 @@ public class Main {
 	    } else if (a.equals("-logY")) {
 		logY = true;
 	    } else if (a.equals("-testexpr")) {
-		testExpr = true; 
+		testExpr = true;
 	    } else if (a.equals("-testparser")) {
-		testParser = true; 
+		testParser = true;
 	    } else if (a.equals("-testscanner")) {
-		testScanner = true; 
+		testScanner = true;
 	    } else if (a.startsWith("-")) {
 		usage();
 	    } else if (fileName != null) {
@@ -61,7 +61,7 @@ public class Main {
 	if (logY || testExpr || testParser) log.doLogPrettyPrint = true;
 
 	Scanner s = new Scanner(fileName);
-	if (testScanner) 
+	if (testScanner)
 	    doTestScanner(s);
 	else if (testParser)
 	    doTestParser(s);
@@ -78,13 +78,13 @@ public class Main {
     private static void doTestScanner(Scanner s) {
 	do {
 	    s.readNextToken();
-	} while (s.curToken().kind != eofToken); 
+	} while (s.curToken().kind != eofToken);
     }
 
 
     private static void doTestParser(Scanner s) {
 	AspProgram prog = AspProgram.parse(s);
-	if (log.doLogPrettyPrint) 
+	if (log.doLogPrettyPrint)
 	    prog.prettyPrint();
     }
 
@@ -111,7 +111,7 @@ public class Main {
 
     private static void doRunInterpreter(Scanner s) {
 	AspProgram prog = AspProgram.parse(s);
-	if (log.doLogPrettyPrint) 
+	if (log.doLogPrettyPrint)
 	    prog.prettyPrint();
 
 	RuntimeScope lib = new RuntimeLibrary();

@@ -36,17 +36,17 @@ public class Token {
 	String t = kind + " token";
 	if (lineNum > 0) {
 	    t += " on line " + lineNum;
-	} 
+	}
 
 	switch (kind) {
 	case floatToken: t += ": " + floatLit;  break;
 	case integerToken: t += ": " + integerLit;  break;
 	case nameToken: t += ": " + name;  break;
-	case stringToken: 
+	case stringToken:
 	    if (stringLit.indexOf('"') >= 0)
-		t += ": '" + stringLit + "'"; 
+		t += ": '" + stringLit + "'";
 	    else
-		t += ": \"" + stringLit + "\"";  
+		t += ": \"" + stringLit + "\"";
 	    break;
 	}
 	return t;
