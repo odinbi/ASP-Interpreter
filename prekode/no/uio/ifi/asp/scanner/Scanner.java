@@ -73,6 +73,7 @@ public class Scanner {
         String line = null;
         try {
             line = sourceFile.readLine();
+
             if (line == null) {
                 sourceFile.close();
                 sourceFile = null;
@@ -84,34 +85,36 @@ public class Scanner {
             scannerError("Unspecified I/O error!");
         }
 
-        if (ignoreLine(line)){
-            readNextLine();
-        }
-
         //-- Must be changed in part 1:zzz
-        if(line == null || line == ""){
+        if(line == null){ //  || line == ""
             System.out.println("End of file");
             curLineTokens.add(new Token(eofToken, curLineNum()));
+            for (Token t: curLineTokens)
+                Main.log.noteToken(t);
+            return;
+        } else if(ignoreLine(line)){
+            readNextLine();
+            return;
         } else{
-            System.out.println("test1: " + line);
+            System.out.println("In readNextLine - parse: " + line);
             String stringLine = expandLeadingTabs(line);
             int countBlank = countBlanks(stringLine.toCharArray());
             indentHandle(countBlank);
-            String word = getWord(line);
+            String word = "init";
             while(word != "" && word != "\n"){
-                handleWord(word);
                 word = getWord(line);
-                System.out.println("her: " + word);
+                System.out.println("In readNextLine - word fetched: " + word);
+                handleWord(word);
+                System.out.println("In readNextLine - word handleled: " + word);
             }
         }
 
-        // Terminate line:
-        curLineTokens.add(new Token(newLineToken,curLineNum()));
-
+        // Add all tokens to log:
         for (Token t: curLineTokens)
-        Main.log.noteToken(t);
-
+            Main.log.noteToken(t);
+        //Get all tokens on next line
         readNextLine();
+        return;
     }
 
     private void handleWord(String word){
@@ -120,7 +123,7 @@ public class Scanner {
             t = new Token(TokenKind.getTokenKind(word), curLineNum());
         } else if(word.startsWith("\"") && word.endsWith("\"")){
             t = new Token(stringToken, curLineNum());
-            t.stringLit = word;
+            t.stringLit = word.substring(1, word.length()-1);
         } else if(word.matches("\\d*")){
             try{
                 int n = Integer.parseInt(word);
@@ -138,7 +141,9 @@ public class Scanner {
         } else if(word.matches("\\d*\\.?\\d*")){
             t = new Token(floatToken, curLineNum());
             t.floatLit = Float.parseFloat(word);
-        } else if(word != null){
+        } else if(word == "\n" || word == "\r"){
+            t = new Token(newLineToken, curLineNum());
+        } else if(word != null && word != "" && word != " "){
             t = new Token(nameToken, curLineNum());
             t.name = word;
         } else {
@@ -150,44 +155,35 @@ public class Scanner {
     private String getWord(String stringLine){
         String curWord = "";
         boolean inString = false;
-        if (stringLine.length()-1 <= currentIndex) return "\n";
 
-        for (int index = currentIndex; index < stringLine.length(); index++){
+        if (stringLine.length() <= currentIndex) return "\n";
+
+        for (int index = currentIndex; index < stringLine.length(); ++index){
 
             char currentChar = stringLine.charAt(index);
 
-            System.out.println("curWord: " + curWord);
+            //System.out.println("word: \"" + curWord + "\" char: \'" + currentChar + "\'");
+            //System.out.println("input length: " + stringLine.length() + " index: " + index);
             if(inString){
-                if(currentChar == '\"'){
+                if(currentChar == '\"'){ // '\"' = 34
                     curWord += currentChar;
-                    currentIndex = index++;
+                    currentIndex = ++index;
                     return curWord;
                 }
                 curWord += currentChar;
-            }
-
-            else if (isDelimiter("" + currentChar)){
+            } else if(isOperator(String.valueOf(currentChar)) || isDelimiter(String.valueOf(currentChar))){
+                System.out.println("opperator/delimiter reached: " + currentChar);
                 if(curWord != ""){
-                    if(isDelimiter(curWord + currentChar)){
-                        curWord += currentChar;
-                    } else {
-                        currentIndex = index;
-                        return curWord;
-                    }
-                } else {
-                    curWord += currentChar;
-                }
-            } else if(isOperator("" + currentChar)){
-                if(curWord != ""){
-                    if(isOperator(curWord)){
+                    System.out.println("Is this an opperator? " + curWord + currentChar);
+                    if(isDelimiter(curWord + currentChar) || isOperator(curWord + currentChar)){
                         curWord += currentChar;
                     } else{
                         currentIndex = index;
                         return curWord;
                     }
                 } else {
+                    //currentIndex = index;
                     curWord += currentChar;
-                    return curWord;
                 }
             } else if(isDelimiter(curWord) || isOperator(curWord)){
                 currentIndex = index;
@@ -195,10 +191,8 @@ public class Scanner {
             } else {
                 if(currentChar == ' '){
                     currentIndex = index;
-                    if(curWord != ""){
-                        return curWord;
-                    }
-                } else if(currentChar == '\"'){
+                    if(curWord != "") return curWord;
+                } else if(currentChar == '\"'){ // '\"' = 34 ascii character
                     if(curWord == ""){
                         inString = true;
                         curWord += currentChar;
@@ -209,6 +203,11 @@ public class Scanner {
                 } else{
                     curWord += currentChar;
                 }
+            }
+            if(index == stringLine.length()-1){
+                System.out.println("returns: " + curWord);
+                currentIndex = ++index;
+                return curWord;
             }
         }
         return curWord;
@@ -251,10 +250,8 @@ public class Scanner {
 
 
     public boolean ignoreLine(String input){
-        System.out.println("Kommer vi hit?");
         boolean cmtL = input.matches("^\\s*#.*");
         boolean blnkL = input.matches("^\\s*$");
-        System.out.println("CommentLine?: " + cmtL + ", blankLine: " + blnkL);
         return (cmtL || blnkL);
     }
 

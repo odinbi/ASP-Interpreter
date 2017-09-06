@@ -101,20 +101,13 @@ public enum TokenKind {
         image = s;
     }
 
-    public static TokenKind getTokenKind(String value){
-        for(TokenKind tk: TokenKind.values()){
-            if(value.equals(tk.toString())) return tk;
-        }
-        return null;
-    }
-
     public String toString() {
         return image;
     }
-	
+
     public static TokenKind getTokenKind(String value){
 	for(TokenKind tk: TokenKind.values()){
-		if(value.equals(tk.toString)) return tk;
+		if(value.equals(tk.toString())) return tk;
 	}
         return null;
     }

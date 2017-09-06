@@ -1,7 +1,17 @@
-   1: # En hyggelig hilsen
-   2: navn = "Dag"
-Scanner: name token on line 2: navn
-Scanner: = token on line 2
-Scanner: string literal token on line 2: '"Dag"'
-Scanner: NEWLINE token on line 2
-   3: print("Hei,", navn)
+   1: 
+   2:     # En hyggelig hilsen
+   3:     navn = "Dag"
+Scanner: INDENT token on line 3
+Scanner: name token on line 3: navn
+Scanner: = token on line 3
+Scanner: string literal token on line 3: "Dag"
+Scanner: NEWLINE token on line 3
+   4:     print("Hei,", navn)
+Scanner: name token on line 4: print
+Scanner: ( token on line 4
+Scanner: string literal token on line 4: "Hei,"
+Scanner: , token on line 4
+Scanner: name token on line 4: navn
+Scanner: ) token on line 4
+Scanner: NEWLINE token on line 4
+Scanner: E-o-f token
