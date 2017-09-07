@@ -1,4 +1,4 @@
 
-    # En hyggelig hilsen
-    navn = "Dag"
-    print("Hei,", navn)
+# En hyggelig hilsen
+navn = "Dag"
+print("Hei,", navn)

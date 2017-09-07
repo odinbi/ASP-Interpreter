@@ -1,0 +1,111 @@
+   1: 
+   2: # A program to compute the greatest common divisor
+   3: # of two numbers, i.e., the biggest number by which
+   4: # two numbers can be divided without a remainder.
+   5: 
+   6: def GCD (m, n):
+Scanner: def token on line 6
+Scanner: name token on line 6: GCD
+Scanner: ( token on line 6
+Scanner: name token on line 6: m
+Scanner: , token on line 6
+Scanner: name token on line 6: n
+Scanner: ) token on line 6
+Scanner: : token on line 6
+Scanner: NEWLINE token on line 6
+   7:    if n == 0:
+Scanner: INDENT token on line 7
+Scanner: if token on line 7
+Scanner: name token on line 7: n
+Scanner: == token on line 7
+Scanner: integer literal token on line 7: 0
+Scanner: : token on line 7
+Scanner: NEWLINE token on line 7
+   8:       return m
+Scanner: INDENT token on line 8
+Scanner: return token on line 8
+Scanner: name token on line 8: m
+Scanner: NEWLINE token on line 8
+   9:    else:
+Scanner: DEDENT token on line 9
+Scanner: else token on line 9
+Scanner: : token on line 9
+Scanner: NEWLINE token on line 9
+  10:       return GCD(n, m % n)
+Scanner: INDENT token on line 10
+Scanner: return token on line 10
+Scanner: name token on line 10: GCD
+Scanner: ( token on line 10
+Scanner: name token on line 10: n
+Scanner: , token on line 10
+Scanner: name token on line 10: m
+Scanner: % token on line 10
+Scanner: name token on line 10: n
+Scanner: ) token on line 10
+Scanner: NEWLINE token on line 10
+  11: 
+  12: v1 = int(input("A number: "))
+Scanner: DEDENT token on line 12
+Scanner: name token on line 12: v1
+Scanner: = token on line 12
+Scanner: name token on line 12: int
+Scanner: ( token on line 12
+Scanner: name token on line 12: input
+Scanner: ( token on line 12
+Scanner: string literal token on line 12: "A number: "
+Scanner: ) token on line 12
+Scanner: ) token on line 12
+Scanner: NEWLINE token on line 12
+  13: v2 = int(input("Another number: "))
+Scanner: DEDENT token on line 13
+Scanner: name token on line 13: v2
+Scanner: = token on line 13
+Scanner: name token on line 13: int
+Scanner: ( token on line 13
+Scanner: name token on line 13: input
+Scanner: ( token on line 13
+Scanner: string literal token on line 13: "Another number: "
+Scanner: ) token on line 13
+Scanner: ) token on line 13
+Scanner: NEWLINE token on line 13
+  14: 
+  15: res = GCD(v1,v2)
+Scanner: name token on line 15: res
+Scanner: = token on line 15
+Scanner: name token on line 15: GCD
+Scanner: ( token on line 15
+Scanner: name token on line 15: v1
+Scanner: , token on line 15
+Scanner: name token on line 15: v2
+Scanner: ) token on line 15
+Scanner: NEWLINE token on line 15
+  16: print('GCD('+str(v1)+','+str(v2)+') =', res)
+Scanner: name token on line 16: print
+Scanner: ( token on line 16
+Scanner: name token on line 16: 'GCD
+Scanner: ( token on line 16
+Scanner: name token on line 16: '
+Scanner: + token on line 16
+Scanner: name token on line 16: str
+Scanner: ( token on line 16
+Scanner: name token on line 16: v1
+Scanner: ) token on line 16
+Scanner: + token on line 16
+Scanner: name token on line 16: '
+Scanner: , token on line 16
+Scanner: name token on line 16: '
+Scanner: + token on line 16
+Scanner: name token on line 16: str
+Scanner: ( token on line 16
+Scanner: name token on line 16: v2
+Scanner: ) token on line 16
+Scanner: + token on line 16
+Scanner: name token on line 16: '
+Scanner: ) token on line 16
+Scanner: = token on line 16
+Scanner: name token on line 16: '
+Scanner: , token on line 16
+Scanner: name token on line 16: res
+Scanner: ) token on line 16
+Scanner: NEWLINE token on line 16
+Scanner: E-o-f token

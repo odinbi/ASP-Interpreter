@@ -1,0 +1,309 @@
+   1: # Using Heron's method of computing the square root.
+   2: # Ref: http://en.wikipedia.org/wiki/Methods_of_computing_square_roots
+   3: # ---
+   4: 
+   5: def pow (a, b):
+Scanner: def token on line 5
+Scanner: name token on line 5: pow
+Scanner: ( token on line 5
+Scanner: name token on line 5: a
+Scanner: , token on line 5
+Scanner: name token on line 5: b
+Scanner: ) token on line 5
+Scanner: : token on line 5
+Scanner: NEWLINE token on line 5
+   6:   if b > 1:
+Scanner: INDENT token on line 6
+Scanner: if token on line 6
+Scanner: name token on line 6: b
+Scanner: > token on line 6
+Scanner: integer literal token on line 6: 1
+Scanner: : token on line 6
+Scanner: NEWLINE token on line 6
+   7:     return pow(a,b-1) * a
+Scanner: INDENT token on line 7
+Scanner: return token on line 7
+Scanner: name token on line 7: pow
+Scanner: ( token on line 7
+Scanner: name token on line 7: a
+Scanner: , token on line 7
+Scanner: name token on line 7: b
+Scanner: - token on line 7
+Scanner: integer literal token on line 7: 1
+Scanner: ) token on line 7
+Scanner: * token on line 7
+Scanner: name token on line 7: a
+Scanner: NEWLINE token on line 7
+   8:   elif b < 1:
+Scanner: DEDENT token on line 8
+Scanner: elif token on line 8
+Scanner: name token on line 8: b
+Scanner: < token on line 8
+Scanner: integer literal token on line 8: 1
+Scanner: : token on line 8
+Scanner: NEWLINE token on line 8
+   9:     return pow(a,b+1) / a
+Scanner: INDENT token on line 9
+Scanner: return token on line 9
+Scanner: name token on line 9: pow
+Scanner: ( token on line 9
+Scanner: name token on line 9: a
+Scanner: , token on line 9
+Scanner: name token on line 9: b
+Scanner: + token on line 9
+Scanner: integer literal token on line 9: 1
+Scanner: ) token on line 9
+Scanner: / token on line 9
+Scanner: name token on line 9: a
+Scanner: NEWLINE token on line 9
+  10:   else:
+Scanner: DEDENT token on line 10
+Scanner: else token on line 10
+Scanner: : token on line 10
+Scanner: NEWLINE token on line 10
+  11:     return a
+Scanner: INDENT token on line 11
+Scanner: return token on line 11
+Scanner: name token on line 11: a
+Scanner: NEWLINE token on line 11
+  12: 
+  13: 
+  14: def rough_log (x):
+Scanner: DEDENT token on line 14
+Scanner: def token on line 14
+Scanner: name token on line 14: rough_log
+Scanner: ( token on line 14
+Scanner: name token on line 14: x
+Scanner: ) token on line 14
+Scanner: : token on line 14
+Scanner: NEWLINE token on line 14
+  15:   if x > 10:
+Scanner: if token on line 15
+Scanner: name token on line 15: x
+Scanner: > token on line 15
+Scanner: integer literal token on line 15: 10
+Scanner: : token on line 15
+Scanner: NEWLINE token on line 15
+  16:     return rough_log(x/10) + 1
+Scanner: INDENT token on line 16
+Scanner: return token on line 16
+Scanner: name token on line 16: rough_log
+Scanner: ( token on line 16
+Scanner: name token on line 16: x
+Scanner: / token on line 16
+Scanner: integer literal token on line 16: 10
+Scanner: ) token on line 16
+Scanner: + token on line 16
+Scanner: integer literal token on line 16: 1
+Scanner: NEWLINE token on line 16
+  17:   if x < 0.1:
+Scanner: DEDENT token on line 17
+Scanner: if token on line 17
+Scanner: name token on line 17: x
+Scanner: < token on line 17
+Scanner: integer literal token on line 17: 0
+Scanner: . token on line 17
+Scanner: integer literal token on line 17: 1
+Scanner: : token on line 17
+Scanner: NEWLINE token on line 17
+  18:     return rough_log(x*10) - 1
+Scanner: INDENT token on line 18
+Scanner: return token on line 18
+Scanner: name token on line 18: rough_log
+Scanner: ( token on line 18
+Scanner: name token on line 18: x
+Scanner: * token on line 18
+Scanner: integer literal token on line 18: 10
+Scanner: ) token on line 18
+Scanner: - token on line 18
+Scanner: integer literal token on line 18: 1
+Scanner: NEWLINE token on line 18
+  19:   return 1
+Scanner: DEDENT token on line 19
+Scanner: return token on line 19
+Scanner: integer literal token on line 19: 1
+Scanner: NEWLINE token on line 19
+  20: 
+  21: 
+  22: def sqrt (v):
+Scanner: DEDENT token on line 22
+Scanner: def token on line 22
+Scanner: name token on line 22: sqrt
+Scanner: ( token on line 22
+Scanner: name token on line 22: v
+Scanner: ) token on line 22
+Scanner: : token on line 22
+Scanner: NEWLINE token on line 22
+  23:   x = [0] * 12
+Scanner: INDENT token on line 23
+Scanner: name token on line 23: x
+Scanner: = token on line 23
+Scanner: [ token on line 23
+Scanner: integer literal token on line 23: 0
+Scanner: ] token on line 23
+Scanner: * token on line 23
+Scanner: integer literal token on line 23: 12
+Scanner: NEWLINE token on line 23
+  24: 
+  25:   d = rough_log(v)
+Scanner: name token on line 25: d
+Scanner: = token on line 25
+Scanner: name token on line 25: rough_log
+Scanner: ( token on line 25
+Scanner: name token on line 25: v
+Scanner: ) token on line 25
+Scanner: NEWLINE token on line 25
+  26:   if d%2 == 1:
+Scanner: if token on line 26
+Scanner: name token on line 26: d
+Scanner: % token on line 26
+Scanner: integer literal token on line 26: 2
+Scanner: == token on line 26
+Scanner: integer literal token on line 26: 1
+Scanner: : token on line 26
+Scanner: NEWLINE token on line 26
+  27:     x[0] = pow(2*10, (d-1)//2)
+Scanner: INDENT token on line 27
+Scanner: name token on line 27: x
+Scanner: [ token on line 27
+Scanner: integer literal token on line 27: 0
+Scanner: ] token on line 27
+Scanner: = token on line 27
+Scanner: name token on line 27: pow
+Scanner: ( token on line 27
+Scanner: integer literal token on line 27: 2
+Scanner: * token on line 27
+Scanner: integer literal token on line 27: 10
+Scanner: , token on line 27
+Scanner: ( token on line 27
+Scanner: name token on line 27: d
+Scanner: - token on line 27
+Scanner: integer literal token on line 27: 1
+Scanner: ) token on line 27
+Scanner: // token on line 27
+Scanner: integer literal token on line 27: 2
+Scanner: ) token on line 27
+Scanner: NEWLINE token on line 27
+  28:   else:
+Scanner: DEDENT token on line 28
+Scanner: else token on line 28
+Scanner: : token on line 28
+Scanner: NEWLINE token on line 28
+  29:     x[0] = pow(6*10, (d-2)//2)
+Scanner: INDENT token on line 29
+Scanner: name token on line 29: x
+Scanner: [ token on line 29
+Scanner: integer literal token on line 29: 0
+Scanner: ] token on line 29
+Scanner: = token on line 29
+Scanner: name token on line 29: pow
+Scanner: ( token on line 29
+Scanner: integer literal token on line 29: 6
+Scanner: * token on line 29
+Scanner: integer literal token on line 29: 10
+Scanner: , token on line 29
+Scanner: ( token on line 29
+Scanner: name token on line 29: d
+Scanner: - token on line 29
+Scanner: integer literal token on line 29: 2
+Scanner: ) token on line 29
+Scanner: // token on line 29
+Scanner: integer literal token on line 29: 2
+Scanner: ) token on line 29
+Scanner: NEWLINE token on line 29
+  30: 
+  31:   ix = 0
+Scanner: DEDENT token on line 31
+Scanner: name token on line 31: ix
+Scanner: = token on line 31
+Scanner: integer literal token on line 31: 0
+Scanner: NEWLINE token on line 31
+  32:   while ix < 11:
+Scanner: while token on line 32
+Scanner: name token on line 32: ix
+Scanner: < token on line 32
+Scanner: integer literal token on line 32: 11
+Scanner: : token on line 32
+Scanner: NEWLINE token on line 32
+  33:     tmp = (x[ix]+v/x[ix])/2
+Scanner: INDENT token on line 33
+Scanner: name token on line 33: tmp
+Scanner: = token on line 33
+Scanner: ( token on line 33
+Scanner: name token on line 33: x
+Scanner: [ token on line 33
+Scanner: name token on line 33: ix
+Scanner: ] token on line 33
+Scanner: + token on line 33
+Scanner: name token on line 33: v
+Scanner: / token on line 33
+Scanner: name token on line 33: x
+Scanner: [ token on line 33
+Scanner: name token on line 33: ix
+Scanner: ] token on line 33
+Scanner: ) token on line 33
+Scanner: / token on line 33
+Scanner: integer literal token on line 33: 2
+Scanner: NEWLINE token on line 33
+  34:     ix = ix+1
+Scanner: name token on line 34: ix
+Scanner: = token on line 34
+Scanner: name token on line 34: ix
+Scanner: + token on line 34
+Scanner: integer literal token on line 34: 1
+Scanner: NEWLINE token on line 34
+  35:     x[ix] = tmp
+Scanner: name token on line 35: x
+Scanner: [ token on line 35
+Scanner: name token on line 35: ix
+Scanner: ] token on line 35
+Scanner: = token on line 35
+Scanner: name token on line 35: tmp
+Scanner: NEWLINE token on line 35
+  36:   return x[11]
+Scanner: DEDENT token on line 36
+Scanner: return token on line 36
+Scanner: name token on line 36: x
+Scanner: [ token on line 36
+Scanner: integer literal token on line 36: 11
+Scanner: ] token on line 36
+Scanner: NEWLINE token on line 36
+  37: 
+  38: 
+  39: # The main program:
+  40: v = float(input("Give a number: "))
+Scanner: DEDENT token on line 40
+Scanner: name token on line 40: v
+Scanner: = token on line 40
+Scanner: name token on line 40: float
+Scanner: ( token on line 40
+Scanner: name token on line 40: input
+Scanner: ( token on line 40
+Scanner: string literal token on line 40: "Give a number: "
+Scanner: ) token on line 40
+Scanner: ) token on line 40
+Scanner: NEWLINE token on line 40
+  41: sq2 = sqrt(v)
+Scanner: name token on line 41: sq2
+Scanner: = token on line 41
+Scanner: name token on line 41: sqrt
+Scanner: ( token on line 41
+Scanner: name token on line 41: v
+Scanner: ) token on line 41
+Scanner: NEWLINE token on line 41
+  42: print(sq2, "squared is", pow(sq2,2))
+Scanner: name token on line 42: print
+Scanner: ( token on line 42
+Scanner: name token on line 42: sq2
+Scanner: , token on line 42
+Scanner: string literal token on line 42: "squared is"
+Scanner: , token on line 42
+Scanner: name token on line 42: pow
+Scanner: ( token on line 42
+Scanner: name token on line 42: sq2
+Scanner: , token on line 42
+Scanner: integer literal token on line 42: 2
+Scanner: ) token on line 42
+Scanner: ) token on line 42
+Scanner: NEWLINE token on line 42
+Scanner: E-o-f token

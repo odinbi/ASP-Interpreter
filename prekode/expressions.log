@@ -1,0 +1,260 @@
+   1: "Testing integer expressions:"
+Scanner: string literal token on line 1: "Testing integer expressions:"
+Scanner: NEWLINE token on line 1
+   2: 42
+Scanner: integer literal token on line 2: 42
+Scanner: NEWLINE token on line 2
+   3: -1017
+Scanner: - token on line 3
+Scanner: integer literal token on line 3: 1017
+Scanner: NEWLINE token on line 3
+   4: -2 + 5 * 7
+Scanner: - token on line 4
+Scanner: integer literal token on line 4: 2
+Scanner: + token on line 4
+Scanner: integer literal token on line 4: 5
+Scanner: * token on line 4
+Scanner: integer literal token on line 4: 7
+Scanner: NEWLINE token on line 4
+   5: 100 % (-2 % (+2 * 5) + 18)
+Scanner: integer literal token on line 5: 100
+Scanner: % token on line 5
+Scanner: ( token on line 5
+Scanner: - token on line 5
+Scanner: integer literal token on line 5: 2
+Scanner: % token on line 5
+Scanner: ( token on line 5
+Scanner: + token on line 5
+Scanner: integer literal token on line 5: 2
+Scanner: * token on line 5
+Scanner: integer literal token on line 5: 5
+Scanner: ) token on line 5
+Scanner: + token on line 5
+Scanner: integer literal token on line 5: 18
+Scanner: ) token on line 5
+Scanner: NEWLINE token on line 5
+   6: 1234567890 // 1000000
+Scanner: integer literal token on line 6: 1234567890
+Scanner: // token on line 6
+Scanner: integer literal token on line 6: 1000000
+Scanner: NEWLINE token on line 6
+   7: 
+   8: "Testing float expressions:"
+Scanner: string literal token on line 8: "Testing float expressions:"
+Scanner: NEWLINE token on line 8
+   9: 42.0
+Scanner: integer literal token on line 9: 42
+Scanner: . token on line 9
+Scanner: integer literal token on line 9: 0
+Scanner: NEWLINE token on line 9
+  10: -1017.1
+Scanner: - token on line 10
+Scanner: integer literal token on line 10: 1017
+Scanner: . token on line 10
+Scanner: integer literal token on line 10: 1
+Scanner: NEWLINE token on line 10
+  11: -2 + 5.0 * 7
+Scanner: - token on line 11
+Scanner: integer literal token on line 11: 2
+Scanner: + token on line 11
+Scanner: integer literal token on line 11: 5
+Scanner: . token on line 11
+Scanner: integer literal token on line 11: 0
+Scanner: * token on line 11
+Scanner: integer literal token on line 11: 7
+Scanner: NEWLINE token on line 11
+  12: 100 % (-2 % (+2 * 5.0) + 18)
+Scanner: integer literal token on line 12: 100
+Scanner: % token on line 12
+Scanner: ( token on line 12
+Scanner: - token on line 12
+Scanner: integer literal token on line 12: 2
+Scanner: % token on line 12
+Scanner: ( token on line 12
+Scanner: + token on line 12
+Scanner: integer literal token on line 12: 2
+Scanner: * token on line 12
+Scanner: integer literal token on line 12: 5
+Scanner: . token on line 12
+Scanner: integer literal token on line 12: 0
+Scanner: ) token on line 12
+Scanner: + token on line 12
+Scanner: integer literal token on line 12: 18
+Scanner: ) token on line 12
+Scanner: NEWLINE token on line 12
+  13: 1234567890.0 // 1000000.0
+Scanner: integer literal token on line 13: 1234567890
+Scanner: . token on line 13
+Scanner: integer literal token on line 13: 0
+Scanner: // token on line 13
+Scanner: integer literal token on line 13: 1000000
+Scanner: . token on line 13
+Scanner: integer literal token on line 13: 0
+Scanner: NEWLINE token on line 13
+  14: 
+  15: "Testing string expressions"
+Scanner: string literal token on line 15: "Testing string expressions"
+Scanner: NEWLINE token on line 15
+  16: "Abc"
+Scanner: string literal token on line 16: "Abc"
+Scanner: NEWLINE token on line 16
+  17: "Î±" + "-"*5 + "Ï‰"
+Scanner: string literal token on line 17: "Î±"
+Scanner: + token on line 17
+Scanner: string literal token on line 17: "-"
+Scanner: * token on line 17
+Scanner: integer literal token on line 17: 5
+Scanner: + token on line 17
+Scanner: string literal token on line 17: "Ï‰"
+Scanner: NEWLINE token on line 17
+  18: 
+  19: "Testing boolean expressions"
+Scanner: string literal token on line 19: "Testing boolean expressions"
+Scanner: NEWLINE token on line 19
+  20: not False
+Scanner: not token on line 20
+Scanner: False token on line 20
+Scanner: NEWLINE token on line 20
+  21: "To be" or "not to be"
+Scanner: string literal token on line 21: "To be"
+Scanner: or token on line 21
+Scanner: string literal token on line 21: "not to be"
+Scanner: NEWLINE token on line 21
+  22: "Yes" and 3.14
+Scanner: string literal token on line 22: "Yes"
+Scanner: and token on line 22
+Scanner: integer literal token on line 22: 3
+Scanner: . token on line 22
+Scanner: integer literal token on line 22: 14
+Scanner: NEWLINE token on line 22
+  23: False or True or 144 or "?"
+Scanner: False token on line 23
+Scanner: or token on line 23
+Scanner: True token on line 23
+Scanner: or token on line 23
+Scanner: integer literal token on line 23: 144
+Scanner: or token on line 23
+Scanner: string literal token on line 23: "?"
+Scanner: NEWLINE token on line 23
+  24: 
+  25: "Testing comparisons"
+Scanner: string literal token on line 25: "Testing comparisons"
+Scanner: NEWLINE token on line 25
+  26: 1 <= 2 <= 3
+Scanner: integer literal token on line 26: 1
+Scanner: <= token on line 26
+Scanner: integer literal token on line 26: 2
+Scanner: <= token on line 26
+Scanner: integer literal token on line 26: 3
+Scanner: NEWLINE token on line 26
+  27: "a" != "b" > "b" != 99
+Scanner: string literal token on line 27: "a"
+Scanner: != token on line 27
+Scanner: string literal token on line 27: "b"
+Scanner: > token on line 27
+Scanner: string literal token on line 27: "b"
+Scanner: != token on line 27
+Scanner: integer literal token on line 27: 99
+Scanner: NEWLINE token on line 27
+  28: 3.14 > 2.718281828459045 > 0
+Scanner: integer literal token on line 28: 3
+Scanner: . token on line 28
+Scanner: integer literal token on line 28: 14
+Scanner: > token on line 28
+Scanner: integer literal token on line 28: 2
+Scanner: . token on line 28
+Scanner: float literal token on line 28: 7.18281807757312E14
+Scanner: > token on line 28
+Scanner: integer literal token on line 28: 0
+Scanner: NEWLINE token on line 28
+  29: 
+  30: "Testing lists"
+Scanner: string literal token on line 30: "Testing lists"
+Scanner: NEWLINE token on line 30
+  31: []
+Scanner: [ token on line 31
+Scanner: ] token on line 31
+Scanner: NEWLINE token on line 31
+  32: [22, "w", [-1,+1], 3.14159265]
+Scanner: [ token on line 32
+Scanner: integer literal token on line 32: 22
+Scanner: , token on line 32
+Scanner: string literal token on line 32: "w"
+Scanner: , token on line 32
+Scanner: [ token on line 32
+Scanner: - token on line 32
+Scanner: integer literal token on line 32: 1
+Scanner: , token on line 32
+Scanner: + token on line 32
+Scanner: integer literal token on line 32: 1
+Scanner: ] token on line 32
+Scanner: , token on line 32
+Scanner: integer literal token on line 32: 3
+Scanner: . token on line 32
+Scanner: integer literal token on line 32: 14159265
+Scanner: ] token on line 32
+Scanner: NEWLINE token on line 32
+  33: [101,102,103][1]
+Scanner: [ token on line 33
+Scanner: integer literal token on line 33: 101
+Scanner: , token on line 33
+Scanner: integer literal token on line 33: 102
+Scanner: , token on line 33
+Scanner: integer literal token on line 33: 103
+Scanner: ] token on line 33
+Scanner: [ token on line 33
+Scanner: integer literal token on line 33: 1
+Scanner: ] token on line 33
+Scanner: NEWLINE token on line 33
+  34: [-1,0,1]*(2)
+Scanner: [ token on line 34
+Scanner: - token on line 34
+Scanner: integer literal token on line 34: 1
+Scanner: , token on line 34
+Scanner: integer literal token on line 34: 0
+Scanner: , token on line 34
+Scanner: integer literal token on line 34: 1
+Scanner: ] token on line 34
+Scanner: * token on line 34
+Scanner: ( token on line 34
+Scanner: integer literal token on line 34: 2
+Scanner: ) token on line 34
+Scanner: NEWLINE token on line 34
+  35: "Abcdef"[0]
+Scanner: string literal token on line 35: "Abcdef"
+Scanner: [ token on line 35
+Scanner: integer literal token on line 35: 0
+Scanner: ] token on line 35
+Scanner: NEWLINE token on line 35
+  36: 
+  37: "Testing dictionaries"
+Scanner: string literal token on line 37: "Testing dictionaries"
+Scanner: NEWLINE token on line 37
+  38: {"A": "a", "B": 1+2}
+Scanner: { token on line 38
+Scanner: string literal token on line 38: "A"
+Scanner: : token on line 38
+Scanner: string literal token on line 38: "a"
+Scanner: , token on line 38
+Scanner: string literal token on line 38: "B"
+Scanner: : token on line 38
+Scanner: integer literal token on line 38: 1
+Scanner: + token on line 38
+Scanner: integer literal token on line 38: 2
+Scanner: } token on line 38
+Scanner: NEWLINE token on line 38
+  39: {"Ja": 1, "Nei": 0}["Ja"]
+Scanner: { token on line 39
+Scanner: string literal token on line 39: "Ja"
+Scanner: : token on line 39
+Scanner: integer literal token on line 39: 1
+Scanner: , token on line 39
+Scanner: string literal token on line 39: "Nei"
+Scanner: : token on line 39
+Scanner: integer literal token on line 39: 0
+Scanner: } token on line 39
+Scanner: [ token on line 39
+Scanner: string literal token on line 39: "Ja"
+Scanner: ] token on line 39
+Scanner: NEWLINE token on line 39
+Scanner: E-o-f token
