@@ -105,6 +105,14 @@ public enum TokenKind {
         return image;
     }
 
+    /**
+    * getTokenKind
+    * returns: TokenKind
+    * input: paramenter: String value
+    *
+    * if input matches a TokenKind value, returns matching TokenKind
+    * else returns null.
+    */
     public static TokenKind getTokenKind(String value){
 	for(TokenKind tk: TokenKind.values()){
 		if(value.equals(tk.toString())) return tk;

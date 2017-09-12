@@ -85,9 +85,15 @@ public class Scanner {
             scannerError("Unspecified I/O error!");
         }
 
-        //-- Must be changed in part 1:zzz
-        if(line == null){ //  || line == ""
-        System.out.println("End of file");
+    //-- Must be changed in part 1:zzz
+    /*
+    * if-else tests to analyse the read line.
+    * if line == null, the line is empty and we are on EoF.
+    * if line matches ignoreLine() test the line should not be parsed by the Scanner
+    * all other lines should be parsed by the Scanner
+    */
+    if(line == null){ //  || line == ""
+        indentHandle(0);
         curLineTokens.add(new Token(eofToken, curLineNum()));
         for (Token t: curLineTokens)
         Main.log.noteToken(t);
@@ -96,30 +102,36 @@ public class Scanner {
         readNextLine();
         return;
     } else{
-        System.out.println("In readNextLine - parse: " + line);
         String stringLine = expandLeadingTabs(line);
         int countBlank = countBlanks(stringLine.toCharArray());
         indentHandle(countBlank);
         String word = "init";
         while(word != "" && word != "\n"){
             word = getWord(line);
-            System.out.println("In readNextLine - word fetched: " + word);
             handleWord(word);
-            System.out.println("In readNextLine - word handleled: " + word);
         }
     }
 
     // Add all tokens to log:
     for (Token t: curLineTokens)
-    Main.log.noteToken(t);
+        Main.log.noteToken(t);
     //Get all tokens on next line
     readNextLine();
     return;
 }
 
+/**
+* handleWord
+* returns: void
+* input paramenter: String word
+*
+* handleWord recognize the String word as separate TokenKind enums and
+* makes a new Token object with the correct TokenKind, proceeds to add
+* the new Token object to the Token stack.
+*
+*/
 private void handleWord(String word){
     Token t = null;
-    System.out.println("Ord: " + word);
     if(isKeyword(word) || isDelimiter(word) || isOperator(word)){
         t = new Token(TokenKind.getTokenKind(word), curLineNum());
     } else if(word.startsWith("\"") && word.endsWith("\"")){
@@ -132,16 +144,15 @@ private void handleWord(String word){
             t.integerLit = n;
         } catch(NumberFormatException e1){
             try {
-                float f = Float.parseFloat(word);
                 t = new Token(floatToken, curLineNum());
-                t.floatLit = f;
+                t.floatLit = Double.parseDouble(word);
             } catch(NumberFormatException e2){
                 Main.error(e2.getMessage());
             }
         }
     } else if(word.matches("\\d*\\.?\\d*")){
         t = new Token(floatToken, curLineNum());
-        t.floatLit = Float.parseFloat(word);
+        t.floatLit = Double.parseDouble(word);//Float.parseFloat(word);
     } else if(word == "\n" || word == "\r"){
         t = new Token(newLineToken, curLineNum());
     } else if(word != null && word != "" && word != " "){
@@ -153,6 +164,34 @@ private void handleWord(String word){
     curLineTokens.add(t);
 }
 
+/**
+* getWord
+* returns: String curWord
+* input paramenter: String stringLine
+*
+* getWord recognizes sections of the input sting as separate syntax objects
+* and splits them apparts so that the handleWord function add it to the stack.
+*
+* every time getWord returns a character it updates global variable currentIndex
+* to save the position in the current string-
+*
+* variables: String curWord, boolean inString, char currentChar
+*   curWord: concatination of characters that make up a legal statement in asp, the return value
+*   inString: default false, if processing a string litteral set to true
+*   currentChar: current char from input string processed by the function.
+*
+* getWord first checks if it is reading a string literal object,
+*   if true it will add all characters to the output untill it reaches a string end symbol.
+* If getWord is not in a string it will test if the current character appended to current word is a digit.
+*   return current word if false, append if true.
+* else if current character is an opperator or a delimiter, check if the character appended to the word is:
+*   return current word if false, append if true.
+*   if the word is empty append.
+* Else if current word is delimiter or operator, return the current word.
+* Else if character is whitespace, return current word if word is not empty
+* Else if character is a string start, set inString to true append character to string.
+* Else if none above, return character.
+*/
 private String getWord(String stringLine){
     String curWord = "";
     boolean inString = false;
@@ -163,21 +202,18 @@ private String getWord(String stringLine){
 
         char currentChar = stringLine.charAt(index);
 
-        //System.out.println("word: \"" + curWord + "\" char: \'" + currentChar + "\'");
-        //System.out.println("input length: " + stringLine.length() + " index: " + index);
-        if(inString){
-            if(currentChar == '\"'){ // '\"' = 34
-            curWord += currentChar;
-            currentIndex = ++index;
-            return curWord;
-        }
+    if(inString){
+        if(currentChar == '\"' || currentChar == '\''){
+        if (currentChar == '\'') currentChar = '\"';
         curWord += currentChar;
+        currentIndex = ++index;
+        return curWord;
+    }
+    curWord += currentChar;
     } else if((curWord + currentChar).matches("\\d*\\.\\d*")){
         curWord += currentChar;
     } else if(isOperator(String.valueOf(currentChar)) || isDelimiter(String.valueOf(currentChar))){
-        System.out.println("opperator/delimiter reached: " + currentChar);
         if(curWord != ""){
-            System.out.println("Is this an opperator? " + curWord + currentChar);
             if(isDelimiter(curWord + currentChar) || isOperator(curWord + currentChar)){
                 curWord += currentChar;
             } else{
@@ -185,7 +221,6 @@ private String getWord(String stringLine){
                 return curWord;
             }
         } else {
-            //currentIndex = index;
             curWord += currentChar;
         }
     } else if(isDelimiter(curWord) || isOperator(curWord)){
@@ -195,10 +230,11 @@ private String getWord(String stringLine){
         if(currentChar == ' '){
             currentIndex = index;
             if(curWord != "") return curWord;
-        } else if(currentChar == '\"'){ // '\"' = 34 ascii character
-        if(curWord == ""){
-            inString = true;
-            curWord += currentChar;
+        } else if(currentChar == '\"' || currentChar == '\''){
+            if (currentChar == '\'') currentChar = '\"';
+            if(curWord == ""){
+                inString = true;
+                curWord += currentChar;
         } else{
             currentIndex = index;
             return curWord;
@@ -206,10 +242,8 @@ private String getWord(String stringLine){
     } else{
         curWord += currentChar;
     }
-    System.out.println("CurWord" + curWord);
 }
 if(index == stringLine.length()-1){
-    System.out.println("returns: " + curWord);
     currentIndex = ++index;
     return curWord;
 }
@@ -217,6 +251,13 @@ if(index == stringLine.length()-1){
 return curWord;
 }
 
+/**
+* isKeyword, isOperator, isDelimiter
+* return value: boolean
+* input parameter: String word
+*
+* checks if word is a Keyword, Operator or Delimiter respectively.
+*/
 private boolean isKeyword(String word){
     String[] keyArray = {"and", "as", "assert", "break", "class", "continue", "def", "del", "elif", "else",
     "except", "False", "finally", "for", "from", "global", "if", "import", "in", "is", "lambda", "None",
@@ -237,7 +278,6 @@ private boolean isDelimiter(String word){
     return Arrays.asList(delimitersArray).contains(word);
 }
 
-
 public int curLineNum() {
     return sourceFile!=null ? sourceFile.getLineNumber() : 0;
 }
@@ -249,25 +289,63 @@ private int findIndent(String s) {
     return indent;
 }
 
+/**
+* ignoreLine
+* return value: boolean
+* input parameter: String input
+*
+* checks if a string is comented out or if it only consists of blanks.
+*/
 public boolean ignoreLine(String input){
     boolean cmtL = input.matches("^\\s*#.*");
     boolean blnkL = input.matches("^\\s*$");
     return (cmtL || blnkL);
 }
 
+/**
+* indentsPush
+* return value: void
+* input parameter: int
+*
+* pushes an int to the top of the indents stack.
+* Updates global index numIndents.
+*/
 private void indentsPush(int i){
     indents[numIndents] = i;
     curLineTokens.add(new Token(indentToken, curLineNum()));
     numIndents++;
 }
+/**
+* indentsPop
+* return value: void
+* input parameter: void
+*
+* pops an int from the top of the indents stack.
+* Updates global index numIndents.
+*/
 private void indentsPop(){
     curLineTokens.add(new Token(dedentToken, curLineNum()));
     numIndents--;
 }
+/**
+* indentsTop
+* return value: int
+* input parameter: void
+*
+* returns the top object of the indents stack.
+*/
 private int indentsTop(){
     return indents[numIndents-1];
 }
-
+/**
+* indentHandle
+* return value: void
+* input parameter: int blanks
+*
+* checks if input blanks is larger or lesser than the current stack top
+* and adjusts the stack after the new value of blanks.
+* calls itself in the end to properly handle dedents.
+*/
 private void indentHandle(int blanks){
     if(indentsTop() < blanks){
         indentsPush(blanks);
@@ -276,9 +354,18 @@ private void indentHandle(int blanks){
     else if(indentsTop() > blanks){
         indentsPop();
         //add token DEDENT
-    }
+    } else return;
+    indentHandle(blanks);
 }
 
+/**
+* countBlanks
+* return value: int
+* input parameter: char[] line
+*
+* counts the number of whitespace characters in the array untill it meats a
+* non-whitespace character.
+*/
 private int countBlanks(char[] line){
     int numberOfBlanks = 0;
     for (int i = 0; i < line.length; i++){
