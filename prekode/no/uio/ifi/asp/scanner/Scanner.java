@@ -150,12 +150,16 @@ private void handleWord(String word){
                 Main.error(e2.getMessage());
             }
         }
-    } else if(word.matches("\\d*\\.?\\d*")){
-        t = new Token(floatToken, curLineNum());
-        t.floatLit = Double.parseDouble(word);//Float.parseFloat(word);
+    } else if(word.matches("\\d+\\.?\\d+")){
+        try{
+            t = new Token(floatToken, curLineNum());
+            t.floatLit = Double.parseDouble(word);//Float.parseFloat(word);
+        } catch(NumberFormatException nfe){
+            Main.error(nfe.getMessage());
+        }
     } else if(word == "\n" || word == "\r"){
         t = new Token(newLineToken, curLineNum());
-    } else if(word != null && word != "" && word != " "){
+    } else if(word != null && word != "" && word != " " && !Character.isDigit(word.charAt(0))){
         t = new Token(nameToken, curLineNum());
         t.name = word;
     } else {
@@ -191,10 +195,14 @@ private void handleWord(String word){
 * Else if character is whitespace, return current word if word is not empty
 * Else if character is a string start, set inString to true append character to string.
 * Else if none above, return character.
+*
+* UPDATE:
+* Now handles illegal string endings. String has to end with same quotation, and need a quotation in the end.
 */
 private String getWord(String stringLine){
     String curWord = "";
     boolean inString = false;
+    boolean strongQuote = false;
 
     if (stringLine.length() <= currentIndex) return "\n";
 
@@ -203,13 +211,21 @@ private String getWord(String stringLine){
         char currentChar = stringLine.charAt(index);
 
     if(inString){
-        if(currentChar == '\"' || currentChar == '\''){
-        if (currentChar == '\'') currentChar = '\"';
+        if(currentChar == '\"' && !strongQuote){
+            curWord += currentChar;
+            currentIndex = ++index;
+            return curWord;
+        }
+        if(strongQuote &&  currentChar == '\''){
+            currentChar = '\"';
+            curWord += currentChar;
+            currentIndex = ++index;
+            return curWord;
+        }
+        if(index == stringLine.length()-1 && currentChar != '\n'){
+            scannerError("String literal not terminated, illegal String ending!");
+        }
         curWord += currentChar;
-        currentIndex = ++index;
-        return curWord;
-    }
-    curWord += currentChar;
     } else if((curWord + currentChar).matches("\\d*\\.\\d*")){
         curWord += currentChar;
     } else if(isOperator(String.valueOf(currentChar)) || isDelimiter(String.valueOf(currentChar))){
@@ -231,7 +247,11 @@ private String getWord(String stringLine){
             currentIndex = index;
             if(curWord != "") return curWord;
         } else if(currentChar == '\"' || currentChar == '\''){
-            if (currentChar == '\'') currentChar = '\"';
+            if (currentChar == '\''){
+                inString = true;
+                strongQuote = true;
+                currentChar = '\"';
+            }
             if(curWord == ""){
                 inString = true;
                 curWord += currentChar;
@@ -352,6 +372,14 @@ private void indentHandle(int blanks){
         //add token INDENT
     }
     else if(indentsTop() > blanks){
+        boolean isMatch = false;
+        for(int i = 0; i < numIndents; i++){
+            if(indents[i] == blanks){
+                isMatch = true;
+                break;
+            }
+        }
+        if(!isMatch) scannerError("Indentation error!");
         indentsPop();
         //add token DEDENT
     } else return;
