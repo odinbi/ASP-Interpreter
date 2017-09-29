@@ -1,9 +1,9 @@
 class AspStringLiteral extends AspAtom {
     //returns RuntimeValue
-    public TokenKind value;
-    AspStringLiteral(int n, TokenKind tk){
+    public String value;
+    AspStringLiteral(int n, String s){
         this.super(n);
-        this.value = tk;
+        this.value = s;
     }
 
     static AspStringLiteral parse(Scanner s){
@@ -12,7 +12,7 @@ class AspStringLiteral extends AspAtom {
             parserError("Expected a stringToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
-        AspStringLiteral abl = new AspStringLiteral(s.curLineNum(), s.getTokenKind());
+        AspStringLiteral abl = new AspStringLiteral(s.curLineNum(), s.curToken.stringLit);
         Main.log.leaveParser("string litteral");
         return abl;
     }

@@ -1,9 +1,9 @@
 class AspFloatLiteral extends AspAtom {
     //returns RuntimeValue
-    public TokenKind value;
-    AspFloatLiteral(int n, TokenKind tk){
+    public float value;
+    AspFloatLiteral(int n, float value){
         this.super(n);
-        this.value = tk;
+        this.value = value;
     }
 
     static AspFloatLiteral parse(Scanner s){
@@ -12,7 +12,7 @@ class AspFloatLiteral extends AspAtom {
             parserError("Expected a floatToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
-        AspFloatLiteral abl = new AspFloatLiteral(s.curLineNum(), s.getTokenKind());
+        AspFloatLiteral abl = new AspFloatLiteral(s.curLineNum(), s.curToken.floatLit);
         Main.log.leaveParser("float litteral");
         return abl;
     }

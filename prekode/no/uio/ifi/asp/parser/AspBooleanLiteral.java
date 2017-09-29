@@ -1,9 +1,9 @@
 class AspBooleanLiteral extends AspAtom {
     //returns RuntimeValue
-    public TokenKind value;
-    AspBooleanLiteral(int n, TokenKind tk){
+    public boolean value;
+    AspBooleanLiteral(int n, boolean bool){
         this.super(n);
-        this.value = tk;
+        this.value = bool;
     }
 
     static AspBooleanLiteral parse(Scanner s){
@@ -12,7 +12,11 @@ class AspBooleanLiteral extends AspAtom {
             parserError("Expected a booleanToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
-        AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum(), s.getTokenKind());
+        if(s.getTokenKind() == trueToken){
+            AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum(), true);
+        } else{
+            AspBooleanLiteral abl = new AspBooleanLiteral(s.curLineNum(), false);
+        }
         Main.log.leaveParser("boolean litteral");
         return abl;
     }

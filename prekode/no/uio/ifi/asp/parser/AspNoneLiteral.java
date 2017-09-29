@@ -1,9 +1,10 @@
 class AspNoneLiteral extends AspAtom {
-    //returns RuntimeValue
-    public TokenKind value;
-    AspNoneLiteral(int n, TokenKind tk){
+
+    public NoneType value;
+
+    AspNoneLiteral(int n){
         this.super(n);
-        this.value = tk;
+        this.value = NONE;
     }
 
     static AspNoneLiteral parse(Scanner s){
@@ -12,8 +13,8 @@ class AspNoneLiteral extends AspAtom {
             parserError("Expected a noneToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
-        AspNoneLiteral abl = new AspNoneLiteral(s.curLineNum(), s.getTokenKind());
+        AspNoneLiteral anl = new AspNoneLiteral(s.curLineNum());
         Main.log.leaveParser("none litteral");
-        return abl;
+        return anl;
     }
 }

@@ -1,5 +1,7 @@
 class AspAndTest extends AspSyntax {
+    
     ArrayList<AspNotTest> notTests = new ArrayList<>();
+
     static AspAndTest parse(Scanner s) {
         Main.log.enterParser("and test");
         AspAndTest aat = new AspAndTest(s.curLineNum());

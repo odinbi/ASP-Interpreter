@@ -1,9 +1,9 @@
 class AspIntegerLiteral extends AspAtom {
     //returns RuntimeValue
-    public TokenKind value;
-    AspIntegerLiteral(int n, TokenKind tk){
+    public int value;
+    AspIntegerLiteral(int n, int value){
         this.super(n);
-        this.value = tk;
+        this.value = value;
     }
 
     static AspIntegerLiteral parse(Scanner s){
@@ -12,7 +12,7 @@ class AspIntegerLiteral extends AspAtom {
             parserError("Expected a integerToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
-        AspIntegerLiteral abl = new AspIntegerLiteral(s.curLineNum(), s.getTokenKind());
+        AspIntegerLiteral abl = new AspIntegerLiteral(s.curLineNum(), s.curToken.integerLit);
         Main.log.leaveParser("integer litteral");
         return abl;
     }
