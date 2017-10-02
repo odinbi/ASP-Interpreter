@@ -1,18 +1,21 @@
 class AspFactor extends AspSyntax {
+
+    AspFactorPrefix prefix;
     ArrayList<ApsPrimary> primary = new ArrayList<>();
+    ArrayList<AspFactorOpr> oprs = new ArrayList<>();
+
     static AspFactor parse(Scanner s) {
         Main.log.enterParser("factor");
         AspFactor af = new AspFactor(s.curLineNum());
 
-        af.primary.add(AspPrimary.parse(s));
         if (s.isFactorPrefix()){
-            skip(s, factorPrefixToken); //give propper token later!!!
+            af.prefix = AspFactorPrefix.parse(s); //give propper token later!!!
         }
 
         while(true){
             af.primary.add(AspPrimary.parse(s));
             if (!s.isFactorOpr()) break;
-            skip(s, factorToken); //give propper token later!!!
+            af.oprs.add(AspFactorOpr.parse(s));
         }
 
         Main.log.leaveParser("factor");
@@ -21,11 +24,14 @@ class AspFactor extends AspSyntax {
 
     @Override
     void prettyPrint() {
+        if(prefix != null)
+            prefix.prettyPrint();
+
         int nPrinted = 0;
-        for (AspFactor af: primary) {
+        for (AspPrimary prim: primary) {
             if (nPrinted > 0)
-            //Main.log.prettyWrite(" not ");
-            af.prettyPrint(); ++nPrinted;
+                oprs[nPrinted].prettyPrint();
+            prim.prettyPrint(); ++nPrinted;
         }
     }
 }

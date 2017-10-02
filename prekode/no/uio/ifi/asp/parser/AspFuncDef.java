@@ -1,11 +1,12 @@
 class AspFuncDef extends AspStmt{
+    AspName funcName;
     ArrayList<AspName> name = new ArrayList<>();
     AspSuite suite;
     static AspFuncDef parse(Scanner s){
         Main.log.enterParser("func def");
         AspFuncDef func = new AspFuncDef(s.curLineNum());
         skip(s, defToken);
-        func.name.add(AspName.parse(s));
+        func.funcName = AspName.parse(s);
         skip(s, leftParToken);
         if(s.curToken().kind != rightParToken){
             while(true){
@@ -21,4 +22,19 @@ class AspFuncDef extends AspStmt{
         return func;
     }
 
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite("def ");
+        funcName.prettyPrint();
+        Main.log.prettyWrite(" ( ");
+        int nCommas = 0;
+        for(AspName nm : name){
+            if(nCommas > 0) Main.log.prettyWrite(" , ");
+            nm.prettyPrint();
+            nCommas++;
+        }
+        Main.log.prettyWrite(" ) ");
+        Main.log.prettyWrite(" : ");
+        suite.prettyPrint();
+    }
 }

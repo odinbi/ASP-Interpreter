@@ -16,4 +16,9 @@ class AspIntegerLiteral extends AspAtom {
         Main.log.leaveParser("integer litteral");
         return abl;
     }
+
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite(" " + value + " ");
+    }
 }

@@ -1,6 +1,6 @@
 class AspSuite extends AspSyntax{
 
-    ArrayList<AspStmt> stmt = new ArrayList<>();
+    ArrayList<AspStmt> stmts = new ArrayList<>();
 
     static AspSuite parse(Scanner s){
         Main.log.enterParser("suite");
@@ -8,11 +8,20 @@ class AspSuite extends AspSyntax{
         skip(s, newLineToken);
         skip(s, indentToken);
         while(true){
-            suite.stmt.add(AspStmt.parse(s));
+            suite.stmts.add(AspStmt.parse(s));
             if(s.curToken().kind == dedentToken) break;
         }
         skip(s, dedentToken);
         Main.log.leaveParser("suite");
         return suite;
+    }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite("\n\t");
+        for(AspStmt stmt : stmts){
+            stmt.prettyPrint();
+        }
+        Main.log.prettyWrite("\n");
     }
 }

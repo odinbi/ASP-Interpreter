@@ -26,4 +26,18 @@ class AspIfStmt extends AspStmt{
             ais.suite.add(AspSuite.parse(s));
         }
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite("if ");
+        int nElif = -1;
+    	for(AspExpr exp, AspSuite ste) in zip(expr, suite){
+            nElif++;
+            if(nElif > 0 && nElif != expr.size()-1) Main.log.prettyWrite(" elif ");
+            else if(nElif == expr.size()-1) Main.log.prettyWrite(" else ");
+            exp.prettyPrint();
+            Main.log.prettyWrite(" : ");
+            ste.prettyPrint();
+        }
+    }
 }

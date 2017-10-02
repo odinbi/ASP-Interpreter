@@ -7,4 +7,10 @@ class AspPassStmt extends AspStmt{
         Main.log.leaveParser("pass stmt");
         return aPass;
     }
+
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite("pass ");
+        Main.log.prettyWrite("\n");
+    }
 }

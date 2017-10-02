@@ -1,12 +1,13 @@
 class AspTerm extends AspSyntax {
     ArrayList<ApsFactor> factor = new ArrayList<>();
+    ArrayList<AspTermOpr> oprs = new ArrayList<>();
     static AspTerm parse(Scanner s) {
         Main.log.enterParser("term");
         AspTerm at = new AspTerm(s.curLineNum());
         while(true){
             at.factor.add(AspFactor.parse(s));
             if (!s.isTermOpr()) break;
-            skip(s, termToken); //give propper token later!!!
+            at.oprs.add(AspTermOpr.parse(s));
         }
 
         Main.log.leaveParser("term");
@@ -16,10 +17,10 @@ class AspTerm extends AspSyntax {
     @Override
     void prettyPrint() {
         int nPrinted = 0;
-        for (AspTerm at: factor) {
+        for (AspFactor fac: factor) {
             if (nPrinted > 0)
-            //Main.log.prettyWrite(" not ");
-            at.prettyPrint(); ++nPrinted;
+                oprs[nPrinted].prettyPrint();
+            fac.prettyPrint(); ++nPrinted;
         }
     }
 }

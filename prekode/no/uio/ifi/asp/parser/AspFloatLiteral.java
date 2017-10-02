@@ -16,4 +16,9 @@ class AspFloatLiteral extends AspAtom {
         Main.log.leaveParser("float litteral");
         return abl;
     }
+
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite(" " + value + " ");
+    }
 }

@@ -17,10 +17,10 @@ class AspComparison extends AspSyntax {
     @Override
     void prettyPrint() {
         int nPrinted = 0;
-        for (AspComparison ac: term) {
+        for (AspTerm trm: term) {
             if (nPrinted > 0)
-            //Main.log.prettyWrite(" not ");
-            ac.prettyPrint(); ++nPrinted;
+                compopr[nPrinted].prettyPrint();
+            trm.prettyPrint(); ++nPrinted;
         }
     }
 }

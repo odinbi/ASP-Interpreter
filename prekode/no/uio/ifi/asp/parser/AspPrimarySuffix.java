@@ -1,18 +1,25 @@
 abstact class AspPrimarySuffix extends AspSyntax {
+
+    AspSyntax as;
+
     static AspPrimarySuffix parse(Scanner s){
         Main.log.enterParser("primary suffix");
-        AspPrimarySuffix aps = null;
-
+        AspPrimarySuffix suffix = new AspPrimarySuffix(s.curLineNum());
         switch(s.curToken().kind){
             case leftBracketToken:
-                aps = AspArguments.parse(s); break;
+                suffix.as = AspArguments.parse(s); break;
             case leftParToken:
-                aps = AspSubscription.parse(s); break;
+                suffix.as = AspSubscription.parse(s); break;
             default:
                 parserError("Expected an [ or ( but found a " +
                             s.curToken().kind + "!", s.curLineNum());
         }
         Main.log.leaveParser("primary suffix");
-        return aps;
+        return suffix;
+    }
+
+    @Override
+    public void prettyPrint() {
+        as.prettyPrint();
     }
 }

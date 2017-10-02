@@ -16,4 +16,18 @@ class AspDictDisplay extends AspAtom {
         Main.log.leaveParser("dict display");
         return a;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" { ");
+        int nComma = 0;
+        for(AspStringLiteral asl, AspExp exp) in zip(str, expr){
+            if(nComma > 0) Main.log.prettyWrite(" , ");
+            asl.prettyPrint();
+            Main.log.prettyWrite(" : ");
+            exp.prettyPrint();
+            nComma++;
+        }
+        Main.log.prettyWrite(" } ");
+    }
 }

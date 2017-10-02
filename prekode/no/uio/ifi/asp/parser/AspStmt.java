@@ -15,11 +15,16 @@ abstact class AspStmt extends AspSyntax {
             case passToken:
                 as = AspPassStmt.parse(s); break;
             case defToken:
-                as = ApsDefStmt.parse(s); break;
+                as = ApsFuncDef.parse(s); break;
             default:
                 as = AspExpr.parse(s);
         }
         Main.log.leaveParser("asp stmt");
         return as;
+    }
+
+    @Override
+    public void prettyPrint() {
+    	as.prettyPrint();
     }
 }

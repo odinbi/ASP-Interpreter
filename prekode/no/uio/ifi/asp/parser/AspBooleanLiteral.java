@@ -20,4 +20,9 @@ class AspBooleanLiteral extends AspAtom {
         Main.log.leaveParser("boolean litteral");
         return abl;
     }
+
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite(" " + value + " ");
+    }
 }

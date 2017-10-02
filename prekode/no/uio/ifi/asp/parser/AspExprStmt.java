@@ -11,4 +11,9 @@ class AspExprStmt extends AspStmt{
         return aes;
     }
 
+    @Override
+    public void prettyPrint() {
+        expr.prettyPrint();
+        Main.log.prettyWrite("\n");
+    }
 }

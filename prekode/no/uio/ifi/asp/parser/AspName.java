@@ -17,4 +17,9 @@ class AspName extends AspAtom{
         Main.log.leaveParser("name");
         return an;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString() + " ");
+    }
 }

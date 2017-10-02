@@ -1,14 +1,15 @@
 class AspPrimary extends AspSyntax {
-    ArrayList<ApsAtom> atom = new ArrayList<>();
+    ArrayList<ApsPrimarySuffix> suffixes = new ArrayList<>();
+    AspAtom atom;
     static AspPrimary parse(Scanner s) {
         Main.log.enterParser("primary");
         AspPrimary ap = new AspPrimary(s.curLineNum());
 
-        ap.atom.add(AspAtom.parse(s));
+        ap.atom = AspAtom.parse(s);
 
         while(true){
             if (!s.isPrimarySuffix()) break; //eddit later.
-            skip(s, primaryToken); //give propper token later!!!
+            ap.suffixes.add(ApsPrimarySuffix.parse(s));
         }
 
         Main.log.leaveParser("primary");
@@ -17,11 +18,9 @@ class AspPrimary extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        int nPrinted = 0;
-        for (AspPrimary ap: atom) {
-            if (nPrinted > 0)
-            //Main.log.prettyWrite(" not ");
-            ap.prettyPrint(); ++nPrinted;
+        atom.prettyPrint();
+        for (AspPrimarySuffix suffix: suffixes) {
+            suffix.prettyPrint();
         }
     }
 }

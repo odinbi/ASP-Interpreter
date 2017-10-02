@@ -20,4 +20,9 @@ abstract class AspTermOpr extends AspSyntax {
         Main.log.leaveParser("term opr");
         return a;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString() + " ");
+    }
 }

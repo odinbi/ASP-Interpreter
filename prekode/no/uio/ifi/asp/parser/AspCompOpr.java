@@ -24,4 +24,9 @@ abstract class AspCompOpr extends AspSyntax {
         Main.log.leaveParser("comp opr");
         return a;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString() + " ");
+    }
 }

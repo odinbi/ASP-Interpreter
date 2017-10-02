@@ -20,4 +20,9 @@ abstract class AspFactorPrefix extends AspSyntax {
         Main.log.leaveParser("factor prefix");
         return a;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString());
+    }
 }

@@ -18,7 +18,7 @@ class AspNotTest extends AspSyntax {
         int nPrinted = 0;
         for (AspNotTest ant: notTests) {
             if (nPrinted > 0)
-            Main.log.prettyWrite(" not ");
+                Main.log.prettyWrite(" not ");
             ant.prettyPrint(); ++nPrinted;
         }
     }

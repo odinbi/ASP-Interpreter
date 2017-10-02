@@ -14,4 +14,12 @@ class AspWhileStmt extends AspStmt{
         return aws;
     }
 
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite("while ");
+        expr.prettyPrint();
+        Main.log.prettyWrite(" : ");
+        suite.prettyPrint();
+    }
+
 }

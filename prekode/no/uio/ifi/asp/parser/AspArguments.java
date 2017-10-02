@@ -18,4 +18,15 @@ class AspArguments extends AspPrimarySuffix{
         Main.log.leaveParser("arguments");
     }
 
+    @Override
+    public void prettyPrint() {
+    	Main.log.prettyWrite(" ( ");
+        int nComma = 0;
+        for(AspExpr expr : aspExpr){
+            if(nComma > 0) Main.log.prettyWrite(" , ");
+            expr.prettyPrint();
+            nComma++;
+        }
+        Main.log.prettyWrite(" ) ");
+    }
 }

@@ -22,4 +22,9 @@ abstract class AspFactorOpr extends AspSyntax {
         Main.log.leaveParser("factor opr");
         return a;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString());
+    }
 }

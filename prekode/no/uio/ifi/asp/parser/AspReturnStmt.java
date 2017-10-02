@@ -12,4 +12,10 @@ class AspReturnStmt extends AspStmt{
         return rtrn;
     }
 
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite("return ");
+        expr.prettyPrint();
+        Main.log.prettyWrite("\n");
+    }
 }

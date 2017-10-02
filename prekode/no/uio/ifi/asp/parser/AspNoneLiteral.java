@@ -17,4 +17,9 @@ class AspNoneLiteral extends AspAtom {
         Main.log.leaveParser("none litteral");
         return anl;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" " + value.toString() + " ");
+    }
 }

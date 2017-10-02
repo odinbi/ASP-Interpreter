@@ -11,4 +11,16 @@ class AspListDisplay extends AspAtom {
         Main.log.leaveParser("list display");
         return ald;
     }
+
+    @Override
+    public void prettyPrint() {
+        Main.log.prettyWrite(" [ ");
+        int nComma = 0;
+        for(AspExp exp : expr){
+            if(nComma > 0) Main.log.prettyWrite(" , ");
+            exp.prettyPrint();
+            nComma++;
+        }
+        Main.log.prettyWrite(" ] ");
+    }
 }
