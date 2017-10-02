@@ -1,6 +1,12 @@
+package no.uio.ifi.asp.parser;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
+
 class AspNoneLiteral extends AspAtom {
 
-    public NoneType value;
+    public Object value;
 
     AspNoneLiteral(int n){
         this.super(n);

@@ -1,3 +1,9 @@
+package no.uio.ifi.asp.parser;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import java.util.ArrayList;
+
 class AspDictDisplay extends AspAtom {
     ArrayList<AspExpr> expr = new ArrayList<>();
     ArrayList<AspStringLiteral> str = new ArrayList<>();
@@ -20,13 +26,11 @@ class AspDictDisplay extends AspAtom {
     @Override
     public void prettyPrint() {
         Main.log.prettyWrite(" { ");
-        int nComma = 0;
-        for(AspStringLiteral asl, AspExp exp) in zip(str, expr){
-            if(nComma > 0) Main.log.prettyWrite(" , ");
-            asl.prettyPrint();
+        for(int i = 0; i < expr.size(); i++){
+            if(i > 0) Main.log.prettyWrite(" , ");
+            str[i].prettyPrint();
             Main.log.prettyWrite(" : ");
-            exp.prettyPrint();
-            nComma++;
+            expr[i].prettyPrint();
         }
         Main.log.prettyWrite(" } ");
     }

@@ -1,3 +1,9 @@
+package no.uio.ifi.asp.parser;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import java.util.ArrayList;
+
 class AspIfStmt extends AspStmt{
 
     ArrayList<AspExpr> expr = new ArrayList<>();
@@ -30,14 +36,12 @@ class AspIfStmt extends AspStmt{
     @Override
     public void prettyPrint() {
         Main.log.prettyWrite("if ");
-        int nElif = -1;
-    	for(AspExpr exp, AspSuite ste) in zip(expr, suite){
-            nElif++;
-            if(nElif > 0 && nElif != expr.size()-1) Main.log.prettyWrite(" elif ");
-            else if(nElif == expr.size()-1) Main.log.prettyWrite(" else ");
-            exp.prettyPrint();
+    	for(int i = 0; i < expr.size(); i++){
+            if(i > 0 && i != expr.size()-1) Main.log.prettyWrite(" elif ");
+            else if(i == expr.size()-1) Main.log.prettyWrite(" else ");
+            expr[i].prettyPrint();
             Main.log.prettyWrite(" : ");
-            ste.prettyPrint();
+            suite[i].prettyPrint();
         }
     }
 }

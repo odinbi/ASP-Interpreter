@@ -1,7 +1,13 @@
+package no.uio.ifi.asp.parser;
+import java.util.ArrayList;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 class AspFactor extends AspSyntax {
 
     AspFactorPrefix prefix;
-    ArrayList<ApsPrimary> primary = new ArrayList<>();
+    ArrayList<AspPrimary> primary = new ArrayList<>();
     ArrayList<AspFactorOpr> oprs = new ArrayList<>();
 
     static AspFactor parse(Scanner s) {

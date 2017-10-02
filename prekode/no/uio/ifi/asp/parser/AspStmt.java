@@ -1,4 +1,9 @@
-abstact class AspStmt extends AspSyntax {
+package no.uio.ifi.asp.parser;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
+abstract class AspStmt extends AspSyntax {
     static AspStmt parse(Scanner s){
         Main.log.enterParser("asp stmt");
         AspStmt as = null;
@@ -15,7 +20,7 @@ abstact class AspStmt extends AspSyntax {
             case passToken:
                 as = AspPassStmt.parse(s); break;
             case defToken:
-                as = ApsFuncDef.parse(s); break;
+                as = AspFuncDef.parse(s); break;
             default:
                 as = AspExpr.parse(s);
         }

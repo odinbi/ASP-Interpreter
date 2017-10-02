@@ -1,3 +1,9 @@
+package no.uio.ifi.asp.parser;
+import java.util.ArrayList;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 abstract class AspCompOpr extends AspSyntax {
     TokenKind value;
     AspCompOpr(int n, TokenKind tk){
@@ -12,7 +18,7 @@ abstract class AspCompOpr extends AspSyntax {
             case lessToken:
             case greaterToken:
             case doubleEqualToken:
-            case greaterEqualToken
+            case greaterEqualToken:
             case lessEqualToken:
             case notEqualToken:
                 AspCompOpr a = new AspCompOpr(s.curLineNum(), s.curToken.kind());

@@ -1,5 +1,11 @@
+package no.uio.ifi.asp.parser;
+import java.util.ArrayList;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 class AspNotTest extends AspSyntax {
-    ArrayList<ApsComparison> comparison = new ArrayList<>();
+    ArrayList<AspComparison> comparison = new ArrayList<>();
     static AspNotTest parse(Scanner s) {
         Main.log.enterParser("not test");
         AspNotTest ant = new AspNotTest(s.curLineNum());

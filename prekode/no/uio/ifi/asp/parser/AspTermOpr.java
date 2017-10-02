@@ -1,3 +1,8 @@
+package no.uio.ifi.asp.parser;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 abstract class AspTermOpr extends AspSyntax {
     TokenKind value;
     AspTermOpr(int n, TokenKind tk){

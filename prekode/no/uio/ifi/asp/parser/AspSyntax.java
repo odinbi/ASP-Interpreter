@@ -2,7 +2,8 @@ package no.uio.ifi.asp.parser;
 
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import java.util.ArrayList;
 
 public abstract class AspSyntax {
     public int lineNum;
@@ -13,7 +14,7 @@ public abstract class AspSyntax {
 
 
     abstract void prettyPrint();
-    abstract RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue;
+    //abstract RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue;
 
 
     static void parserError(String message, int lineNum) {
@@ -26,14 +27,14 @@ public abstract class AspSyntax {
 
     public static void test(Scanner s, TokenKind tk) {
 	if (s.curToken().kind != tk)
-	    parserError("Expected a " + tk + " but found a " + 
+	    parserError("Expected a " + tk + " but found a " +
 			s.curToken().kind + "!", s.curLineNum());
     }
 
 
     public static void test(Scanner s, TokenKind tk1, TokenKind tk2) {
 	if (s.curToken().kind!=tk1 && s.curToken().kind!=tk2)
-	    parserError("Expected a " + tk1 + " or a " + tk2 + " but found a " + 
+	    parserError("Expected a " + tk1 + " or a " + tk2 + " but found a " +
 			s.curToken().kind + "!", s.curLineNum());
     }
 

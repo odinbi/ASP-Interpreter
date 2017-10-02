@@ -1,3 +1,9 @@
+package no.uio.ifi.asp.parser;
+import java.util.ArrayList;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 class AspFuncDef extends AspStmt{
     AspName funcName;
     ArrayList<AspName> name = new ArrayList<>();

@@ -1,5 +1,11 @@
+package no.uio.ifi.asp.parser;
+import java.util.ArrayList;
+import no.uio.ifi.asp.main.*;
+import no.uio.ifi.asp.runtime.*;
+import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+
 class AspTerm extends AspSyntax {
-    ArrayList<ApsFactor> factor = new ArrayList<>();
+    ArrayList<AspFactor> factor = new ArrayList<>();
     ArrayList<AspTermOpr> oprs = new ArrayList<>();
     static AspTerm parse(Scanner s) {
         Main.log.enterParser("term");
