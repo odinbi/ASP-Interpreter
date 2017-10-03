@@ -437,22 +437,23 @@ private boolean isDigit(char c) {
 
 public boolean isCompOpr() {
     TokenKind k = curToken().kind;
-    //-- Must be changed in part 2:
-    return false;
+    TokenKind[] compOpr = {lessToken, greaterToken, doubleEqualToken,
+                            greaterEqualToken, lessEqualToken, notEqualToken};
+    return Arrays.asList(compOpr).contains(k);
 }
 
 
 public boolean isFactorPrefix() {
     TokenKind k = curToken().kind;
-    //-- Must be changed in part 2:
-    return false;
+    return (k == plusToken || k == minusToken);
 }
 
 
 public boolean isFactorOpr() {
     TokenKind k = curToken().kind;
-    //-- Must be changed in part 2:
-    return false;
+    TokenKind[] factorOpr = {astToken, slashToken,
+                            percentToken, doubleSlashToken};
+    return Arrays.asList(factorOpr).contains(k);
 }
 
 public boolean isBoolean(){
@@ -463,7 +464,6 @@ public boolean isBoolean(){
 
 public boolean isTermOpr() {
     TokenKind k = curToken().kind;
-    //-- Must be changed in part 2:
-    return false;
+    return (k == plusToken || k == minusToken);
 }
 }
