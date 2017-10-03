@@ -1,13 +1,19 @@
 package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 import java.util.ArrayList;
 
 class AspIfStmt extends AspStmt{
 
     ArrayList<AspExpr> expr = new ArrayList<>();
     ArrayList<AspSuite> suite = new ArrayList<>();
+
+    AspIfStmt(int n){
+        super(n);
+    }
 
     static AspIfStmt parse(Scanner s){
         Main.log.enterParser("if stmt");
@@ -31,6 +37,7 @@ class AspIfStmt extends AspStmt{
             skip(s, colonToken);
             ais.suite.add(AspSuite.parse(s));
         }
+        return ais;
     }
 
     @Override
@@ -39,9 +46,9 @@ class AspIfStmt extends AspStmt{
     	for(int i = 0; i < expr.size(); i++){
             if(i > 0 && i != expr.size()-1) Main.log.prettyWrite(" elif ");
             else if(i == expr.size()-1) Main.log.prettyWrite(" else ");
-            expr[i].prettyPrint();
+            expr.get(i).prettyPrint();
             Main.log.prettyWrite(" : ");
-            suite[i].prettyPrint();
+            suite.get(i).prettyPrint();
         }
     }
 }

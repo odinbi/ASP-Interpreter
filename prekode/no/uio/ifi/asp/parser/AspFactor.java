@@ -2,13 +2,19 @@ package no.uio.ifi.asp.parser;
 import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspFactor extends AspSyntax {
 
     AspFactorPrefix prefix;
     ArrayList<AspPrimary> primary = new ArrayList<>();
     ArrayList<AspFactorOpr> oprs = new ArrayList<>();
+
+    AspFactor(int n){
+        super(n);
+    }
 
     static AspFactor parse(Scanner s) {
         Main.log.enterParser("factor");
@@ -36,7 +42,7 @@ class AspFactor extends AspSyntax {
         int nPrinted = 0;
         for (AspPrimary prim: primary) {
             if (nPrinted > 0)
-                oprs[nPrinted].prettyPrint();
+                oprs.get(nPrinted).prettyPrint();
             prim.prettyPrint(); ++nPrinted;
         }
     }

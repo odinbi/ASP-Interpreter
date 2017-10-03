@@ -2,18 +2,20 @@ package no.uio.ifi.asp.parser;
 import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
-abstract class AspCompOpr extends AspSyntax {
+class AspCompOpr extends AspSyntax {
     TokenKind value;
     AspCompOpr(int n, TokenKind tk){
-        this.super(n);
+        super(n);
         this.value = tk;
     }
 
     static AspCompOpr parse(Scanner s) {
         Main.log.enterParser("comp opr");
-
+        AspCompOpr a = null;
         switch (s.curToken().kind) {
             case lessToken:
             case greaterToken:
@@ -21,7 +23,7 @@ abstract class AspCompOpr extends AspSyntax {
             case greaterEqualToken:
             case lessEqualToken:
             case notEqualToken:
-                AspCompOpr a = new AspCompOpr(s.curLineNum(), s.curToken.kind());
+                a = new AspCompOpr(s.curLineNum(), s.curToken().kind);
                 break;
             default:
                 parserError("Expected an comp opr but found a " +

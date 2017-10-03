@@ -1,17 +1,23 @@
 package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspReturnStmt extends AspStmt{
 
     AspExpr expr;
 
+    AspReturnStmt(int n){
+        super(n);
+    }
+
     static AspReturnStmt parse(Scanner s){
         Main.log.enterParser("return stmt");
         AspReturnStmt rtrn = new AspReturnStmt(s.curLineNum());
         skip(s, returnToken);
-        rten.expr = AspExpr.parse(s);
+        rtrn.expr = AspExpr.parse(s);
         skip(s, newLineToken);
         Main.log.leaveParser("return stmt");
         return rtrn;

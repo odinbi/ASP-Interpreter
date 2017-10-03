@@ -2,11 +2,18 @@ package no.uio.ifi.asp.parser;
 import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspPrimary extends AspSyntax {
     ArrayList<AspPrimarySuffix> suffixes = new ArrayList<>();
     AspAtom atom;
+
+    AspPrimary(int n){
+        super(n);
+    }
+
     static AspPrimary parse(Scanner s) {
         Main.log.enterParser("primary");
         AspPrimary ap = new AspPrimary(s.curLineNum());
@@ -14,7 +21,9 @@ class AspPrimary extends AspSyntax {
         ap.atom = AspAtom.parse(s);
 
         while(true){
-            if (!s.isPrimarySuffix()) break; //eddit later.
+            if (s.curToken().kind == leftParToken ||
+                s.curToken().kind == leftBracketToken)
+                break;
             ap.suffixes.add(AspPrimarySuffix.parse(s));
         }
 

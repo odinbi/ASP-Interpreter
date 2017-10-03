@@ -1,24 +1,27 @@
 package no.uio.ifi.asp.parser;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
-abstract class AspFactorOpr extends AspSyntax {
+class AspFactorOpr extends AspSyntax {
     TokenKind value;
     AspFactorOpr(int n, TokenKind tk){
-        this.super(n);
+        super(n);
         this.value = tk;
     }
 
     static AspFactorOpr parse(Scanner s) {
         Main.log.enterParser("factor opr");
 
+        AspFactorOpr a = null;
         switch (s.curToken().kind) {
             case astToken:
             case slashToken:
             case doubleSlashToken:
             case percentToken:
-                AspFactorOpr a = new AspFactorOpr(s.curLineNum(), s.curToken.kind());
+                a = new AspFactorOpr(s.curLineNum(), s.curToken().kind);
                 break;
             default:
                 parserError("Expected an factor opr but found a " +

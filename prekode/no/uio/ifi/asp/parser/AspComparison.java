@@ -2,11 +2,18 @@ package no.uio.ifi.asp.parser;
 import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspComparison extends AspSyntax {
     ArrayList<AspTerm> term = new ArrayList<>();
     ArrayList<AspCompOpr> cmpopr = new ArrayList<>();
+
+    AspComparison(int n){
+        super(n);
+    }
+
     static AspComparison parse(Scanner s) {
         Main.log.enterParser("comparison");
         AspComparison ac = new AspComparison(s.curLineNum());
@@ -25,7 +32,7 @@ class AspComparison extends AspSyntax {
         int nPrinted = 0;
         for (AspTerm trm: term) {
             if (nPrinted > 0)
-                compopr[nPrinted].prettyPrint();
+                cmpopr.get(nPrinted).prettyPrint();
             trm.prettyPrint(); ++nPrinted;
         }
     }

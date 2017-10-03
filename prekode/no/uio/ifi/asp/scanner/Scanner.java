@@ -455,6 +455,11 @@ public boolean isFactorOpr() {
     return false;
 }
 
+public boolean isBoolean(){
+    TokenKind k = curToken().kind;
+    if(k == trueToken || k == falseToken) return true;
+    return false;
+}
 
 public boolean isTermOpr() {
     TokenKind k = curToken().kind;

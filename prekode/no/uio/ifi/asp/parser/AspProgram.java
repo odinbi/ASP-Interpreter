@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
-import no.uio.ifi.asp.scanner.Scanner; import no.uio.ifi.asp.scanner.TokenKind;
+import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
+import no.uio.ifi.asp.scanner.TokenKind;
 
 public class AspProgram extends AspSyntax {
-    //-- Must be changed in part 2:
     ArrayList<AspStmt> stmts = new ArrayList<>();
 
     AspProgram(int n) {
@@ -36,10 +36,10 @@ public class AspProgram extends AspSyntax {
         }
     }
 
-
+    /*
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //-- Must be changed in part 4:
         return null;
-    }
+    }*/
 }
