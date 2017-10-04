@@ -90,6 +90,5 @@
     </expr stmt>
   </stmt>
 </program>
-PP>  navn  =  Dag 
- print  (  Hei,  ,  navn  ) 
-
+PP> navn = "Dag"
+PP> print("Hei,", navn)

@@ -28,6 +28,12 @@ class AspNoneLiteral extends AspAtom {
 
     @Override
     public void prettyPrint() {
-        Main.log.prettyWrite(" " + value.toString() + " ");
+        Main.log.prettyWrite("" + value.toString());
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

@@ -47,8 +47,14 @@ class AspIfStmt extends AspStmt{
             if(i > 0 && i != expr.size()-1) Main.log.prettyWrite(" elif ");
             else if(i == expr.size()-1) Main.log.prettyWrite(" else ");
             expr.get(i).prettyPrint();
-            Main.log.prettyWrite(" : ");
+            Main.log.prettyWrite(": ");
             suite.get(i).prettyPrint();
         }
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

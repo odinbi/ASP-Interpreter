@@ -48,7 +48,7 @@ class AspAssignment extends AspStmt{
         }
         Main.log.prettyWrite(" = ");
         expr.prettyPrint();
-        Main.log.prettyWrite("\n");
+        Main.log.prettyWriteLn();
     }
 
     @Override

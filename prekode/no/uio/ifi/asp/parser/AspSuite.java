@@ -33,6 +33,12 @@ class AspSuite extends AspSyntax{
         for(AspStmt stmt : stmts){
             stmt.prettyPrint();
         }
-        Main.log.prettyWrite("\n");
+        Main.log.prettyWriteLn();
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

@@ -39,15 +39,21 @@ class AspFuncDef extends AspStmt{
     public void prettyPrint() {
         Main.log.prettyWrite("def ");
         funcName.prettyPrint();
-        Main.log.prettyWrite(" ( ");
+        Main.log.prettyWrite("(");
         int nCommas = 0;
         for(AspName nm : name){
-            if(nCommas > 0) Main.log.prettyWrite(" , ");
+            if(nCommas > 0) Main.log.prettyWrite(", ");
             nm.prettyPrint();
             nCommas++;
         }
-        Main.log.prettyWrite(" ) ");
-        Main.log.prettyWrite(" : ");
+        Main.log.prettyWrite(")");
+        Main.log.prettyWrite(": ");
         suite.prettyPrint();
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

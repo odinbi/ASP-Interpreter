@@ -35,14 +35,14 @@ class AspArguments extends AspPrimarySuffix{
 
     @Override
     public void prettyPrint() {
-    	Main.log.prettyWrite(" ( ");
+    	Main.log.prettyWrite("(");
         int nComma = 0;
         for(AspExpr expr : aspExpr){
-            if(nComma > 0) Main.log.prettyWrite(" , ");
+            if(nComma > 0) Main.log.prettyWrite(", ");
             expr.prettyPrint();
             nComma++;
         }
-        Main.log.prettyWrite(" ) ");
+        Main.log.prettyWrite(")");
     }
 
     @Override

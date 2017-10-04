@@ -27,13 +27,19 @@ class AspListDisplay extends AspAtom {
 
     @Override
     public void prettyPrint() {
-        Main.log.prettyWrite(" [ ");
+        Main.log.prettyWrite("[");
         int nComma = 0;
         for(AspExpr exp : expr){
-            if(nComma > 0) Main.log.prettyWrite(" , ");
+            if(nComma > 0) Main.log.prettyWrite(", ");
             exp.prettyPrint();
             nComma++;
         }
-        Main.log.prettyWrite(" ] ");
+        Main.log.prettyWrite("]");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

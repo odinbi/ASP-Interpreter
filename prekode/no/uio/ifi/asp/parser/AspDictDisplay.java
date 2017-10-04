@@ -32,13 +32,19 @@ class AspDictDisplay extends AspAtom {
 
     @Override
     public void prettyPrint() {
-        Main.log.prettyWrite(" { ");
+        Main.log.prettyWrite("{");
         for(int i = 0; i < expr.size(); i++){
-            if(i > 0) Main.log.prettyWrite(" , ");
+            if(i > 0) Main.log.prettyWrite(", ");
             str.get(i).prettyPrint();
-            Main.log.prettyWrite(" : ");
+            Main.log.prettyWrite(": ");
             expr.get(i).prettyPrint();
         }
-        Main.log.prettyWrite(" } ");
+        Main.log.prettyWrite("}");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }
