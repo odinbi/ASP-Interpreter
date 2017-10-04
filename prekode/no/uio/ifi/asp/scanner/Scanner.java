@@ -50,6 +50,11 @@ public class Scanner {
         return curLineTokens.get(0);
     }
 
+    public Token peekNext(){
+        if(curLineTokens.size() > 1)
+            return curLineTokens.get(1);
+        return new Token(emptyToken);
+    }
 
     public void readNextToken() {
         if (! curLineTokens.isEmpty())
@@ -116,7 +121,7 @@ public class Scanner {
     for (Token t: curLineTokens)
         Main.log.noteToken(t);
     //Get all tokens on next line
-    readNextLine();
+    //readNextLine();
     return;
 }
 
@@ -448,9 +453,21 @@ public boolean isFactorPrefix() {
     return (k == plusToken || k == minusToken);
 }
 
+public boolean isFactorPrefix(Token t) {
+    TokenKind k = t.kind;
+    return (k == plusToken || k == minusToken);
+}
+
 
 public boolean isFactorOpr() {
     TokenKind k = curToken().kind;
+    TokenKind[] factorOpr = {astToken, slashToken,
+                            percentToken, doubleSlashToken};
+    return Arrays.asList(factorOpr).contains(k);
+}
+
+public boolean isFactorOpr(Token t) {
+    TokenKind k = t.kind;
     TokenKind[] factorOpr = {astToken, slashToken,
                             percentToken, doubleSlashToken};
     return Arrays.asList(factorOpr).contains(k);

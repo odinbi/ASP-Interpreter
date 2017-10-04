@@ -19,6 +19,7 @@ public class AspProgram extends AspSyntax {
     public static AspProgram parse(Scanner s) {
         Main.log.enterParser("program");
         s.curToken();
+        System.out.println("First token: " + s.curToken().kind.toString());
         AspProgram ap = new AspProgram(s.curLineNum());
         do {
             System.out.println("curToken: " + s.curToken().kind.toString());

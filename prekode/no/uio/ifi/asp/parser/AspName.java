@@ -16,7 +16,7 @@ class AspName extends AspAtom{
 
     static AspName parse(Scanner s){
         Main.log.enterParser("name");
-        if(s.curToken().kind != stringToken){
+        if(s.curToken().kind != nameToken){
             parserError("Expected a nameToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
@@ -28,5 +28,11 @@ class AspName extends AspAtom{
     @Override
     public void prettyPrint() {
         Main.log.prettyWrite(" " + value.toString() + " ");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

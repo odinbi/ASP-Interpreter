@@ -21,13 +21,16 @@ class AspFactor extends AspSyntax {
         AspFactor af = new AspFactor(s.curLineNum());
 
         if (s.isFactorPrefix()){
-            af.prefix = AspFactorPrefix.parse(s); //give propper token later!!!
+            af.prefix = AspFactorPrefix.parse(s);
+            s.readNextToken();
         }
 
         while(true){
             af.primary.add(AspPrimary.parse(s));
-            if (!s.isFactorOpr()) break;
+            if (!s.isFactorOpr(s.peekNext())) break;
+            s.readNextToken();
             af.oprs.add(AspFactorOpr.parse(s));
+            s.readNextToken();
         }
 
         Main.log.leaveParser("factor");
@@ -45,5 +48,11 @@ class AspFactor extends AspSyntax {
                 oprs.get(nPrinted).prettyPrint();
             prim.prettyPrint(); ++nPrinted;
         }
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

@@ -7,8 +7,8 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspPrimary extends AspSyntax {
-    ArrayList<AspPrimarySuffix> suffixes = new ArrayList<>();
     AspAtom atom;
+    ArrayList<AspPrimarySuffix> suffixes = new ArrayList<>();
 
     AspPrimary(int n){
         super(n);
@@ -19,11 +19,12 @@ class AspPrimary extends AspSyntax {
         AspPrimary ap = new AspPrimary(s.curLineNum());
 
         ap.atom = AspAtom.parse(s);
-
+        System.out.println("<primary> : curToken: " + s.curToken().kind + ", peekNext: " + s.peekNext().kind);
         while(true){
-            if (s.curToken().kind == leftParToken ||
-                s.curToken().kind == leftBracketToken)
+            if (s.peekNext().kind != leftParToken &&
+                s.peekNext().kind != leftBracketToken)
                 break;
+            s.readNextToken();
             ap.suffixes.add(AspPrimarySuffix.parse(s));
         }
 
@@ -37,5 +38,11 @@ class AspPrimary extends AspSyntax {
         for (AspPrimarySuffix suffix: suffixes) {
             suffix.prettyPrint();
         }
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

@@ -16,9 +16,9 @@ abstract class AspPrimarySuffix extends AspSyntax {
         AspPrimarySuffix suffix = null;
         switch(s.curToken().kind){
             case leftBracketToken:
-                suffix = AspArguments.parse(s); break;
-            case leftParToken:
                 suffix = AspSubscription.parse(s); break;
+            case leftParToken:
+                suffix = AspArguments.parse(s); break;
             default:
                 parserError("Expected an [ or ( but found a " +
                             s.curToken().kind + "!", s.curLineNum());

@@ -18,17 +18,23 @@ class AspAssignment extends AspStmt{
     static AspAssignment parse(Scanner s){
         Main.log.enterParser("assignment");
         AspAssignment aa = new AspAssignment(s.curLineNum());
+
         aa.name = AspName.parse(s);
+
         while(true){
+            s.readNextToken();
             if(s.curToken().kind == equalToken){
-                skip(s, equalToken); break;
+                skip(s, equalToken);
+                break;
             }
             aa.subscr.add(AspSubscription.parse(s));
         }
         aa.expr = AspExpr.parse(s);
-        if(s.curToken().kind != newLineToken)
+        System.out.println("<assignment> : current token : " + s.curToken().kind + ", next token : " + s.peekNext().kind);
+        if(s.peekNext().kind != newLineToken)
             parserError("expected newLineToken but found: " +
                         s.curToken().kind + "!", s.curLineNum());
+        s.readNextToken();
         skip(s, newLineToken);
         Main.log.leaveParser("assignment");
         return aa;
@@ -43,5 +49,11 @@ class AspAssignment extends AspStmt{
         Main.log.prettyWrite(" = ");
         expr.prettyPrint();
         Main.log.prettyWrite("\n");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

@@ -93,7 +93,11 @@ public enum TokenKind {
     indentToken("INDENT"),
     dedentToken("DEDENT"),
     newLineToken("NEWLINE"),
-    eofToken("E-o-f");
+    eofToken("E-o-f"),
+
+    //own test token
+    emptyToken("NADA");
+
 
     String image;
 

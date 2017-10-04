@@ -21,7 +21,8 @@ public class AspExpr extends AspSyntax {
         AspExpr ae = new AspExpr(s.curLineNum());
         while(true){
             ae.andTests.add(AspAndTest.parse(s));
-            if(s.curToken().kind != orToken) break;
+            if(s.peekNext().kind != orToken) break;
+            s.readNextToken();
             skip(s, orToken);
         }
         Main.log.leaveParser("expr");

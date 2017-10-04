@@ -19,10 +19,12 @@ class AspArguments extends AspPrimarySuffix{
         if(s.curToken().kind == leftParToken) skip(s, leftParToken);
         while(true){
             aa.aspExpr.add(AspExpr.parse(s));
-            if(s.curToken().kind != commaToken) break;
+            if(s.peekNext().kind != commaToken) break;
+            s.readNextToken();
             skip(s, commaToken);
         }
-        if(s.curToken().kind == rightParToken){
+        if(s.peekNext().kind == rightParToken){
+            s.readNextToken();
             skip(s, rightParToken);
         }
         else parserError("expected rightParToken but found: " +
@@ -41,5 +43,11 @@ class AspArguments extends AspPrimarySuffix{
             nComma++;
         }
         Main.log.prettyWrite(" ) ");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

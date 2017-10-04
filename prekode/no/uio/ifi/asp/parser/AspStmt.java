@@ -17,6 +17,9 @@ abstract class AspStmt extends AspSyntax {
         System.out.println("curToken: " + s.curToken().kind.toString());
         switch(s.curToken().kind){
             case nameToken:
+                if(s.peekNext().kind == leftParToken){
+                    as = AspExprStmt.parse(s); break;
+                }
                 as = AspAssignment.parse(s); break;
             case ifToken:
                 as = AspIfStmt.parse(s); break;
