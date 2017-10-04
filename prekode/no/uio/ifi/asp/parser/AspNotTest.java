@@ -15,6 +15,7 @@ class AspNotTest extends AspSyntax {
     }
 
     static AspNotTest parse(Scanner s) {
+        System.out.println("curToken: " + s.curToken().kind.toString());
         Main.log.enterParser("not test");
         AspNotTest ant;
         if (s.curToken().kind == notToken){
@@ -23,7 +24,7 @@ class AspNotTest extends AspSyntax {
             ant = new AspNotTest(s.curLineNum(), 0);
         }
         ant.comparison = AspComparison.parse(s);
-        
+
         Main.log.leaveParser("not test");
         return ant;
     }
@@ -33,5 +34,11 @@ class AspNotTest extends AspSyntax {
         if (value == 1)
             Main.log.prettyWrite(" not ");
         comparison.prettyPrint();
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

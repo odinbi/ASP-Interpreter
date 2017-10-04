@@ -15,6 +15,7 @@ class AspExprStmt extends AspStmt{
 
     static AspExprStmt parse(Scanner s){
         Main.log.enterParser("expr stmt");
+        System.out.println("curToken: " + s.curToken().kind.toString());
         AspExprStmt aes = new AspExprStmt(s.curLineNum());
         aes.expr = AspExpr.parse(s);
         skip(s, newLineToken);
@@ -26,5 +27,11 @@ class AspExprStmt extends AspStmt{
     public void prettyPrint() {
         expr.prettyPrint();
         Main.log.prettyWrite("\n");
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

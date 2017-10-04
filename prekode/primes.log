@@ -83,6 +83,7 @@ Scanner: NEWLINE token on line 15
   16: 
   17: def w4(n):
 Scanner: DEDENT token on line 17
+Scanner: DEDENT token on line 17
 Scanner: def token on line 17
 Scanner: name token on line 17: w4
 Scanner: ( token on line 17
@@ -101,8 +102,7 @@ Scanner: NEWLINE token on line 18
   19:         return '   ' + str(n)
 Scanner: INDENT token on line 19
 Scanner: return token on line 19
-Scanner: name token on line 19: '
-Scanner: name token on line 19: '
+Scanner: string literal token on line 19: "   "
 Scanner: + token on line 19
 Scanner: name token on line 19: str
 Scanner: ( token on line 19
@@ -120,8 +120,7 @@ Scanner: NEWLINE token on line 20
   21:         return '  ' + str(n)
 Scanner: INDENT token on line 21
 Scanner: return token on line 21
-Scanner: name token on line 21: '
-Scanner: name token on line 21: '
+Scanner: string literal token on line 21: "  "
 Scanner: + token on line 21
 Scanner: name token on line 21: str
 Scanner: ( token on line 21
@@ -139,8 +138,7 @@ Scanner: NEWLINE token on line 22
   23:         return ' ' + str(n)
 Scanner: INDENT token on line 23
 Scanner: return token on line 23
-Scanner: name token on line 23: '
-Scanner: name token on line 23: '
+Scanner: string literal token on line 23: " "
 Scanner: + token on line 23
 Scanner: name token on line 23: str
 Scanner: ( token on line 23
@@ -164,6 +162,7 @@ Scanner: NEWLINE token on line 25
   27: 
   28: def list_primes():
 Scanner: DEDENT token on line 28
+Scanner: DEDENT token on line 28
 Scanner: def token on line 28
 Scanner: name token on line 28: list_primes
 Scanner: ( token on line 28
@@ -171,6 +170,7 @@ Scanner: ) token on line 28
 Scanner: : token on line 28
 Scanner: NEWLINE token on line 28
   29:     n_printed = 0
+Scanner: INDENT token on line 29
 Scanner: name token on line 29: n_printed
 Scanner: = token on line 29
 Scanner: integer literal token on line 29: 0
@@ -178,7 +178,7 @@ Scanner: NEWLINE token on line 29
   30:     line_buf = ''
 Scanner: name token on line 30: line_buf
 Scanner: = token on line 30
-Scanner: name token on line 30: ''
+Scanner: string literal token on line 30: ""
 Scanner: NEWLINE token on line 30
   31:     i = 2
 Scanner: name token on line 31: i
@@ -225,7 +225,7 @@ Scanner: NEWLINE token on line 35
   36:              line_buf = ''
 Scanner: name token on line 36: line_buf
 Scanner: = token on line 36
-Scanner: name token on line 36: ''
+Scanner: string literal token on line 36: ""
 Scanner: NEWLINE token on line 36
   37:           line_buf = line_buf + w4(i)
 Scanner: DEDENT token on line 37
@@ -269,7 +269,6 @@ Scanner: ( token on line 43
 Scanner: ) token on line 43
 Scanner: NEWLINE token on line 43
   44: list_primes()
-Scanner: DEDENT token on line 44
 Scanner: name token on line 44: list_primes
 Scanner: ( token on line 44
 Scanner: ) token on line 44

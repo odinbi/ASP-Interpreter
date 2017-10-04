@@ -18,12 +18,18 @@ public class AspProgram extends AspSyntax {
 
     public static AspProgram parse(Scanner s) {
         Main.log.enterParser("program");
-
-    	AspProgram ap = new AspProgram(s.curLineNum());
-    	while (s.curToken().kind != eofToken) {
+        s.curToken();
+        AspProgram ap = new AspProgram(s.curLineNum());
+        do {
+            System.out.println("curToken: " + s.curToken().kind.toString());
             ap.stmts.add(AspStmt.parse(s));
+            s.readNextToken();
+        } while (s.curToken().kind != eofToken);
+    	/*while (s.curToken().kind != eofToken) {
+            System.out.println("While loop?");
+            //s.readNextToken();
     	}
-
+        */
     	Main.log.leaveParser("program");
     	return ap;
     }
@@ -36,10 +42,10 @@ public class AspProgram extends AspSyntax {
         }
     }
 
-    /*
+
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //-- Must be changed in part 4:
         return null;
-    }*/
+    }
 }

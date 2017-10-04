@@ -70,6 +70,7 @@ Scanner: NEWLINE token on line 11
   13: 
   14: def rough_log (x):
 Scanner: DEDENT token on line 14
+Scanner: DEDENT token on line 14
 Scanner: def token on line 14
 Scanner: name token on line 14: rough_log
 Scanner: ( token on line 14
@@ -78,6 +79,7 @@ Scanner: ) token on line 14
 Scanner: : token on line 14
 Scanner: NEWLINE token on line 14
   15:   if x > 10:
+Scanner: INDENT token on line 15
 Scanner: if token on line 15
 Scanner: name token on line 15: x
 Scanner: > token on line 15
@@ -101,9 +103,7 @@ Scanner: DEDENT token on line 17
 Scanner: if token on line 17
 Scanner: name token on line 17: x
 Scanner: < token on line 17
-Scanner: integer literal token on line 17: 0
-Scanner: . token on line 17
-Scanner: integer literal token on line 17: 1
+Scanner: float literal token on line 17: 0.1
 Scanner: : token on line 17
 Scanner: NEWLINE token on line 17
   18:     return rough_log(x*10) - 1

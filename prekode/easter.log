@@ -236,4 +236,5 @@ Scanner: name token on line 26: y
 Scanner: + token on line 26
 Scanner: integer literal token on line 26: 1
 Scanner: NEWLINE token on line 26
+Scanner: DEDENT token
 Scanner: E-o-f token

@@ -16,7 +16,7 @@ public abstract class AspSyntax {
 
 
     abstract void prettyPrint();
-    //abstract RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue;
+    public abstract RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue;
 
 
     static void parserError(String message, int lineNum) {

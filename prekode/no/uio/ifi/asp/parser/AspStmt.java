@@ -6,15 +6,15 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 abstract class AspStmt extends AspSyntax {
-    AspExpr ae;
-
+    static AspStmt as;
     AspStmt(int n){
         super(n);
     }
 
     static AspStmt parse(Scanner s){
-        Main.log.enterParser("asp stmt");
-        AspStmt as = null;
+        Main.log.enterParser("stmt");
+        as = null;
+        System.out.println("curToken: " + s.curToken().kind.toString());
         switch(s.curToken().kind){
             case nameToken:
                 as = AspAssignment.parse(s); break;
@@ -29,15 +29,15 @@ abstract class AspStmt extends AspSyntax {
             case defToken:
                 as = AspFuncDef.parse(s); break;
             default:
-                as.ae = AspExpr.parse(s);
+                as = AspExprStmt.parse(s);
         }
-        Main.log.leaveParser("asp stmt");
+        Main.log.leaveParser("stmt");
         return as;
     }
 
-    /*
+
     @Override
     public void prettyPrint() {
     	as.prettyPrint();
-    }*/
+    }
 }

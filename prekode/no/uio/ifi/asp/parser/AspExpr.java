@@ -11,20 +11,21 @@ public class AspExpr extends AspSyntax {
     ArrayList<AspAndTest> andTests = new ArrayList<>();
 
     AspExpr(int n) {
-	super(n);
+        super(n);
     }
 
 
     public static AspExpr parse(Scanner s) {
-	Main.log.enterParser("expr");
-	AspExpr ae = new AspExpr(s.curLineNum());
-    while(true){
-        ae.andTests.add(AspAndTest.parse(s));
-        if(s.curToken().kind != orToken) break;
-        skip(s, orToken);
-    }
-	Main.log.leaveParser("expr");
-	return ae;
+        System.out.println("curToken: " + s.curToken().kind.toString());
+        Main.log.enterParser("expr");
+        AspExpr ae = new AspExpr(s.curLineNum());
+        while(true){
+            ae.andTests.add(AspAndTest.parse(s));
+            if(s.curToken().kind != orToken) break;
+            skip(s, orToken);
+        }
+        Main.log.leaveParser("expr");
+        return ae;
     }
 
 
@@ -38,10 +39,9 @@ public class AspExpr extends AspSyntax {
         }
     }
 
-    /*
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-	//-- Must be changed in part 3:
-	return null;
-    }*/
+        //-- Must be changed in part 4:
+        return null;
+    }
 }
