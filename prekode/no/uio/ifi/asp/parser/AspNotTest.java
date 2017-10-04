@@ -15,7 +15,6 @@ class AspNotTest extends AspSyntax {
     }
 
     static AspNotTest parse(Scanner s) {
-        System.out.println("curToken: " + s.curToken().kind.toString());
         Main.log.enterParser("not test");
         AspNotTest ant;
         if (s.curToken().kind == notToken){

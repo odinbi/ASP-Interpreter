@@ -15,7 +15,6 @@ class AspExprStmt extends AspStmt{
 
     static AspExprStmt parse(Scanner s){
         Main.log.enterParser("expr stmt");
-        System.out.println("curToken: " + s.curToken().kind.toString());
         AspExprStmt aes = new AspExprStmt(s.curLineNum());
         aes.expr = AspExpr.parse(s);
         skip(s, newLineToken);

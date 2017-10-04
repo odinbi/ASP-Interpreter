@@ -19,12 +19,12 @@ class AspPrimary extends AspSyntax {
         AspPrimary ap = new AspPrimary(s.curLineNum());
 
         ap.atom = AspAtom.parse(s);
-        System.out.println("<primary> : curToken: " + s.curToken().kind + ", peekNext: " + s.peekNext().kind);
+        //s.readNextToken();
         while(true){
-            if (s.peekNext().kind != leftParToken &&
-                s.peekNext().kind != leftBracketToken)
+            if (s.curToken().kind != leftParToken &&
+                s.curToken().kind != leftBracketToken)
                 break;
-            s.readNextToken();
+            //s.readNextToken();
             ap.suffixes.add(AspPrimarySuffix.parse(s));
         }
 

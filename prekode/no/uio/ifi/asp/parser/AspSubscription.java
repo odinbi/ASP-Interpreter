@@ -18,20 +18,10 @@ class AspSubscription extends AspPrimarySuffix{
 
         AspSubscription subscr = new AspSubscription(s.curLineNum());
 
-        if(s.curToken().kind == leftBracketToken){
-            skip(s, leftBracketToken);
-            subscr.expr = AspExpr.parse(s);
-            s.readNextToken();
-        } else{
-            parserError ("expected a leftBracketToken but found: " +
-                        s.curToken().kind + "!", s.curLineNum());
-        }
-        if(s.curToken().kind == rightBracketToken){
-            skip(s, rightBracketToken);
-        } else{
-            parserError ("expected a rightBracketToken but found: " +
-                        s.curToken().kind + "!", s.curLineNum());
-        }
+        skip(s, leftBracketToken);
+        subscr.expr = AspExpr.parse(s);
+        //s.readNextToken();
+        skip(s, rightBracketToken);
 
         Main.log.leaveParser("subscription");
         return subscr;

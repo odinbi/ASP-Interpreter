@@ -16,7 +16,6 @@ class AspAndTest extends AspSyntax {
     ArrayList<AspNotTest> notTests = new ArrayList<>();
 
     static AspAndTest parse(Scanner s) {
-        System.out.println("curToken: " + s.curToken().kind.toString());
         Main.log.enterParser("and test");
         AspAndTest aat = new AspAndTest(s.curLineNum());
         while (true) {

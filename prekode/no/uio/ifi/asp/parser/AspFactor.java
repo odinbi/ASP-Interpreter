@@ -27,8 +27,8 @@ class AspFactor extends AspSyntax {
 
         while(true){
             af.primary.add(AspPrimary.parse(s));
-            if (!s.isFactorOpr(s.peekNext())) break;
-            s.readNextToken();
+            if (!s.isFactorOpr()) break;
+            //s.readNextToken();
             af.oprs.add(AspFactorOpr.parse(s));
             s.readNextToken();
         }
@@ -42,9 +42,9 @@ class AspFactor extends AspSyntax {
         if(prefix != null)
             prefix.prettyPrint();
 
-        int nPrinted = 0;
+        int nPrinted = -1;
         for (AspPrimary prim: primary) {
-            if (nPrinted > 0)
+            if (nPrinted >= 0)
                 oprs.get(nPrinted).prettyPrint();
             prim.prettyPrint(); ++nPrinted;
         }

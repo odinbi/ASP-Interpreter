@@ -17,9 +17,14 @@ class AspTerm extends AspSyntax {
     static AspTerm parse(Scanner s) {
         Main.log.enterParser("term");
         AspTerm at = new AspTerm(s.curLineNum());
+
         while(true){
             at.factor.add(AspFactor.parse(s));
+            /*if(s.isTermOpr(s.peekNext())){
+                s.readNextToken();
+            }*/
             if (!s.isTermOpr()) break;
+            //s.readNextToken();
             at.oprs.add(AspTermOpr.parse(s));
         }
 
@@ -29,11 +34,17 @@ class AspTerm extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        int nPrinted = 0;
+        int nPrinted = -1;
         for (AspFactor fac: factor) {
-            if (nPrinted > 0)
+            if (nPrinted >= 0)
                 oprs.get(nPrinted).prettyPrint();
             fac.prettyPrint(); ++nPrinted;
         }
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }

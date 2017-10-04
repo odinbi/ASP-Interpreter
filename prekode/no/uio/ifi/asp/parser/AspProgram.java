@@ -18,19 +18,16 @@ public class AspProgram extends AspSyntax {
 
     public static AspProgram parse(Scanner s) {
         Main.log.enterParser("program");
-        s.curToken();
-        System.out.println("First token: " + s.curToken().kind.toString());
         AspProgram ap = new AspProgram(s.curLineNum());
-        do {
-            System.out.println("curToken: " + s.curToken().kind.toString());
+        while(s.curToken().kind != eofToken){
             ap.stmts.add(AspStmt.parse(s));
+            if(s.peek().kind == eofToken) break;
             s.readNextToken();
+        }
+        /*
+        do {
         } while (s.curToken().kind != eofToken);
-    	/*while (s.curToken().kind != eofToken) {
-            System.out.println("While loop?");
-            //s.readNextToken();
-    	}
-        */
+*/
     	Main.log.leaveParser("program");
     	return ap;
     }

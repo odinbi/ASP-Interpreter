@@ -50,6 +50,12 @@ public class Scanner {
         return curLineTokens.get(0);
     }
 
+    public Token peek(){
+        if(curLineTokens.size() > 0)
+            return curLineTokens.get(0);
+        return new Token(emptyToken);
+    }
+
     public Token peekNext(){
         if(curLineTokens.size() > 1)
             return curLineTokens.get(1);
@@ -447,6 +453,12 @@ public boolean isCompOpr() {
     return Arrays.asList(compOpr).contains(k);
 }
 
+public boolean isCompOpr(Token t) {
+    TokenKind k = t.kind;
+    TokenKind[] compOpr = {lessToken, greaterToken, doubleEqualToken,
+                            greaterEqualToken, lessEqualToken, notEqualToken};
+    return Arrays.asList(compOpr).contains(k);
+}
 
 public boolean isFactorPrefix() {
     TokenKind k = curToken().kind;
@@ -481,6 +493,11 @@ public boolean isBoolean(){
 
 public boolean isTermOpr() {
     TokenKind k = curToken().kind;
+    return (k == plusToken || k == minusToken);
+}
+
+public boolean isTermOpr(Token t) {
+    TokenKind k = t.kind;
     return (k == plusToken || k == minusToken);
 }
 }

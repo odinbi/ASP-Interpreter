@@ -16,13 +16,12 @@ public class AspExpr extends AspSyntax {
 
 
     public static AspExpr parse(Scanner s) {
-        System.out.println("curToken: " + s.curToken().kind.toString());
         Main.log.enterParser("expr");
         AspExpr ae = new AspExpr(s.curLineNum());
         while(true){
             ae.andTests.add(AspAndTest.parse(s));
-            if(s.peekNext().kind != orToken) break;
-            s.readNextToken();
+            if(s.curToken().kind != orToken) break;
+            //s.readNextToken();
             skip(s, orToken);
         }
         Main.log.leaveParser("expr");

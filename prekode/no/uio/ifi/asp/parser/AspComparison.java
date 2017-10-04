@@ -20,7 +20,9 @@ class AspComparison extends AspSyntax {
         while(true){
             ac.term.add(AspTerm.parse(s));
             if (!s.isCompOpr()) break;
-            ac.cmpopr.add(AspCompOpr.parse(s)); //give propper token later!!!!
+            //s.readNextToken();
+            ac.cmpopr.add(AspCompOpr.parse(s));
+            s.readNextToken();
         }
 
         Main.log.leaveParser("comparison");
@@ -29,11 +31,17 @@ class AspComparison extends AspSyntax {
 
     @Override
     void prettyPrint() {
-        int nPrinted = 0;
+        int nPrinted = -1;
         for (AspTerm trm: term) {
-            if (nPrinted > 0)
+            if (nPrinted >= 0)
                 cmpopr.get(nPrinted).prettyPrint();
             trm.prettyPrint(); ++nPrinted;
         }
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        //-- Must be changed in part 4:
+        return null;
     }
 }
