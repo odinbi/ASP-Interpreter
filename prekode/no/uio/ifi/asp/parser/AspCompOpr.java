@@ -24,6 +24,7 @@ class AspCompOpr extends AspSyntax {
             case lessEqualToken:
             case notEqualToken:
                 a = new AspCompOpr(s.curLineNum(), s.curToken().kind);
+                skip(s, s.curToken().kind);
                 break;
             default:
                 parserError("Expected an comp opr but found a " +

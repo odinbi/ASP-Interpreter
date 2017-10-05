@@ -1,24 +1,75 @@
+<program>
    1: if True:
-Scanner: if token on line 1
-Scanner: True token on line 1
-Scanner: : token on line 1
-Scanner: NEWLINE token on line 1
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <boolean litteral>
+                      </boolean litteral>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
    2:     if False:
-Scanner: INDENT token on line 2
-Scanner: if token on line 2
-Scanner: False token on line 2
-Scanner: : token on line 2
-Scanner: NEWLINE token on line 2
+        <stmt>
+          <if stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <boolean litteral>
+                            </boolean litteral>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+            <suite>
    3:         a = 1
-Scanner: INDENT token on line 3
-Scanner: name token on line 3: a
-Scanner: = token on line 3
-Scanner: integer literal token on line 3: 1
-Scanner: NEWLINE token on line 3
+              <stmt>
+                <assignment>
+                  <name>
+                  </name>
+                  <expr>
+                    <and test>
+                      <not test>
+                        <comparison>
+                          <term>
+                            <factor>
+                              <primary>
+                                <atom>
+                                  <integer litteral>
+                                  </integer litteral>
+                                </atom>
+                              </primary>
+                            </factor>
+                          </term>
+                        </comparison>
+                      </not test>
+                    </and test>
+                  </expr>
+                </assignment>
+              </stmt>
    4:     else:
-Scanner: DEDENT token on line 4
-Scanner: else token on line 4
-Scanner: : token on line 4
-Scanner: NEWLINE token on line 4
+            </suite>
+            <suite>
    5:         a = 1.
-handleWord error! Could not recognize word: 1., at line: 5
+Asp scanner error on line 5: handleWord() could not recognize word: 1.

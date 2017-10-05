@@ -34,6 +34,7 @@ class AspIfStmt extends AspStmt{
         }
 
         if (s.curToken().kind == elseToken){
+            skip(s, elseToken);
             skip(s, colonToken);
             ais.suite.add(AspSuite.parse(s));
         }
@@ -43,11 +44,17 @@ class AspIfStmt extends AspStmt{
     @Override
     public void prettyPrint() {
         Main.log.prettyWrite("if ");
-    	for(int i = 0; i < expr.size(); i++){
-            if(i > 0 && i != expr.size()-1) Main.log.prettyWrite(" elif ");
-            else if(i == expr.size()-1) Main.log.prettyWrite(" else ");
-            expr.get(i).prettyPrint();
+    	for(int i = 0; i < suite.size(); i++){
+            if(i == suite.size()-1){
+                Main.log.prettyWrite("else ");
+            } else if(i > 0 && i != suite.size()-1){
+                Main.log.prettyWrite("elif ");
+                expr.get(i).prettyPrint();
+            } else{
+                expr.get(i).prettyPrint();
+            }
             Main.log.prettyWrite(": ");
+            Main.log.prettyWriteLn();
             suite.get(i).prettyPrint();
         }
     }

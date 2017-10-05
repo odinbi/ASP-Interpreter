@@ -22,6 +22,7 @@ class AspFloatLiteral extends AspAtom {
                         s.curToken().kind + "!", s.curLineNum());
         }
         abl = new AspFloatLiteral(s.curLineNum(), s.curToken().floatLit);
+        skip(s, floatToken);
         Main.log.leaveParser("float litteral");
         return abl;
     }

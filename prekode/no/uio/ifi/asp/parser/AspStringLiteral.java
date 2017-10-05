@@ -21,6 +21,7 @@ class AspStringLiteral extends AspAtom {
         }
         AspStringLiteral abl = new AspStringLiteral(s.curLineNum(),
                                                     s.curToken().stringLit);
+        skip(s, stringToken);
         Main.log.leaveParser("string litteral");
         return abl;
     }

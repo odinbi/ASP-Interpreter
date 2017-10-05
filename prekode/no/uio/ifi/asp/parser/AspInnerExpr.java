@@ -19,7 +19,6 @@ class AspInnerExpr extends AspAtom {
         skip(s, leftParToken);
         AspInnerExpr aie = new AspInnerExpr(s.curLineNum());
         aie.expr = AspExpr.parse(s);
-        //s.readNextToken();
         skip(s, rightParToken);
 
         Main.log.leaveParser("inner expr");

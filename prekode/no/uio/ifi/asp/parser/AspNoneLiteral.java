@@ -22,6 +22,7 @@ class AspNoneLiteral extends AspAtom {
                         s.curToken().kind + "!", s.curLineNum());
         }
         AspNoneLiteral anl = new AspNoneLiteral(s.curLineNum());
+        skip(s, noneToken);
         Main.log.leaveParser("none litteral");
         return anl;
     }

@@ -24,8 +24,10 @@ class AspBooleanLiteral extends AspAtom {
 
         if(s.curToken().kind == trueToken){
             abl = new AspBooleanLiteral(s.curLineNum(), true);
+            skip(s, trueToken);
         } else{
             abl = new AspBooleanLiteral(s.curLineNum(), false);
+            skip(s, falseToken);
         }
         Main.log.leaveParser("boolean litteral");
         return abl;

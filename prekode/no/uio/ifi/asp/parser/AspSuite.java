@@ -20,9 +20,11 @@ class AspSuite extends AspSyntax{
         skip(s, indentToken);
         while(true){
             suite.stmts.add(AspStmt.parse(s));
-            if(s.curToken().kind == dedentToken) break;
+            if(s.curToken().kind == dedentToken){
+                skip(s, dedentToken);
+                break;
+            } 
         }
-        skip(s, dedentToken);
         Main.log.leaveParser("suite");
         return suite;
     }

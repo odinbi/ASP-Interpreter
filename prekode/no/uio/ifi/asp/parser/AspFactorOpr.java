@@ -22,6 +22,7 @@ class AspFactorOpr extends AspSyntax {
             case doubleSlashToken:
             case percentToken:
                 a = new AspFactorOpr(s.curLineNum(), s.curToken().kind);
+                skip(s, s.curToken().kind);
                 break;
             default:
                 parserError("Expected an factor opr but found a " +

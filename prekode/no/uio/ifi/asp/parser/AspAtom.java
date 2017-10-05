@@ -19,13 +19,13 @@ abstract class AspAtom extends AspSyntax {
             case falseToken:
             case trueToken:
                 a = AspBooleanLiteral.parse(s);
-                s.readNextToken(); break;
+                break;
             case floatToken:
                 a = AspFloatLiteral.parse(s);
-                s.readNextToken(); break;
+                break;
             case integerToken:
                 a = AspIntegerLiteral.parse(s);
-                s.readNextToken(); break;
+                break;
             case leftBraceToken:
                 a = AspDictDisplay.parse(s); break;
             case leftBracketToken:
@@ -34,13 +34,13 @@ abstract class AspAtom extends AspSyntax {
                 a = AspInnerExpr.parse(s); break;
             case nameToken:
                 a = AspName.parse(s);
-                s.readNextToken(); break;
+                break;
             case noneToken:
                 a = AspNoneLiteral.parse(s);
-                s.readNextToken(); break;
+                break;
             case stringToken:
                 a = AspStringLiteral.parse(s);
-                s.readNextToken(); break;
+                break;
             default:
                 parserError("Expected an expression atom but found a " +
                             s.curToken().kind + "!", s.curLineNum());

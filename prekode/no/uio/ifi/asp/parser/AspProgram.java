@@ -22,12 +22,9 @@ public class AspProgram extends AspSyntax {
         while(s.curToken().kind != eofToken){
             ap.stmts.add(AspStmt.parse(s));
             if(s.peek().kind == eofToken) break;
-            s.readNextToken();
+            //s.readNextToken();
+            s.curToken();
         }
-        /*
-        do {
-        } while (s.curToken().kind != eofToken);
-*/
     	Main.log.leaveParser("program");
     	return ap;
     }

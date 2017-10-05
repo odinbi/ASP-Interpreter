@@ -20,9 +20,7 @@ class AspComparison extends AspSyntax {
         while(true){
             ac.term.add(AspTerm.parse(s));
             if (!s.isCompOpr()) break;
-            //s.readNextToken();
             ac.cmpopr.add(AspCompOpr.parse(s));
-            s.readNextToken();
         }
 
         Main.log.leaveParser("comparison");

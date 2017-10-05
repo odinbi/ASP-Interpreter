@@ -57,8 +57,6 @@
                                   <term opr>
                                   </term opr>
                                   <factor>
-                                    <factor prefix>
-                                    </factor prefix>
                                     <primary>
                                       <atom>
                                         <integer litteral>
@@ -427,8 +425,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -490,8 +486,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -502,8 +496,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -573,8 +565,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -585,8 +575,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -597,8 +585,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -609,8 +595,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -738,8 +722,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -758,8 +740,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -778,8 +758,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -790,8 +768,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -853,8 +829,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -873,8 +847,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -945,8 +917,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -957,8 +927,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -977,8 +945,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -1040,8 +1006,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -1052,8 +1016,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -1072,8 +1034,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <integer litteral>
@@ -1101,8 +1061,6 @@
                       <term opr>
                       </term opr>
                       <factor>
-                        <factor prefix>
-                        </factor prefix>
                         <primary>
                           <atom>
                             <integer litteral>
@@ -1171,8 +1129,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <string litteral>
@@ -1183,8 +1139,6 @@
                                         <term opr>
                                         </term opr>
                                         <factor>
-                                          <factor prefix>
-                                          </factor prefix>
                                           <primary>
                                             <atom>
                                               <name>
@@ -1270,8 +1224,6 @@
                       <term opr>
                       </term opr>
                       <factor>
-                        <factor prefix>
-                        </factor prefix>
                         <primary>
                           <atom>
                             <integer litteral>
@@ -1290,7 +1242,7 @@
     </while stmt>
   </stmt>
 </program>
-PP> M_name = [""] * (12+ + 1)
+PP> M_name = [""] * (12 + 1)
 PP> M_name[3] = "mars"
 PP> M_name[4] = "april"
 PP> y = 2015
@@ -1300,15 +1252,15 @@ PP> b = y // 100
 PP> c = y % 100
 PP> d = b // 4
 PP> e = b % 4
-PP> f = (b+ + 8) // 25
-PP> g = (b- - f+ + 1) // 3
-PP> h = (19 * a+ + b- - d- - g+ + 15) % 30
+PP> f = (b + 8) // 25
+PP> g = (b - f + 1) // 3
+PP> h = (19 * a + b - d - g + 15) % 30
 PP> i = c // 4
 PP> k = c % 4
-PP> l = (32+ + 2 * e+ + 2 * i- - h- - k) % 7
-PP> m = (a+ + 11 * h+ + 22 * l) // 451
-PP> month = (h+ + l- - 7 * m+ + 114) // 31
-PP> day = (h+ + l- - 7 * m+ + 114) % 31+ + 1
-PP> print(str(day)+ + ". "+ + M_name[month], y)
-PP> y = y+ + 1
+PP> l = (32 + 2 * e + 2 * i - h - k) % 7
+PP> m = (a + 11 * h + 22 * l) // 451
+PP> month = (h + l - 7 * m + 114) // 31
+PP> day = (h + l - 7 * m + 114) % 31 + 1
+PP> print(str(day) + ". " + M_name[month], y)
+PP> y = y + 1
 PP> 

@@ -22,6 +22,7 @@ class AspIntegerLiteral extends AspAtom {
         AspIntegerLiteral abl = new AspIntegerLiteral(s.curLineNum(),
                                                 s.curToken().integerLit);
         Main.log.leaveParser("integer litteral");
+        skip(s, integerToken);
         return abl;
     }
 

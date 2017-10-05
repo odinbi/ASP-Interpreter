@@ -22,15 +22,12 @@ class AspFactor extends AspSyntax {
 
         if (s.isFactorPrefix()){
             af.prefix = AspFactorPrefix.parse(s);
-            s.readNextToken();
         }
 
         while(true){
             af.primary.add(AspPrimary.parse(s));
             if (!s.isFactorOpr()) break;
-            //s.readNextToken();
             af.oprs.add(AspFactorOpr.parse(s));
-            s.readNextToken();
         }
 
         Main.log.leaveParser("factor");

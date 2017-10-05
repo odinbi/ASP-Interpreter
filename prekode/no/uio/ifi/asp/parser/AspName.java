@@ -21,6 +21,7 @@ class AspName extends AspAtom{
                         s.curToken().kind + "!", s.curLineNum());
         }
         AspName an = new AspName(s.curLineNum(), s.curToken().name);
+        skip(s, nameToken);
         Main.log.leaveParser("name");
         return an;
     }

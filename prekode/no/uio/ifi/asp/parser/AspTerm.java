@@ -20,11 +20,7 @@ class AspTerm extends AspSyntax {
 
         while(true){
             at.factor.add(AspFactor.parse(s));
-            /*if(s.isTermOpr(s.peekNext())){
-                s.readNextToken();
-            }*/
             if (!s.isTermOpr()) break;
-            //s.readNextToken();
             at.oprs.add(AspTermOpr.parse(s));
         }
 

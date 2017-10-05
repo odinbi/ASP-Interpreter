@@ -174,7 +174,7 @@ private void handleWord(String word){
         t = new Token(nameToken, curLineNum());
         t.name = word;
     } else {
-        Main.error("handleWord error! Could not recognize word: " + word + ", at line: " + curLineNum());
+        scannerError("handleWord() could not recognize word: " + word);
     }
     curLineTokens.add(t);
 }

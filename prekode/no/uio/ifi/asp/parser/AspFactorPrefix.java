@@ -20,6 +20,7 @@ class AspFactorPrefix extends AspSyntax {
             case plusToken:
             case minusToken:
                 a = new AspFactorPrefix(s.curLineNum(), s.curToken().kind);
+                skip(s, s.curToken().kind);
                 break;
             default:
                 parserError("Expected an factor prefix but found a " +
@@ -31,7 +32,7 @@ class AspFactorPrefix extends AspSyntax {
 
     @Override
     public void prettyPrint() {
-        Main.log.prettyWrite(" " + value.toString() + " ");
+        Main.log.prettyWrite(value.toString());
     }
 
     @Override

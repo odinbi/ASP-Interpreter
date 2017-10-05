@@ -19,7 +19,7 @@ class AspNotTest extends AspSyntax {
         AspNotTest ant;
         if (s.curToken().kind == notToken){
             ant = new AspNotTest(s.curLineNum(), 1);
-            s.readNextToken();
+            skip(s, notToken);
         } else{
             ant = new AspNotTest(s.curLineNum(), 0);
         }

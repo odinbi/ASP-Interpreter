@@ -20,7 +20,6 @@ class AspAssignment extends AspStmt{
         AspAssignment aa = new AspAssignment(s.curLineNum());
 
         aa.name = AspName.parse(s);
-        s.readNextToken();
         while(true){
             if(s.curToken().kind == equalToken){
                 skip(s, equalToken);
@@ -29,12 +28,7 @@ class AspAssignment extends AspStmt{
             aa.subscr.add(AspSubscription.parse(s));
         }
         aa.expr = AspExpr.parse(s);
-        /*if(s.curToken().kind != newLineToken && s.peekNext().kind != newLineToken){
-            parserError("expected newLineToken but found: " +
-                        s.curToken().kind + "!", s.curLineNum());
-        } else if(s.peekNext().kind == newLineToken){
-            s.readNextToken();
-        }*/
+
         skip(s, newLineToken);
         Main.log.leaveParser("assignment");
         return aa;
