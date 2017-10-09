@@ -13,7 +13,16 @@ public class AspExpr extends AspSyntax {
         super(n);
     }
 
-
+    /**
+    * parse
+    * returns: AspExpr
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspAndTest.parse
+    * expects that the parse will set the pointer of the Scanner token list to
+    * the next token.
+    *
+    */
     public static AspExpr parse(Scanner s) {
         Main.log.enterParser("expr");
         AspExpr ae = new AspExpr(s.curLineNum());

@@ -13,6 +13,16 @@ class AspExprStmt extends AspStmt{
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspExprStmt
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspExpr.parse
+    * expects that the parse will set the pointer of the Scanner token list
+    * to the next token.
+    *
+    */
     static AspExprStmt parse(Scanner s){
         Main.log.enterParser("expr stmt");
         AspExprStmt aes = new AspExprStmt(s.curLineNum());

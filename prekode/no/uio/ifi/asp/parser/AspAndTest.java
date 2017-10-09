@@ -15,6 +15,16 @@ class AspAndTest extends AspSyntax {
 
     ArrayList<AspNotTest> notTests = new ArrayList<>();
 
+    /**
+    * parse
+    * returns: AspAndTest
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspNotTest.parse,
+    * expects AspNotTest.parse to traverse Scanner token list by one token.
+    * checks if current token is an "andToken", continue loop if true. 
+    *
+    */
     static AspAndTest parse(Scanner s) {
         Main.log.enterParser("and test");
         AspAndTest aat = new AspAndTest(s.curLineNum());

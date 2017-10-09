@@ -14,6 +14,16 @@ class AspDictDisplay extends AspAtom {
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspDictDisplay
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspStringLiteral.parse and
+    * AspExpr.parse, expects that each parse will set the pointer of the
+    * Scanner token list to the next token.
+    *
+    */
     static AspDictDisplay parse(Scanner s){
         Main.log.enterParser("dict display");
         AspDictDisplay a = new AspDictDisplay(s.curLineNum());

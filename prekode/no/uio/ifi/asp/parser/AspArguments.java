@@ -13,6 +13,14 @@ class AspArguments extends AspPrimarySuffix{
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspArguments
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspExpr.parse,
+    * expects AspExpr.parse to traverse Scanner token list by one token.
+    */
     static AspArguments parse(Scanner s){
         Main.log.enterParser("arguments");
         AspArguments aa = new AspArguments(s.curLineNum());

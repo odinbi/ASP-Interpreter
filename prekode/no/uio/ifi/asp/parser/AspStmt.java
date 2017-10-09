@@ -11,6 +11,22 @@ abstract class AspStmt extends AspSyntax {
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspStmt
+    * input: Scanner
+    *
+    * ALL PARSE METHODS:
+    * Should create an instance of the class.
+    * Expects that the call of a parse, will result in a s.readNextToken() call
+    * such that s.curToken() will be the next token after the parse returns.
+    * Returns the created instance of the class.
+    *
+    * ALL LITTERALS:
+    * Will create an instance of itself with the litteral value, skip their own
+    * token and return to previous parse call.
+    *
+    */
     static AspStmt parse(Scanner s){
         Main.log.enterParser("stmt");
         as = null;

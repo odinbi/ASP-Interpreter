@@ -15,6 +15,14 @@ class AspAssignment extends AspStmt{
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspAssignment
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspSubscription.parse,
+    * expects AspSubscription.parse to traverse Scanner token list by one token.
+    */
     static AspAssignment parse(Scanner s){
         Main.log.enterParser("assignment");
         AspAssignment aa = new AspAssignment(s.curLineNum());
