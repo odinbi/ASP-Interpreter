@@ -48,9 +48,4 @@ abstract class AspAtom extends AspSyntax {
         Main.log.leaveParser("atom");
         return a;
     }
-    /*
-    @Override
-    public void prettyPrint() {
-    	a.prettyPrint();
-    }*/
 }

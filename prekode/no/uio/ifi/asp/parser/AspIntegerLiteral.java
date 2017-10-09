@@ -6,7 +6,6 @@ import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspIntegerLiteral extends AspAtom {
-    //returns RuntimeValue
     public long value;
     AspIntegerLiteral(int n, long value){
         super(n);
