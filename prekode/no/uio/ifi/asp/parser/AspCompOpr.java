@@ -13,6 +13,16 @@ class AspCompOpr extends AspSyntax {
         this.value = tk;
     }
 
+    /**
+    * parse
+    * returns: AspCompOpr
+    * input: Scanner
+    *
+    * parse takes a Scanner s object and returns a new instance of the class
+    * with a pointer to the current token.
+    * Sets the Scanner token list pointer to next token.
+    *
+    */
     static AspCompOpr parse(Scanner s) {
         Main.log.enterParser("comp opr");
         AspCompOpr a = null;

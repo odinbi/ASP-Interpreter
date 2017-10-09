@@ -11,6 +11,14 @@ abstract class AspAtom extends AspSyntax {
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspAtom
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to Asp[...].parse,
+    * expects Asp[...].parse to traverse Scanner token list by one token.
+    */
     static AspAtom parse(Scanner s) {
         Main.log.enterParser("atom");
         AspAtom a = null;

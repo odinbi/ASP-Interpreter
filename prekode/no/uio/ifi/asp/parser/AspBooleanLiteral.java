@@ -12,6 +12,15 @@ class AspBooleanLiteral extends AspAtom {
         this.value = bool;
     }
 
+    /**
+    * parse
+    * returns: AspBooleanLiteral
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, returns a new instance of the class with
+    * the literal value from the token.
+    * Sets the Scanner token list pointer to next token.
+    */
     static AspBooleanLiteral parse(Scanner s){
         Main.log.enterParser("boolean litteral");
 

@@ -14,6 +14,16 @@ class AspComparison extends AspSyntax {
         super(n);
     }
 
+    /**
+    * parse
+    * returns: AspComparison
+    * input: Scanner
+    *
+    * parse takes a Scanner s object, sends s to AspTerm.parse,
+    * expects AspTerm.parse to traverse Scanner token list by one token.
+    * If the next token is a comparison operator sends s to AspCompOpr.parse.
+    * Expects AspCompOpr.parse to traverse Scanner token list by one token.
+    */
     static AspComparison parse(Scanner s) {
         Main.log.enterParser("comparison");
         AspComparison ac = new AspComparison(s.curLineNum());
