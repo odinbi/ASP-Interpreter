@@ -46,7 +46,9 @@ class AspCompOpr extends AspSyntax {
 
     @Override
     public void prettyPrint() {
+        Main.log.prettyWrite(" ");
         Main.log.prettyWrite(value.toString());
+        Main.log.prettyWrite(" ");
     }
 
     @Override

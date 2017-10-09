@@ -1246,21 +1246,35 @@ PP> M_name = [""] * (12 + 1)
 PP> M_name[3] = "mars"
 PP> M_name[4] = "april"
 PP> y = 2015
-PP> while y<=2020: 
-	a = y % 19
+PP> while y<=2020: 	a = y % 19
+PP> 
 PP> b = y // 100
+PP> 
 PP> c = y % 100
+PP> 
 PP> d = b // 4
+PP> 
 PP> e = b % 4
+PP> 
 PP> f = (b + 8) // 25
+PP> 
 PP> g = (b - f + 1) // 3
+PP> 
 PP> h = (19 * a + b - d - g + 15) % 30
+PP> 
 PP> i = c // 4
+PP> 
 PP> k = c % 4
+PP> 
 PP> l = (32 + 2 * e + 2 * i - h - k) % 7
+PP> 
 PP> m = (a + 11 * h + 22 * l) // 451
+PP> 
 PP> month = (h + l - 7 * m + 114) // 31
+PP> 
 PP> day = (h + l - 7 * m + 114) % 31 + 1
+PP> 
 PP> print(str(day) + ". " + M_name[month], y)
+PP> 
 PP> y = y + 1
 PP> 

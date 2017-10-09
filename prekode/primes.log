@@ -1232,51 +1232,42 @@
 PP> n = 1000
 PP> primes = [true] * (n + 1)
 PP> def find_primes(): 
+PP>   i1 = 2
+PP>   while i1 <= n:
+PP>     i2 = 2 * i1
+PP>     while i2 <= n:
+PP>       primes[i2] = false
+PP>       i2 = i2 + i1
 PP> 
-	i1 = 2
-PP> while i1<=n: 
-	i2 = 2 * i1
-PP> while i2<=n: 
-	primes[i2] = false
-PP> i2 = i2 + i1
-PP> 
-PP> i1 = i1 + 1
+PP>     i1 = i1 + 1
 PP> 
 PP> 
 PP> def w4(n): 
-PP> 
-	if n<=9: 
-PP> 
-	return "   " + str(n)
-PP> elif n<=99: 
-PP> 
-	return "  " + str(n)
-PP> elif n<=999: 
-PP> 
-	return " " + str(n)
-PP> else : 
-PP> 
-	return str(n)
+PP>   if n <= 9: 
+PP>     return "   " + str(n)
+PP>   elif n <= 99: 
+PP>     return "  " + str(n)
+PP>   elif n <= 999: 
+PP>     return " " + str(n)
+PP>   else: 
+PP>     return str(n)
 PP> 
 PP> def list_primes(): 
+PP>   n_printed = 0
+PP>   line_buf = ""
+PP>   i = 2
+PP>   while i <= n:
+PP>     if primes[i]: 
+PP>       if n_printed > 0 and n_printed % 10 == 0: 
+PP>         print(line_buf)
+PP>         line_buf = ""
 PP> 
-	n_printed = 0
-PP> line_buf = ""
-PP> i = 2
-PP> while i<=n: 
-	if else : 
+PP>       line_buf = line_buf + w4(i)
+PP>       n_printed = n_printed + 1
 PP> 
-	if else : 
+PP>     i = i + 1
 PP> 
-	print(line_buf)
-PP> line_buf = ""
-PP> 
-PP> line_buf = line_buf + w4(i)
-PP> n_printed = n_printed + 1
-PP> 
-PP> i = i + 1
-PP> 
-PP> print(line_buf)
+PP>   print(line_buf)
 PP> 
 PP> find_primes()
 PP> list_primes()

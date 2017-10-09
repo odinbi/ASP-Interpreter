@@ -1,8 +1,8 @@
 <program>
-   1: 
+   1:
    2: # Finn alle primtall opp til n
    3: # ved hjelp av teknikken kalt «Eratosthenes' sil».
-   4: 
+   4:
    5: n = 1000
   <stmt>
     <assignment>
@@ -107,7 +107,7 @@
       </expr>
     </assignment>
   </stmt>
-   7: 
+   7:
    8: def find_primes():
   <stmt>
     <func def>
@@ -358,7 +358,7 @@
                   </expr>
                 </assignment>
               </stmt>
-  16: 
+  16:
   17: def w4(n):
             </suite>
           </while stmt>
@@ -686,8 +686,8 @@
                   </expr>
                 </return stmt>
               </stmt>
-  26:    
-  27: 
+  26:
+  27:
   28: def list_primes():
             </suite>
           </if stmt>
@@ -1172,8 +1172,8 @@
             </expr>
           </expr stmt>
         </stmt>
-  41: 
-  42: 
+  41:
+  42:
   43: find_primes()
       </suite>
     </func def>
@@ -1242,7 +1242,7 @@ PP>     while i2 <= n:
 PP>       primes[i2] = False
 PP>       i2 = i2 + i1
 PP>     i1 = i1 + 1
-PP> 
+PP>
 PP> def w4 (n):
 PP>   if n <= 9:
 PP>     return "   " + str(n)
@@ -1252,7 +1252,7 @@ PP>   elif n <= 999:
 PP>     return " " + str(n)
 PP>   else:
 PP>     return str(n)
-PP> 
+PP>
 PP> def list_primes ():
 PP>   n_printed = 0
 PP>   line_buf = ""
@@ -1266,6 +1266,6 @@ PP>       line_buf = line_buf + w4(i)
 PP>       n_printed = n_printed + 1
 PP>     i = i + 1
 PP>   print(line_buf)
-PP> 
+PP>
 PP> find_primes()
 PP> list_primes()

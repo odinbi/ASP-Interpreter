@@ -29,7 +29,8 @@ class AspWhileStmt extends AspStmt{
     public void prettyPrint() {
     	Main.log.prettyWrite("while ");
         expr.prettyPrint();
-        Main.log.prettyWrite(": ");
+        Main.log.prettyWrite(":");
+        Main.log.prettyWriteLn();
         suite.prettyPrint();
     }
 

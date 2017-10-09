@@ -45,8 +45,8 @@ class AspIfStmt extends AspStmt{
     public void prettyPrint() {
         Main.log.prettyWrite("if ");
     	for(int i = 0; i < suite.size(); i++){
-            if(i == suite.size()-1){
-                Main.log.prettyWrite("else ");
+            if(i > 0 && i == suite.size()-1){
+                Main.log.prettyWrite("else");
             } else if(i > 0 && i != suite.size()-1){
                 Main.log.prettyWrite("elif ");
                 expr.get(i).prettyPrint();

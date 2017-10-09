@@ -14,26 +14,27 @@ class AspSuite extends AspSyntax{
     }
 
     static AspSuite parse(Scanner s){
-        Main.log.enterParser("suite");
-        AspSuite suite = new AspSuite(s.curLineNum());
-        skip(s, newLineToken);
-        skip(s, indentToken);
-        while(true){
-            suite.stmts.add(AspStmt.parse(s));
-            if(s.curToken().kind == dedentToken){
-                skip(s, dedentToken);
-                break;
-            } 
-        }
-        Main.log.leaveParser("suite");
-        return suite;
-    }
+       Main.log.enterParser("suite");
+       AspSuite suite = new AspSuite(s.curLineNum());
+       skip(s, newLineToken);
+       skip(s, indentToken);
+       while(true){
+           suite.stmts.add(AspStmt.parse(s));
+           if(s.curToken().kind == dedentToken){
+               skip(s, dedentToken);
+               break;
+           }
+       }
+       Main.log.leaveParser("suite");
+       return suite;
+   }
 
     @Override
     public void prettyPrint() {
-        Main.log.prettyWrite("\n\t");
         for(AspStmt stmt : stmts){
+            Main.log.prettyIndent();
             stmt.prettyPrint();
+            Main.log.prettyDedent();
         }
         Main.log.prettyWriteLn();
     }
