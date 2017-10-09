@@ -1,0 +1,72 @@
+                         -- DOCUMENTATION --
+
+            For parse methods in the different Asp parser classes.
+--------------------------------------------------------------------------------
+
+                            -- GENERAL --
+
+ALL parse methods:
+    1. Returns an instance of the class itself.
+    2. Takes a scanner object as input.
+    3.
+        3.1 (For non-terminal classes) expects the pending parse call to move
+            the scanner token pointer to a succeeding token.
+        3.2 Terminal classes will use the skip method on the token
+            with the class' corresponding tokenKin
+            (e.g. AspName will call skip(s, nameToken)).
+    4. All tokens expected (as described the railway diagrams) will undergo
+        a parse call, or a skip call if the token don't need to be parsed,
+        within the class as described in the railway diagram. Thus setting the
+        Scanner token pointer to the subsequent token of what the class itself
+        handles.
+--------------------------------------------------------------------------------
+
+                        -- STRUCTURE --
+
+-- All parse methods are of structure:
+public static <AspClass> parse(Scanner s){
+    make instance of <AspClass>
+
+    do a parse call to another AspClass if not a terminal class
+    (e.g. literal classes);
+        in which case there will be additional data gathered from the Scanner
+        which will be added during the instance creation.
+
+    return instance;
+}
+
+
+-- NON-TERMINAL classes:
+public static <AspClass_1> parse(Scanner s){
+    create object of type <AspClass_1> instance;
+        (MOST ASP CLASSES has an instance variable:
+            list/object of type <ApsClass_2> list/obj;
+                may have additional lists/objects of type <AspClass_n> list_n/obj_n;)
+
+    while(true){
+        add return value of <ApsClass_2>.parse(s) to instances list/obj;
+
+        skip terminal token and break loop if terminal token is reached;
+
+        read the next token and continue looping;
+    }
+
+    SOME ASP CLASSES expects a certain patern of tokens
+        skip expected tokens in expected order;
+
+    return instance;
+}
+
+-- TERMINAL classes:
+public static <AspClass> parse(Scanner s){
+    create object of type <AspClass> instance;
+        constructor expects a value of terminal type
+        (e.g. String, long, double).
+        This value is recieved from s.curToken().<value_type>
+            <value_type>: name <String>, stringLit <String>, integerLit <long>, floatLit <double>.
+
+    let scanner skip the current token using the TokenKind of this literal
+
+    return instance
+}
+--------------------------------------------------------------------------------

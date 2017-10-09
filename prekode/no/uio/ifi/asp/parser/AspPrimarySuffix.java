@@ -26,9 +26,4 @@ abstract class AspPrimarySuffix extends AspSyntax {
         Main.log.leaveParser("primary suffix");
         return suffix;
     }
-    /*
-    @Override
-    abstract public void prettyPrint() {
-        //as.prettyPrint();
-    }*/
 }

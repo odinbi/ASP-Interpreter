@@ -95,7 +95,7 @@ public enum TokenKind {
     newLineToken("NEWLINE"),
     eofToken("E-o-f"),
 
-    //own test token
+    //safe TokenKind to returns in order to avoid null pointers:
     emptyToken("NADA");
 
 

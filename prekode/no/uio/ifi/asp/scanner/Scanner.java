@@ -50,12 +50,33 @@ public class Scanner {
         return curLineTokens.get(0);
     }
 
+    /**
+    * peek
+    * return type: Token
+    *
+    * returns current token if curLineTokens is not empty
+    * else it returns an emptyToken.
+    *
+    * this method is added to prevent null pointer exceptions
+    */
     public Token peek(){
         if(curLineTokens.size() > 0)
             return curLineTokens.get(0);
         return new Token(emptyToken);
     }
 
+    /**
+    * peekNext
+    * return type: Token
+    *
+    * returns next token in curLineTokens without editing the list structure
+    * if the list has more than 1 element.
+    * else it returns an emptyToken
+    *
+    * this method is added so that parser calls can check tokens without having
+    * to alter the list structure in cases where the parsing of a token
+    * is dependent of what tokens comes after the current.
+    */
     public Token peekNext(){
         if(curLineTokens.size() > 1)
             return curLineTokens.get(1);
@@ -445,6 +466,14 @@ private boolean isDigit(char c) {
     return '0'<=c && c<='9';
 }
 
+/**
+* isCompOpr, isFactorOpr, isFactorPrefix
+* return value: boolean
+* optional input parameter: t <Token>
+*
+* checks if a given token is of any kind included in the
+* comparison/factor opperators/prefixes
+*/
 
 public boolean isCompOpr() {
     TokenKind k = curToken().kind;

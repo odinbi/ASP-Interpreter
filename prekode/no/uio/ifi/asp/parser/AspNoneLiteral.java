@@ -5,7 +5,6 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
-
 class AspNoneLiteral extends AspAtom {
 
     public String value;
