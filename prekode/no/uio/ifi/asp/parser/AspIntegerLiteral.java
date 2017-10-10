@@ -13,14 +13,14 @@ class AspIntegerLiteral extends AspAtom {
     }
 
     static AspIntegerLiteral parse(Scanner s){
-        Main.log.enterParser("integer litteral");
+        Main.log.enterParser("integer literal");
         if(s.curToken().kind != integerToken){
             parserError("Expected a integerToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
         AspIntegerLiteral abl = new AspIntegerLiteral(s.curLineNum(),
                                                 s.curToken().integerLit);
-        Main.log.leaveParser("integer litteral");
+        Main.log.leaveParser("integer literal");
         skip(s, integerToken);
         return abl;
     }

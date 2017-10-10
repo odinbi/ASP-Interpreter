@@ -31,12 +31,12 @@ class AspSuite extends AspSyntax{
 
     @Override
     public void prettyPrint() {
+        Main.log.prettyWriteLn();
         for(AspStmt stmt : stmts){
             Main.log.prettyIndent();
             stmt.prettyPrint();
             Main.log.prettyDedent();
         }
-        Main.log.prettyWriteLn();
     }
 
     @Override

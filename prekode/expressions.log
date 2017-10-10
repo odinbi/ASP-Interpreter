@@ -1588,9 +1588,9 @@ PP> "To be" or "not to be"
 PP> "Yes" and 3.14
 PP> false or true or 144 or "?"
 PP> "Testing comparisons"
-PP> 1<=2<=3
-PP> "a"!="b">"b"!=99
-PP> 3.14>2.718281828459045>0
+PP> 1 <= 2 <= 3
+PP> "a" != "b" > "b" != 99
+PP> 3.14 > 2.718281828459045 > 0
 PP> "Testing lists"
 PP> []
 PP> [22, "w", [-1, +1], 3.14159265]

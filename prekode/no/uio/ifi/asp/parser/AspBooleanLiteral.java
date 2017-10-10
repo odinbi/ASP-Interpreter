@@ -22,7 +22,7 @@ class AspBooleanLiteral extends AspAtom {
     * Sets the Scanner token list pointer to next token.
     */
     static AspBooleanLiteral parse(Scanner s){
-        Main.log.enterParser("boolean litteral");
+        Main.log.enterParser("boolean literal");
 
         if(!s.isBoolean()){
             parserError("Expected a booleanToken but found a " +
@@ -38,7 +38,7 @@ class AspBooleanLiteral extends AspAtom {
             abl = new AspBooleanLiteral(s.curLineNum(), false);
             skip(s, falseToken);
         }
-        Main.log.leaveParser("boolean litteral");
+        Main.log.leaveParser("boolean literal");
         return abl;
     }
 

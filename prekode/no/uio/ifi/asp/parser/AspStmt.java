@@ -22,8 +22,8 @@ abstract class AspStmt extends AspSyntax {
     * such that s.curToken() will be the next token after the parse returns.
     * Returns the created instance of the class.
     *
-    * ALL LITTERALS:
-    * Will create an instance of itself with the litteral value, skip their own
+    * ALL LITERALS:
+    * Will create an instance of itself with the literal value, skip their own
     * token and return to previous parse call.
     *
     */

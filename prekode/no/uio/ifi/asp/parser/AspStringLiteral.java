@@ -14,7 +14,7 @@ class AspStringLiteral extends AspAtom {
     }
 
     static AspStringLiteral parse(Scanner s){
-        Main.log.enterParser("string litteral");
+        Main.log.enterParser("string literal");
         if(s.curToken().kind != stringToken){
             parserError("Expected a stringToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
@@ -22,7 +22,7 @@ class AspStringLiteral extends AspAtom {
         AspStringLiteral abl = new AspStringLiteral(s.curLineNum(),
                                                     s.curToken().stringLit);
         skip(s, stringToken);
-        Main.log.leaveParser("string litteral");
+        Main.log.leaveParser("string literal");
         return abl;
     }
 

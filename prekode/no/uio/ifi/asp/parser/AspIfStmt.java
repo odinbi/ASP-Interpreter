@@ -38,6 +38,7 @@ class AspIfStmt extends AspStmt{
             skip(s, colonToken);
             ais.suite.add(AspSuite.parse(s));
         }
+        Main.log.leaveParser("if stmt");
         return ais;
     }
 
@@ -54,7 +55,6 @@ class AspIfStmt extends AspStmt{
                 expr.get(i).prettyPrint();
             }
             Main.log.prettyWrite(": ");
-            Main.log.prettyWriteLn();
             suite.get(i).prettyPrint();
         }
     }

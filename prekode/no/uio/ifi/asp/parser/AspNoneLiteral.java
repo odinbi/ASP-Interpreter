@@ -15,14 +15,14 @@ class AspNoneLiteral extends AspAtom {
     }
 
     static AspNoneLiteral parse(Scanner s){
-        Main.log.enterParser("none litteral");
+        Main.log.enterParser("none literal");
         if(s.curToken().kind != noneToken){
             parserError("Expected a noneToken but found a " +
                         s.curToken().kind + "!", s.curLineNum());
         }
         AspNoneLiteral anl = new AspNoneLiteral(s.curLineNum());
         skip(s, noneToken);
-        Main.log.leaveParser("none litteral");
+        Main.log.leaveParser("none literal");
         return anl;
     }
 

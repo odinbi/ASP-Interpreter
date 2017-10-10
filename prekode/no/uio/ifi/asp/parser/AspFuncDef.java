@@ -50,8 +50,8 @@ class AspFuncDef extends AspStmt{
         }
         Main.log.prettyWrite(")");
         Main.log.prettyWrite(": ");
-        Main.log.prettyWriteLn();
         suite.prettyPrint();
+        Main.log.prettyWriteLn();
     }
 
     @Override
