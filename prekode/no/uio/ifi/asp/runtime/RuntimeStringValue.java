@@ -1,0 +1,226 @@
+package no.uio.ifi.asp.runtime;
+
+import no.uio.ifi.asp.parser.AspSyntax;
+
+public class RuntimeStringValue extends RuntimeValue {
+    String stringValue;
+
+    public RuntimeStringValue(String v) {
+        stringValue = v;
+    }
+
+
+    @Override
+    protected String typeName() {
+        return "string";
+    }
+
+
+    @Override
+    public long getStringValue(String what, AspSyntax where) {
+        return stringValue;
+    }
+
+
+    @Override
+    public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeNoneValue) {
+            return new RuntimeBoolValue(false);
+        } else {
+            return new RuntimeBoolValue(
+            boolValue == v.getBoolValue("== operand",where));
+        }
+    }
+
+    @Override
+    public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            intValue += v.getIntValue();
+            return this;
+    	} else if (v instanceof RuntimeFloatValue){
+            double temp = v.getFloatValue() + (double) intValue;
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'+' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalDivide(RuntimeValue v, AspSyntax where) {
+        double temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue / v.getIntValue();
+            return new RuntimeFloatValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue / v.getFloatValue();
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'/' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
+        boolean temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue == v.getIntValue();
+            return new RuntimeBoolValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue == v.getFloatValue();
+            return new RuntimeBoolValue(temp);
+    	}
+        runtimeError("'==' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where) {
+        boolean temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue > v.getIntValue();
+            return new RuntimeBoolValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue > v.getFloatValue();
+            return new RuntimeBoolValue(temp);
+    	}
+        runtimeError("'>' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalGreaterEqual(RuntimeValue v, AspSyntax where) {
+        boolean temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue >= v.getIntValue();
+            return new RuntimeBoolValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue >= v.getFloatValue();
+            return new RuntimeBoolValue(temp);
+    	}
+        runtimeError("'>=' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalIntDivide(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            intValue = Math.floor(intValue/v.getIntValue());
+            return this;
+    	} else if (v instanceof RuntimeFloatValue){
+            double temp = Math.floor(intValue/v.getIntValue());
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'//' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalLess(RuntimeValue v, AspSyntax where) {
+        boolean temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue < v.getIntValue();
+            return new RuntimeBoolValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue < v.getFloatValue();
+            return new RuntimeBoolValue(temp);
+    	}
+        runtimeError("'<' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalLessEqual(RuntimeValue v, AspSyntax where) {
+        boolean temp;
+        if (v instanceof RuntimeIntValue) {
+            temp = intValue <= v.getIntValue();
+            return new RuntimeBoolValue(temp);
+    	} else if (v instanceof RuntimeFloatValue){
+            temp = (double) intValue <= v.getFloatValue();
+            return new RuntimeBoolValue(temp);
+    	}
+        runtimeError("'<=' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            intValue = intValue - v.getIntValue() * Math.floor(intValue/v.getIntValue());
+            return this;
+    	} else if (v instanceof RuntimeFloatValue){
+            double temp = intValue - v.getFloatValue() * Math.floor(intValue/v.getFloatValue());
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'%' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            intValue *= v.getIntValue();
+            return this;
+    	} else if (v instanceof RuntimeFloatValue){
+            double temp = v.getFloatValue() * (double) intValue;
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'*' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalNegate(AspSyntax where) {
+        intValue *= -1;
+        return this;
+    }
+
+    @Override
+    public RuntimeValue evalPositive(AspSyntax where) {
+        return this;
+    }
+
+    @Override
+    public RuntimeValue evalSubtract(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeIntValue) {
+            intValue -= v.getIntValue();
+            return this;
+    	} else if (v instanceof RuntimeFloatValue){
+            double temp = v.getFloatValue() - (double) intValue;
+            return new RuntimeFloatValue(temp);
+    	}
+        runtimeError("'-' undefined for "+typeName()+"!", where);
+        return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeValue evalNot(AspSyntax where) {
+        if(getBoolValue(toString(), where)) return new RuntimeBoolValue(false);
+        if(!getBoolValue(toString(), where)) return new RuntimeBoolValue(true);
+        runtimeError("'not' undefined for "+typeName()+"!", where);
+    	return null;  // Required by the compiler!
+    }
+
+    public RuntimeValue evalAnd(RuntimeValue v, AspSyntax where) {
+        if(!getBoolValue(toString(), where)) return new RuntimeBoolValue(false);
+        if(v.getBoolValue(v.toString(), where)) return v;
+        else return new RuntimeBoolValue(false);
+        runtimeError("'not' undefined for "+typeName()+"!", where);
+    	return null;  // Required by the compiler!
+    }
+
+    public RuntimeValue evalOr(RuntimeValue v, AspSyntax where) {
+        if(getBoolValue(toString(), where)) return this;
+        if(v.getBoolValue(v.toString(), where)) return v;
+        else return new RuntimeBoolValue(false);
+        runtimeError("'not' undefined for "+typeName()+"!", where);
+    	return null;  // Required by the compiler!
+    }
+
+    @Override
+    public boolean getBoolValue(String what, AspSyntax where){
+        if(intValue == 0) return false;
+        if(intValue != 0) return true;
+        runtimeError("Type error: "+what+" is not a Boolean!", where);
+    	return false;  // Required by the compiler!
+    }
+}
