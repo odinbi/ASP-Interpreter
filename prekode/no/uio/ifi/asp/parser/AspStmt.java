@@ -53,9 +53,13 @@ abstract class AspStmt extends AspSyntax {
         return as;
     }
 
-
     @Override
     public void prettyPrint() {
     	as.prettyPrint();
+    }
+
+    @Override
+    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        return as.eval(curScope);
     }
 }

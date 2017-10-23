@@ -7,12 +7,15 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class RuntimeDictionaryValue extends RuntimeValue {
-    HashMap<RuntimeValue, RuntimeValue> varMap = new HashMap<>();
+    HashMap<String, RuntimeValue> varMap = new HashMap<>();
 
-    public RuntimeDictionaryValue(RuntimeValue key, RuntimeValue value) {
+    public RuntimeDictionaryValue(String key, RuntimeValue value) {
         varMap.put(key, value);
     }
 
+    public void addEntry(String key, RuntimeValue value){
+        varMap.put(key, value);
+    }
 
     @Override
     protected String typeName() {
@@ -23,7 +26,7 @@ public class RuntimeDictionaryValue extends RuntimeValue {
     @Override
     public String toString() {
         String temp = "{";
-        Set varSet = hmap.entrySet();
+        Set varSet = varMap.entrySet();
         Iterator varIterator = varSet.iterator();
         boolean count = false;
         while(varIterator.hasNext()){
@@ -33,7 +36,7 @@ public class RuntimeDictionaryValue extends RuntimeValue {
                     + entries.getValue().toString();
             if(!count) count = true;
         }
-        temp += "}"
+        temp += "}";
         return temp;
     }
 
@@ -41,7 +44,7 @@ public class RuntimeDictionaryValue extends RuntimeValue {
         return this;
     }
 
-    public RuntimeValue getVariable(RuntimeValue name) {
+    public RuntimeValue getVariable(String name) {
         return varMap.get(name);
     }
 
@@ -65,17 +68,13 @@ public class RuntimeDictionaryValue extends RuntimeValue {
     public RuntimeValue evalAnd(RuntimeValue v, AspSyntax where) {
         if(varMap.isEmpty()) return new RuntimeBoolValue(false);
         if(v.getBoolValue(v.toString(), where)) return v;
-        else return new RuntimeBoolValue(false);
-        runtimeError("'not' undefined for "+typeName()+"!", where);
-    	return null;  // Required by the compiler!
+        return new RuntimeBoolValue(false);
     }
 
     public RuntimeValue evalOr(RuntimeValue v, AspSyntax where) {
         if(!varMap.isEmpty()) return this;
         if(v.getBoolValue(v.toString(), where)) return v;
-        else return new RuntimeBoolValue(false);
-        runtimeError("'not' undefined for "+typeName()+"!", where);
-    	return null;  // Required by the compiler!
+        return new RuntimeBoolValue(false);
     }
 
     @Override

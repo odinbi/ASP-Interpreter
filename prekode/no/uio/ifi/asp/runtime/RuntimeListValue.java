@@ -10,7 +10,10 @@ public class RuntimeListValue extends RuntimeValue {
         lst.add(value);
     }
 
-
+    public void add(RuntimeValue value){
+        lst.add(value);
+    }
+    
     @Override
     protected String typeName() {
         return "list";
@@ -26,7 +29,7 @@ public class RuntimeListValue extends RuntimeValue {
             temp += rv.toString();
             if(!count) count = true;
         }
-        temp += "]"
+        temp += "]";
         return temp;
     }
 
@@ -42,9 +45,12 @@ public class RuntimeListValue extends RuntimeValue {
     @Override
     public RuntimeListValue evalAdd(RuntimeValue v, AspSyntax where) {
         if(v instanceof RuntimeIntValue){
-            RuntimeValue[] lstArray = ArrayList.toArray(lst);
+            RuntimeValue[] lstArray = new RuntimeValue[lst.size()];
+            for(int i = 0; i < lst.size(); i++){
+                lstArray[i] = lst.get(i);
+            }
             lst.clear();
-            for(int i = 0; i < v.getIntValue; i++){
+            for(int i = 0; i < v.getIntValue(v.toString(), where); i++){
                 for(RuntimeValue rv : lstArray){
                     lst.add(rv);
                 }
@@ -74,17 +80,13 @@ public class RuntimeListValue extends RuntimeValue {
     public RuntimeValue evalAnd(RuntimeValue v, AspSyntax where) {
         if(lst.isEmpty()) return new RuntimeBoolValue(false);
         if(v.getBoolValue(v.toString(), where)) return v;
-        else return new RuntimeBoolValue(false);
-        runtimeError("'not' undefined for "+typeName()+"!", where);
-    	return null;  // Required by the compiler!
+        return new RuntimeBoolValue(false);
     }
 
     public RuntimeValue evalOr(RuntimeValue v, AspSyntax where) {
         if(!lst.isEmpty()) return this;
         if(v.getBoolValue(v.toString(), where)) return v;
-        else return new RuntimeBoolValue(false);
-        runtimeError("'not' undefined for "+typeName()+"!", where);
-    	return null;  // Required by the compiler!
+        return new RuntimeBoolValue(false);
     }
 
     @Override

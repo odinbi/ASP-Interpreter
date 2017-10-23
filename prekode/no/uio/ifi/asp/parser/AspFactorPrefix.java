@@ -37,7 +37,18 @@ class AspFactorPrefix extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeOperatorValue opr = null;
+        switch (value) {
+            case plusToken:
+                opr = new RuntimeOperatorValue("+");
+                break;
+            case minusToken:
+                opr = new RuntimeOperatorValue("-");
+                break;
+            default:
+                RuntimeValue.runtimeError("Illegal factor prefix "
+                                    + value.toString() + "!", this);
+        }
+        return opr;
     }
 }

@@ -49,7 +49,27 @@ class AspFactor extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeValue temp = primary.get(0).eval(curScope);
+        String curopr = null;
+        String curprefix = null;
+
+        if(prefix != null) curprefix = prefix.toString();
+
+        for(int i = 0; i < oprs.size(); i++){
+            curopr = oprs.get(i).toString();
+            if(curopr.equals("*")){
+                temp = temp.evalMultiply(primary.get(i+1).eval(curScope), this);
+            } else if(curopr.equals("/")){
+                temp = temp.evalDivide(primary.get(i+1).eval(curScope), this);
+            } else if(curopr.equals("//")){
+                temp = temp.evalIntDivide(primary.get(i+1).eval(curScope), this);
+            } else if(curopr.equals("%")){
+                temp = temp.evalModulo(primary.get(i+1).eval(curScope), this);
+            } else{
+                RuntimeValue.runtimeError("factor operation undefined for operator"
+                                                + oprs.get(i).toString() + "!", this);
+            }
+        }
+        return temp;
     }
 }

@@ -22,7 +22,7 @@ class AspAndTest extends AspSyntax {
     *
     * parse takes a Scanner s object, sends s to AspNotTest.parse,
     * expects AspNotTest.parse to traverse Scanner token list by one token.
-    * checks if current token is an "andToken", continue loop if true. 
+    * checks if current token is an "andToken", continue loop if true.
     *
     */
     static AspAndTest parse(Scanner s) {
@@ -49,7 +49,16 @@ class AspAndTest extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        boolean doTest = false;
+        RuntimeValue temp = null;
+        for(AspNotTest notTest : notTests){
+            if(doTest){
+                temp = temp.evalAnd(notTest.eval(curScope), this);
+            } else{
+                temp = notTest.eval(curScope);
+            }
+            if(!doTest) doTest = true;
+        }
+        return temp;
     }
 }

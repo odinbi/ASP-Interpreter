@@ -49,7 +49,27 @@ class AspComparison extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeValue temp = term.get(0).eval(curScope);
+        String opr = null;
+        for(int i = 0; i < cmpopr.size(); i++){
+            opr = cmpopr.get(i).toString();
+            if(opr.equals("<")){
+                temp = temp.evalLess(term.get(i+1).eval(curScope), this);
+            } else if(opr.equals(">")){
+                temp = temp.evalGreater(term.get(i+1).eval(curScope), this);
+            } else if(opr.equals("==")){
+                temp = temp.evalEqual(term.get(i+1).eval(curScope), this);
+            } else if(opr.equals(">=")){
+                temp = temp.evalGreaterEqual(term.get(i+1).eval(curScope), this);
+            } else if(opr.equals("<=")){
+                temp = temp.evalLessEqual(term.get(i+1).eval(curScope), this);
+            } else if(opr.equals("!=")){
+                temp = temp.evalNotEqual(term.get(i+1).eval(curScope), this);
+            } else{
+                RuntimeValue.runtimeError("comparison operation undefined for operator"
+                                                + opr.toString() + "!", this);
+            }
+        }
+        return temp;
     }
 }

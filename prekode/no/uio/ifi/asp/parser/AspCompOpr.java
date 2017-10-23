@@ -53,7 +53,30 @@ class AspCompOpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeOperatorValue compr = null;
+        switch (value) {
+            case lessToken:
+                compr = new RuntimeOperatorValue("<");
+                break;
+            case greaterToken:
+                compr = new RuntimeOperatorValue(">");
+                break;
+            case doubleEqualToken:
+                compr = new RuntimeOperatorValue("==");
+                break;
+            case greaterEqualToken:
+                compr = new RuntimeOperatorValue(">=");
+                break;
+            case lessEqualToken:
+                compr = new RuntimeOperatorValue("<=");
+                break;
+            case notEqualToken:
+                compr = new RuntimeOperatorValue("!=");
+                break;
+            default:
+                RuntimeValue.runtimeError("Illegal comparison operator "
+                                    + value.toString() + "!", this);
+        }
+        return compr;
     }
 }

@@ -39,7 +39,24 @@ class AspFactorOpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeOperatorValue opr = null;
+        switch (value) {
+            case astToken:
+                opr = new RuntimeOperatorValue("*");
+                break;
+            case slashToken:
+                opr = new RuntimeOperatorValue("/");
+                break;
+            case doubleSlashToken:
+                opr = new RuntimeOperatorValue("//");
+                break;
+            case percentToken:
+                opr = new RuntimeOperatorValue("%");
+                break;
+            default:
+                RuntimeValue.runtimeError("Illegal factor operator "
+                                    + value.toString() + "!", this);
+        }
+        return opr;
     }
 }

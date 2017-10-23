@@ -40,7 +40,15 @@ class AspPrimary extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        //temporary solution
+        if(suffixes.size() > 0){
+            String name;
+            name = atom.eval(curScope).toString();
+            for(AspPrimarySuffix suf : suffixes){
+                name += suf.eval(curScope).toString();
+            }
+            return curScope.find(name, this);
+        }
+        return atom.eval(curScope);
     }
 }

@@ -9,9 +9,15 @@ import no.uio.ifi.asp.scanner.TokenKind;
 class AspNotTest extends AspSyntax {
     AspComparison comparison;
     int value;
+    boolean doNot;
     AspNotTest(int n, int value){
         super(n);
         this.value = value;
+        doNot = false;
+    }
+
+    private void setNot(){
+        doNot = true;
     }
 
     static AspNotTest parse(Scanner s) {
@@ -20,6 +26,7 @@ class AspNotTest extends AspSyntax {
         if (s.curToken().kind == notToken){
             ant = new AspNotTest(s.curLineNum(), 1);
             skip(s, notToken);
+            ant.setNot();
         } else{
             ant = new AspNotTest(s.curLineNum(), 0);
         }
@@ -38,7 +45,13 @@ class AspNotTest extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
-        return null;
+        RuntimeValue temp = null;
+        if(doNot){
+            temp = comparison.eval(curScope);
+            temp = temp.evalNot(this);
+        } else{
+            temp = comparison.eval(curScope);
+        }
+        return temp;
     }
 }

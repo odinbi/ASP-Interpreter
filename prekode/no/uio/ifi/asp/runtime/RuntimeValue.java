@@ -121,6 +121,16 @@ public abstract class RuntimeValue {
 	return null;  // Required by the compiler!
     }
 
+    public RuntimeValue evalOr(RuntimeValue v, AspSyntax where){
+        runtimeError("'or' undefined for "+typeName()+"!", where);
+        return null;
+    }
+
+    public RuntimeValue evalAnd(RuntimeValue v, AspSyntax where){
+        runtimeError("'and' undefined for "+typeName()+"!", where);
+        return null;
+    }
+
     // General:
 
     public static void runtimeError(String message, AspSyntax where) {
@@ -134,7 +144,7 @@ public abstract class RuntimeValue {
 	runtimeError("subscription undefined for "+typeName()+"!", where);
     }
 
-    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams, 
+    public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams,
 				     RuntimeScope scope, AspSyntax where) {
 	runtimeError("'Function call (...)' undefined for "+typeName()+"!", where);
 	return null;  // Required by the compiler!

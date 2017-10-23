@@ -55,7 +55,13 @@ class AspAssignment extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
+        String nm = name.value;
+        if(subscr.size() > 0){
+            for(AspSubscription sub : subscr){
+                nm = nm + "[" + sub.eval(curScope).toString() + "]";
+            }
+        }
+        curScope.assign(nm, expr.eval(curScope));
         return null;
     }
 }
