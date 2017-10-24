@@ -50,6 +50,7 @@ public class AspExpr extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         boolean doTest = false;
         RuntimeValue temp = null;
+        System.out.println("\t@AspExpr.eval()");
         for(AspAndTest andTest : andTests){
             if(doTest){
                 temp = temp.evalOr(andTest.eval(curScope), this);
@@ -58,6 +59,7 @@ public class AspExpr extends AspSyntax {
             }
             if(!doTest) doTest = true;
         }
+        System.out.println("\t/@AspExpr.eval()");
         return temp;
     }
 }

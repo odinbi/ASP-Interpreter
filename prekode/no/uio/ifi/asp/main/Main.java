@@ -98,6 +98,7 @@ public class Main {
 
         RuntimeScope emptyScope = new RuntimeScope();
         for (AspExpr e: exprs) {
+            System.out.println("@Main start eval");
             e.prettyPrint();  log.prettyWriteLn(" ==>");
             try {
                 RuntimeValue res = e.eval(emptyScope);

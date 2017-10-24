@@ -41,14 +41,29 @@ class AspPrimary extends AspSyntax {
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //temporary solution
+        System.out.println("\t@AspPrimary.eval()");
         if(suffixes.size() > 0){
-            String name;
-            name = atom.eval(curScope).toString();
+            RuntimeListValue name = (RuntimeListValue)atom.eval(curScope);
+
+            ArrayList<RuntimeValue> suffix = new ArrayList<>();
+
             for(AspPrimarySuffix suf : suffixes){
-                name += suf.eval(curScope).toString();
+                suffix.add(suf.eval(curScope));
             }
-            return curScope.find(name, this);
+            System.out.println("\t\tSTATUS: name: " + name.toString());
+            RuntimeValue rtrn = null;
+            for(int i = 0; i < suffix.size(); i++){
+                RuntimeListValue temp = (RuntimeListValue)suffix.get(i);
+                if(i < suffix.size()-1){
+                    name = (RuntimeListValue)name.getEntry(temp.getEntry(0), this);
+                } else{
+                    rtrn = name.getEntry(temp.getEntry(0), this);
+                }
+            }
+            System.out.println("\t/@AspPrimary.eval()");
+            return rtrn;
         }
+        System.out.println("\t/@AspPrimary.eval()");
         return atom.eval(curScope);
     }
 }

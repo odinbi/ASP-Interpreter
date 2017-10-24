@@ -27,6 +27,17 @@ public class RuntimeBoolValue extends RuntimeValue {
         return boolValue;
     }
 
+    public RuntimeValue evalAnd(RuntimeValue v, AspSyntax where) {
+        if(!getBoolValue(toString(), where)) return new RuntimeBoolValue(false);
+        if(v.getBoolValue(v.toString(), where)) return v;
+        return new RuntimeBoolValue(false);
+    }
+
+    public RuntimeValue evalOr(RuntimeValue v, AspSyntax where){
+        if(getBoolValue(toString(), where)) return this;
+        if(v.getBoolValue(v.toString(), where)) return v;
+        return new RuntimeBoolValue(false);
+    }
 
     @Override
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {

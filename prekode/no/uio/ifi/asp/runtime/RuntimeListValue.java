@@ -10,10 +10,13 @@ public class RuntimeListValue extends RuntimeValue {
         lst.add(value);
     }
 
+    public RuntimeListValue() {
+    }
+
     public void add(RuntimeValue value){
         lst.add(value);
     }
-    
+
     @Override
     protected String typeName() {
         return "list";
@@ -33,9 +36,17 @@ public class RuntimeListValue extends RuntimeValue {
         return temp;
     }
 
-
     public RuntimeValue getEntry(int i){
         return lst.get(i);
+    }
+
+    public RuntimeValue getEntry(RuntimeValue v, AspSyntax where){
+        if(v instanceof RuntimeIntValue){
+            return lst.get((int)v.getIntValue(v.toString(), where));
+        }
+        System.out.println("List: " + lst + ", Index: " + v.toString());
+        runtimeError("getEntry undefined for " + v.typeName() + "!", where);
+        return null;
     }
 
     public RuntimeListValue getList(RuntimeValue name) {

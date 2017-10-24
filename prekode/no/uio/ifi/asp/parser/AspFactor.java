@@ -52,11 +52,12 @@ class AspFactor extends AspSyntax {
         RuntimeValue temp = primary.get(0).eval(curScope);
         String curopr = null;
         String curprefix = null;
-
+        System.out.println("\t@AspFactor.eval()");
         if(prefix != null) curprefix = prefix.toString();
 
         for(int i = 0; i < oprs.size(); i++){
-            curopr = oprs.get(i).toString();
+            curopr = oprs.get(i).value.toString();
+            System.out.println("\t\tCurrent primarry: " + temp.toString() + ", current operator: " + curopr);
             if(curopr.equals("*")){
                 temp = temp.evalMultiply(primary.get(i+1).eval(curScope), this);
             } else if(curopr.equals("/")){
@@ -66,10 +67,11 @@ class AspFactor extends AspSyntax {
             } else if(curopr.equals("%")){
                 temp = temp.evalModulo(primary.get(i+1).eval(curScope), this);
             } else{
-                RuntimeValue.runtimeError("factor operation undefined for operator"
-                                                + oprs.get(i).toString() + "!", this);
+                RuntimeValue.runtimeError("factor operation undefined for operator "
+                                                + curopr + "!", this);
             }
         }
+        System.out.println("\t/@AspFactor.eval()");
         return temp;
     }
 }

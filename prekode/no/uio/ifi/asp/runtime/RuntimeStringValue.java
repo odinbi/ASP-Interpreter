@@ -42,6 +42,14 @@ public class RuntimeStringValue extends RuntimeValue {
     	return null;  // Required by the compiler!
     }
 
+    @Override
+    public RuntimeValue evalNotEqual(RuntimeValue v, AspSyntax where) {
+        if (v instanceof RuntimeStringValue) {
+            return new RuntimeBoolValue(!stringValue.equals(v.getStringValue(v.toString(), where)));
+        }
+        runtimeError("'!=' undefined for "+typeName()+"!", where);
+    	return null;  // Required by the compiler!
+    }
 
     @Override
     public RuntimeValue evalGreater(RuntimeValue v, AspSyntax where) {
@@ -133,16 +141,18 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
+        System.out.println("@RuntimeStringValue.evalMultiply()");
+        String returnString = "";
         if (v instanceof RuntimeIntValue) {
             long count = v.getIntValue(v.toString(), where);
             if(count <= 0){
-                stringValue = "";
+                return new RuntimeStringValue(returnString);
             } else {
                 for(int i = 0; i < count; i++){
-                    stringValue += stringValue;
+                    returnString += stringValue;
                 }
             }
-            return this;
+            return new RuntimeStringValue(returnString);
         }
         runtimeError("'*' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -169,5 +179,9 @@ public class RuntimeStringValue extends RuntimeValue {
     public boolean getBoolValue(String what, AspSyntax where){
         if(stringValue == null || stringValue == "") return false;
         return true;
+    }
+
+    public String toString(){
+        return stringValue;
     }
 }

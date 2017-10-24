@@ -33,6 +33,9 @@ class AspStringLiteral extends AspAtom {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        return new RuntimeStringValue(value);
+        System.out.println("\t@AspStringLiteral.eval()");
+        RuntimeStringValue rtrn = new RuntimeStringValue(this.value);
+        System.out.println("\t/@AspStringLiteral.eval()");
+        return rtrn;
     }
 }

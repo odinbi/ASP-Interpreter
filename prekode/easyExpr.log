@@ -1,1 +1,4 @@
 PP> 1 + 1 ==>
+Trace line 1: 2
+PP> "a" * 4 ==>
+Trace line 2: aaaa
