@@ -38,6 +38,7 @@ class AspTermOpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        Main.rlog.enterEval("AspTermOpr");
         RuntimeOperatorValue opr = null;
         switch (value) {
             case plusToken:
@@ -50,6 +51,7 @@ class AspTermOpr extends AspSyntax {
                 RuntimeValue.runtimeError("Illegal term operator "
                                     + value.toString() + "!", this);
         }
+        Main.rlog.leaveEval("AspTermOpr");
         return opr;
     }
 }

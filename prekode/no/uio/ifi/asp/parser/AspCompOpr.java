@@ -53,6 +53,7 @@ class AspCompOpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        Main.rlog.enterEval("AspCompOpr");
         RuntimeOperatorValue compr = null;
         switch (value) {
             case lessToken:
@@ -77,6 +78,7 @@ class AspCompOpr extends AspSyntax {
                 RuntimeValue.runtimeError("Illegal comparison operator "
                                     + value.toString() + "!", this);
         }
+        Main.rlog.leaveEval("AspSubscription");
         return compr;
     }
 }

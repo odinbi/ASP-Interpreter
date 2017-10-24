@@ -49,9 +49,9 @@ class AspAndTest extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        Main.rlog.enterEval("AspAndTest");
         boolean doTest = false;
         RuntimeValue temp = null;
-        System.out.println("\t@AspAndTest.eval()");
         for(AspNotTest notTest : notTests){
             if(doTest){
                 temp = temp.evalAnd(notTest.eval(curScope), this);
@@ -60,7 +60,7 @@ class AspAndTest extends AspSyntax {
             }
             if(!doTest) doTest = true;
         }
-        System.out.println("\t/@AspAndTest.eval()");
+        Main.rlog.leaveEval("AspAndTest");
         return temp;
     }
 }

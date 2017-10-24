@@ -33,8 +33,9 @@ class AspName extends AspAtom{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        System.out.println("\t@AspName.eval()");
-        System.out.println("\t/@AspName.eval()");
-        return curScope.find(value, this);
+        Main.rlog.enterEval("AspName");
+        RuntimeValue temp = curScope.find(value, this);
+        Main.rlog.leaveEval("AspName");
+        return temp;
     }
 }

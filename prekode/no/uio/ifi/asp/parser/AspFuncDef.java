@@ -57,6 +57,9 @@ class AspFuncDef extends AspStmt{
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //-- Must be changed in part 4:
+        Main.rlog.enterEval("AspFuncDef");
+
+        Main.rlog.leaveEval("AspFuncDef");
         return null;
     }
 }

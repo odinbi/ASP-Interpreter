@@ -55,7 +55,7 @@ class AspAssignment extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        System.out.println("\t@AspAssignment.eval()");
+        Main.rlog.enterEval("AspAssignment");
         String nm = name.value;
         if(subscr.size() > 0){
             for(AspSubscription sub : subscr){
@@ -63,7 +63,7 @@ class AspAssignment extends AspStmt{
             }
         }
         curScope.assign(nm, expr.eval(curScope));
-        System.out.println("\t/@AspAssignment.eval()");
+        Main.rlog.leaveEval("AspAssignment");
         return null;
     }
 }

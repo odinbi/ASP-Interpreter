@@ -42,7 +42,7 @@ class AspTerm extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeValue temp = factor.get(0).eval(curScope);
         String curopr = null;
-        System.out.println("\t@AspTerm.eval()");
+        Main.rlog.enterEval("AspTerm");
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
             System.out.println("\t\tCurrent factor: " + temp.toString() + ", current operator: " + curopr);
@@ -55,7 +55,7 @@ class AspTerm extends AspSyntax {
                                                 + curopr + "!", this);
             }
         }
-        System.out.println("\t/@AspTerm.eval()");
+        Main.rlog.leaveEval("AspTerm");
         return temp;
     }
 }

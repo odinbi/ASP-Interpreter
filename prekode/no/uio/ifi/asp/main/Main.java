@@ -13,6 +13,8 @@ public class Main {
 
     public static LogFile log = null;
 
+    public static RuntimeLogger rlog = null; //added for easier bug fixing
+
     public static void main(String arg[]) {
         String fileName = null, baseFilename = null;
         boolean testExpr = false, testParser = false, testScanner = false,
@@ -97,8 +99,9 @@ public class Main {
         }
 
         RuntimeScope emptyScope = new RuntimeScope();
+        rlog = new RuntimeLogger(true);
         for (AspExpr e: exprs) {
-            System.out.println("@Main start eval");
+            rlog.enterEval("Main");
             e.prettyPrint();  log.prettyWriteLn(" ==>");
             try {
                 RuntimeValue res = e.eval(emptyScope);
@@ -106,6 +109,7 @@ public class Main {
             } catch (RuntimeReturnValue rrv) {
                 panic("Uncaught return value!");
             }
+            rlog.leaveEval("Main")
         }
     }
 

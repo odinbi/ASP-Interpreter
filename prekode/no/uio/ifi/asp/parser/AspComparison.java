@@ -53,7 +53,7 @@ class AspComparison extends AspSyntax {
         RuntimeValue rtrn = temp;
         RuntimeValue temp2;
         String opr = null;
-        System.out.println("\t@AspComparison.eval()");
+        Main.rlog.enterEval("AspComparison");
         for(int i = 0; i < cmpopr.size(); i++){
             opr = cmpopr.get(i).value.toString();
             System.out.println("\t\tCurrent term: " + temp.toString() + ", current comparison: " + opr);
@@ -77,7 +77,7 @@ class AspComparison extends AspSyntax {
             }
             if(!rtrn.getBoolValue(rtrn.toString(), this)) break;
         }
-        System.out.println("\t/@AspComparison.eval()");
+        Main.rlog.leaveEval("AspComparison");
         return rtrn;
     }
 }

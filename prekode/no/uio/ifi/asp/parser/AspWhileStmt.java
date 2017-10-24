@@ -36,9 +36,11 @@ class AspWhileStmt extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        Main.rlog.enterEval("AspWhileStmt");
         while(expr.eval(curScope).getBoolValue(expr.eval(curScope).toString(), this)){
             suite.eval(curScope);
         }
+        Main.rlog.leaveEval("AspWhileStmt");
         return null;
     }
 }

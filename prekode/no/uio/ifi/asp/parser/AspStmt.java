@@ -60,6 +60,9 @@ abstract class AspStmt extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        return as.eval(curScope);
+        Main.rlog.enterEval("AspStmt");
+        RuntimeValue temp = as.eval(curScope);
+        Main.rlog.leaveEval("AspStmt");
+        return Temp;
     }
 }
