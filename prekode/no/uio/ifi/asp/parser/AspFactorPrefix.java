@@ -36,7 +36,7 @@ class AspFactorPrefix extends AspSyntax {
     }
 
     @Override
-    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+    public RuntimeOperatorValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspFactorPrefix");
         RuntimeOperatorValue opr = null;
         switch (value) {

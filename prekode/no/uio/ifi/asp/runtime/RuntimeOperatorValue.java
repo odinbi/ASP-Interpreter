@@ -9,7 +9,7 @@ public class RuntimeOperatorValue extends RuntimeValue {
         value = v;
     }
 
-    public String getComprOpr(){
+    public String getOpr(){
         return value;
     }
 

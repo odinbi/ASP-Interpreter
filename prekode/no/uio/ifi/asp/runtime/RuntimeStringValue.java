@@ -21,6 +21,16 @@ public class RuntimeStringValue extends RuntimeValue {
         return stringValue;
     }
 
+    @Override
+    public RuntimeStringValue getEntry(RuntimeValue v, AspSyntax where){
+        char[] str = stringValue.toCharArray();
+        if(v instanceof RuntimeIntValue){
+            return new RuntimeStringValue("" + str[(int)v.getIntValue(v.toString(), where)]);
+        }
+        runtimeError("getEntry(type) undefined for type" + v.typeName() + "!", where);
+        return null;
+    }
+
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
@@ -141,7 +151,6 @@ public class RuntimeStringValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
-        System.out.println("@RuntimeStringValue.evalMultiply()");
         String returnString = "";
         if (v instanceof RuntimeIntValue) {
             long count = v.getIntValue(v.toString(), where);

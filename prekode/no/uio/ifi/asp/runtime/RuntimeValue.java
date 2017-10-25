@@ -12,8 +12,12 @@ public abstract class RuntimeValue {
 	return toString();
     }
 
-    // For parts 3 and 4:
+    public RuntimeValue getEntry(RuntimeValue v, AspSyntax where){
+        runtimeError("getEntry undefined for " + typeName() + "!", where);
+        return null;
+    }
 
+    // For parts 3 and 4:
     public boolean getBoolValue(String what, AspSyntax where) {
 	runtimeError("Type error: "+what+" is not a Boolean!", where);
 	return false;  // Required by the compiler!

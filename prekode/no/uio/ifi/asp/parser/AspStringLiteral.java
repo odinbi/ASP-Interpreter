@@ -32,7 +32,7 @@ class AspStringLiteral extends AspAtom {
     }
 
     @Override
-    public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+    public RuntimeStringValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspStringLiteral");
         RuntimeStringValue rtrn = new RuntimeStringValue(this.value);
         Main.rlog.leaveEval("AspStringLiteral");

@@ -63,6 +63,6 @@ abstract class AspStmt extends AspSyntax {
         Main.rlog.enterEval("AspStmt");
         RuntimeValue temp = as.eval(curScope);
         Main.rlog.leaveEval("AspStmt");
-        return Temp;
+        return temp;
     }
 }

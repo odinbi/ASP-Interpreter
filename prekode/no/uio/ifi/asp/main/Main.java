@@ -99,7 +99,7 @@ public class Main {
         }
 
         RuntimeScope emptyScope = new RuntimeScope();
-        rlog = new RuntimeLogger(true);
+        rlog = new RuntimeLogger(true); //status: true ( prints eval help prints), false(no print)
         for (AspExpr e: exprs) {
             rlog.enterEval("Main");
             e.prettyPrint();  log.prettyWriteLn(" ==>");
@@ -109,7 +109,7 @@ public class Main {
             } catch (RuntimeReturnValue rrv) {
                 panic("Uncaught return value!");
             }
-            rlog.leaveEval("Main")
+            rlog.leaveEval("Main");
         }
     }
 

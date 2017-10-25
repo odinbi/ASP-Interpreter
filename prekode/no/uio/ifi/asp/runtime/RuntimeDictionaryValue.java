@@ -44,8 +44,13 @@ public class RuntimeDictionaryValue extends RuntimeValue {
         return this;
     }
 
-    public RuntimeValue getVariable(String name) {
-        return varMap.get(name);
+    @Override
+    public RuntimeValue getEntry(RuntimeValue v, AspSyntax where){
+        if(v instanceof RuntimeStringValue){
+            return varMap.get(v.getStringValue(v.toString(), where));
+        }
+        runtimeError("getEntry undefined for" + v.typeName() + "!", where);
+        return null;
     }
 
     @Override

@@ -56,7 +56,7 @@ class AspComparison extends AspSyntax {
         Main.rlog.enterEval("AspComparison");
         for(int i = 0; i < cmpopr.size(); i++){
             opr = cmpopr.get(i).value.toString();
-            System.out.println("\t\tCurrent term: " + temp.toString() + ", current comparison: " + opr);
+            Main.rlog.enterMessage("Current term: " + temp.toString() + ", current comparison: " + opr + ", next term: " + term.get(i+1).eval(curScope).toString());
             temp2 = temp;
             temp = term.get(i+1).eval(curScope);
             if(opr.equals("<")){

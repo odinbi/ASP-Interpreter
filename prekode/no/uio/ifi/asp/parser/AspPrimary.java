@@ -43,19 +43,22 @@ class AspPrimary extends AspSyntax {
         //temporary solution
         Main.rlog.enterEval("AspPrimary");
         if(suffixes.size() > 0){
-            RuntimeListValue name = (RuntimeListValue)atom.eval(curScope);
+            RuntimeValue name = atom.eval(curScope);
+            if(!(name instanceof RuntimeListValue || name instanceof RuntimeDictionaryValue || name instanceof RuntimeStringValue)){
+                name.runtimeError("Could not recognize type: " + name.toString() + "!", this);
+            }
 
             ArrayList<RuntimeValue> suffix = new ArrayList<>();
 
             for(AspPrimarySuffix suf : suffixes){
                 suffix.add(suf.eval(curScope));
             }
-            System.out.println("\t\tSTATUS: name: " + name.toString());
+            Main.rlog.enterMessage("STATUS: name: " + name.toString());
             RuntimeValue rtrn = null;
             for(int i = 0; i < suffix.size(); i++){
                 RuntimeListValue temp = (RuntimeListValue)suffix.get(i);
                 if(i < suffix.size()-1){
-                    name = (RuntimeListValue)name.getEntry(temp.getEntry(0), this);
+                    name = name.getEntry(temp.getEntry(0), this);
                 } else{
                     rtrn = name.getEntry(temp.getEntry(0), this);
                 }

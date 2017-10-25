@@ -59,7 +59,7 @@ class AspArguments extends AspPrimarySuffix{
         for(AspExpr arg : expr){
             args.add(arg.eval(curScope));
         }
-        Main.rlog.leaveEval("@AspArguments");
+        Main.rlog.leaveEval("AspArguments");
         return args;
     }
 }

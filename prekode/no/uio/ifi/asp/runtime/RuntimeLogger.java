@@ -12,18 +12,21 @@ public class RuntimeLogger {
     }
 
     public void enterEval(String nonTerm){
-        System.out.println(tabs + "<" + nonTerm + ">");
+        if(!doLogEval) return;
         ++evalLevel;
-        updateTabs;
+        updateTabs();
+        System.out.println(tabs + "<" + nonTerm + ">");
     }
 
     public void leaveEval(String nonTerm){
+        if(!doLogEval) return;
         System.out.println(tabs + "</" + nonTerm + ">");
         --evalLevel;
-        updateTabs;
+        updateTabs();
     }
 
     public void enterMessage(String message){
+        if(!doLogEval) return;
         System.out.println(tabs + "     " + message);
     }
 

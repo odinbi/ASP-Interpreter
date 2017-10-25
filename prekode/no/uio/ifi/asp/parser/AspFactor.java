@@ -53,11 +53,17 @@ class AspFactor extends AspSyntax {
         RuntimeValue temp = primary.get(0).eval(curScope);
         String curopr = null;
         String curprefix = null;
-        if(prefix != null) curprefix = prefix.toString();
+        if(prefix != null){
+            curprefix = prefix.eval(curScope).getOpr();
+            if(curprefix.equals("-")){
+                temp.evalNegate(this);
+            }
+        }
+
 
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
-            System.out.println("\t\tCurrent primarry: " + temp.toString() + ", current operator: " + curopr);
+            Main.rlog.enterMessage("Current primary: " + temp.toString() + ", current operator: " + curopr + ", next primary " + primary.get(i+1).eval(curScope).toString());
             if(curopr.equals("*")){
                 temp = temp.evalMultiply(primary.get(i+1).eval(curScope), this);
             } else if(curopr.equals("/")){

@@ -40,6 +40,7 @@ public class RuntimeListValue extends RuntimeValue {
         return lst.get(i);
     }
 
+    @Override
     public RuntimeValue getEntry(RuntimeValue v, AspSyntax where){
         if(v instanceof RuntimeIntValue){
             return lst.get((int)v.getIntValue(v.toString(), where));
@@ -70,6 +71,21 @@ public class RuntimeListValue extends RuntimeValue {
         }
         runtimeError("'+' undefined for "+typeName()+"!", where);
     	return null;  // Required by the compiler!
+    }
+
+    @Override
+    public RuntimeListValue evalMultiply(RuntimeValue v, AspSyntax where){
+        if(v instanceof RuntimeIntValue){
+            RuntimeListValue temp = new RuntimeListValue();
+            for(int i = 0; i < v.getIntValue(v.toString(), where); i++){
+                for(int j = 0; j < lst.size(); j++){
+                    temp.add(lst.get(j));
+                }
+            }
+            return temp;
+        }
+        runtimeError("'*' undefined for "+typeName()+"!", where);
+    	return null;
     }
 
     public RuntimeValue evalEqual(RuntimeValue v, AspSyntax where) {
