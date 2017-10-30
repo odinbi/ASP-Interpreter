@@ -16,8 +16,8 @@
                 <factor>
                   <primary>
                     <atom>
-                      <integer litteral>
-                      </integer litteral>
+                      <integer literal>
+                      </integer literal>
                     </atom>
                   </primary>
                 </factor>
@@ -50,8 +50,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <boolean litteral>
-                                        </boolean litteral>
+                                        <boolean literal>
+                                        </boolean literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -86,8 +86,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <integer litteral>
-                                        </integer litteral>
+                                        <integer literal>
+                                        </integer literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -127,8 +127,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -186,8 +186,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <integer litteral>
-                                  </integer litteral>
+                                  <integer literal>
+                                  </integer literal>
                                 </atom>
                               </primary>
                               <factor opr>
@@ -273,8 +273,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <boolean litteral>
-                                        </boolean litteral>
+                                        <boolean literal>
+                                        </boolean literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -346,8 +346,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <integer litteral>
-                                  </integer litteral>
+                                  <integer literal>
+                                  </integer literal>
                                 </atom>
                               </primary>
                             </factor>
@@ -396,8 +396,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -418,8 +418,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <string litteral>
-                                  </string litteral>
+                                  <string literal>
+                                  </string literal>
                                 </atom>
                               </primary>
                             </factor>
@@ -484,8 +484,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -506,8 +506,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <string litteral>
-                                  </string litteral>
+                                  <string literal>
+                                  </string literal>
                                 </atom>
                               </primary>
                             </factor>
@@ -572,8 +572,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -594,8 +594,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <string litteral>
-                                  </string litteral>
+                                  <string literal>
+                                  </string literal>
                                 </atom>
                               </primary>
                             </factor>
@@ -713,8 +713,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -738,8 +738,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <string litteral>
-                            </string litteral>
+                            <string literal>
+                            </string literal>
                           </atom>
                         </primary>
                       </factor>
@@ -763,8 +763,8 @@
                       <factor>
                         <primary>
                           <atom>
-                            <integer litteral>
-                            </integer litteral>
+                            <integer literal>
+                            </integer literal>
                           </atom>
                         </primary>
                       </factor>
@@ -876,8 +876,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <integer litteral>
-                                        </integer litteral>
+                                        <integer literal>
+                                        </integer literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -898,8 +898,8 @@
                                     </factor opr>
                                     <primary>
                                       <atom>
-                                        <integer litteral>
-                                        </integer litteral>
+                                        <integer literal>
+                                        </integer literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -910,8 +910,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <integer litteral>
-                                        </integer litteral>
+                                        <integer literal>
+                                        </integer literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -979,8 +979,8 @@
                                         <factor>
                                           <primary>
                                             <atom>
-                                              <string litteral>
-                                              </string litteral>
+                                              <string literal>
+                                              </string literal>
                                             </atom>
                                           </primary>
                                         </factor>
@@ -1074,8 +1074,8 @@
                                   <factor>
                                     <primary>
                                       <atom>
-                                        <integer litteral>
-                                        </integer litteral>
+                                        <integer literal>
+                                        </integer literal>
                                       </atom>
                                     </primary>
                                   </factor>
@@ -1112,8 +1112,8 @@
                             <factor>
                               <primary>
                                 <atom>
-                                  <integer litteral>
-                                  </integer litteral>
+                                  <integer literal>
+                                  </integer literal>
                                 </atom>
                               </primary>
                             </factor>
