@@ -140,10 +140,12 @@ public class RuntimeFloatValue extends RuntimeValue {
     @Override
     public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            floatValue = floatValue - v.getIntValue(v.toString(), where) * Math.floor(floatValue/v.getIntValue(v.toString(), where));
+            floatValue = floatValue - v.getIntValue(v.toString(), where)
+                    * Math.floor(floatValue/v.getIntValue(v.toString(), where));
             return this;
         } else if (v instanceof RuntimeFloatValue){
-            floatValue = floatValue - v.getFloatValue(v.toString(), where) * Math.floor(floatValue/v.getFloatValue(v.toString(), where));
+            floatValue = floatValue - v.getFloatValue(v.toString(), where)
+                  * Math.floor(floatValue/v.getFloatValue(v.toString(), where));
             return this;
         }
         runtimeError("'%' undefined for "+typeName()+"!", where);

@@ -34,7 +34,7 @@ public class RuntimeIntValue extends RuntimeValue {
             intValue += v.getIntValue(v.toString(), where);
             return this;
     	} else if (v instanceof RuntimeFloatValue){
-            double temp = v.getFloatValue(v.toString(), where) + (double) intValue;
+            double temp = v.getFloatValue(v.toString(), where) + (double)intValue;
             return new RuntimeFloatValue(temp);
     	}
         runtimeError("'+' undefined for "+typeName()+"!", where);
@@ -141,10 +141,11 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue = (long)Math.floor(intValue/v.getIntValue(v.toString(), where));
+            intValue = Math.floorMod(intValue, v.getIntValue(v.toString(), where));
             return this;
     	} else if (v instanceof RuntimeFloatValue){
-            double temp = intValue - v.getFloatValue(v.toString(), where) * Math.floor(intValue/v.getFloatValue(v.toString(), where));
+            double temp = intValue - v.getFloatValue(v.toString(), where)
+                    * Math.floor(intValue/v.getFloatValue(v.toString(), where));
             return new RuntimeFloatValue(temp);
     	}
         runtimeError("'%' undefined for "+typeName()+"!", where);

@@ -7,7 +7,7 @@ Trace line 3: -1017
 PP> -2 + 5 * 7 ==>
 Trace line 4: 33
 PP> 100 % (-2 % (+2 * 5) + 18) ==>
-Trace line 5: 5
+Trace line 5: 22
 PP> 1234567890 // 1000000 ==>
 Trace line 6: 1234
 PP> "Testing float expressions:" ==>
