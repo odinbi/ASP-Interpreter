@@ -22,6 +22,25 @@ public class RuntimeListValue extends RuntimeValue {
         return "list";
     }
 
+    public RuntimeValue evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
+        long index = indx.getIntValue(indx.toString(), where);
+        if(index >= lst.size()){
+            valSubscription(indx, where);
+        }
+        lst.set(index, val);
+    }
+
+    public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
+        long index = indx.getIntValue(indx.toString(), where);
+        try{
+            return lst.get(index);
+        }catch(ArrayIndexOutOfBoundsException ex){
+            for(long i = lst.size(); i <= index; i++){
+                lst.add(new RuntimeNoneValue());
+            }
+            return lst.get(index);
+        }
+    }
 
     @Override
     public String toString() {

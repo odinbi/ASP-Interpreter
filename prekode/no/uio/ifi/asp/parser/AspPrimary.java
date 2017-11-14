@@ -42,32 +42,23 @@ class AspPrimary extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //temporary solution
         Main.rlog.enterEval("AspPrimary");
+        RuntimeValue atm = atom.eval(curScope);
         if(suffixes.size() > 0){
-            RuntimeValue name = atom.eval(curScope);
-            if(!(name instanceof RuntimeListValue || name instanceof RuntimeDictionaryValue || name instanceof RuntimeStringValue)){
-                name.runtimeError("Could not recognize type: " + name.toString() + "!", this);
-            }
-
-            ArrayList<RuntimeValue> suffix = new ArrayList<>();
-
-            for(AspPrimarySuffix suf : suffixes){
-                suffix.add(suf.eval(curScope));
-            }
-            Main.rlog.enterMessage("STATUS: name: " + name.toString());
-            RuntimeValue rtrn = null;
-            for(int i = 0; i < suffix.size(); i++){
-                RuntimeListValue temp = (RuntimeListValue)suffix.get(i);
-                if(i < suffix.size()-1){
-                    name = name.getEntry(temp.getEntry(0), this);
-                } else{
-                    rtrn = name.getEntry(temp.getEntry(0), this);
+            if(atm instanceof RuntimeFunc){
+                try{
+                    atm = atm.evalFuncCall(suffixes.get(0).eval(curScope));
+                } catch(RuntimeReturnValue rtval){
+                    atm = rtval;
+                }
+            } else if(!(atm instanceof RuntimeListValue || atm instanceof RuntimeDictionaryValue || atm instanceof RuntimeStringValue)){
+                atm.runtimeError("Could not recognize type: " + atm.toString() + "!", this);
+            } else{
+                for(AspPrimarySuffix suf : suffixes){
+                    atm = atm.evalSubscription(suf.eval(curScope));
                 }
             }
-            Main.rlog.leaveEval("AspPrimary");
-            return rtrn;
         }
-        RuntimeValue temp = atom.eval(curScope);
         Main.rlog.leaveEval("AspPrimary");
-        return temp;
+        return atm;
     }
 }

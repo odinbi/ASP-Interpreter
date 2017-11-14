@@ -36,6 +36,9 @@ public class RuntimeArgumentsValue extends RuntimeValue {
         return temp;
     }
 
+    public int evalLen(){
+        return lst.size();
+    }
 
     public RuntimeValue getEntry(int i){
         return lst.get(i);

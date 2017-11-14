@@ -58,8 +58,8 @@ class AspFuncDef extends AspStmt{
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         //-- Must be changed in part 4:
         Main.rlog.enterEval("AspFuncDef");
-
+        RuntimeFunc func = new RuntimeFunc(this, curScope, funcName.value);
         Main.rlog.leaveEval("AspFuncDef");
-        return null;
+        return func;
     }
 }
