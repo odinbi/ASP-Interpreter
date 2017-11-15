@@ -61,6 +61,7 @@ public class Main {
         if (logP || testParser) log.doLogParser = true;
         if (logS || testScanner) log.doLogScanner = true;
         if (logY || testExpr || testParser) log.doLogPrettyPrint = true;
+        if (logY) rlog = new RuntimeLogger(true);
 
         Scanner s = new Scanner(fileName);
         if (testScanner)
@@ -115,6 +116,7 @@ public class Main {
 
 
     private static void doRunInterpreter(Scanner s) {
+        rlog.enterEval("Main");
         AspProgram prog = AspProgram.parse(s);
         if (log.doLogPrettyPrint)
         prog.prettyPrint();
@@ -126,6 +128,7 @@ public class Main {
         } catch (RuntimeReturnValue rrv) {
             panic("Uncaught return value!");
         }
+        rlog.leaveEval("Main");
     }
 
 

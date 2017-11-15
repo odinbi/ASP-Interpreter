@@ -1,0 +1,49 @@
+<program>
+   1: # Dette programmet starter med en del rar men lovlig indentering
+   2: # fÃ¸r det til sist viser en ulovlig indentering.
+   3: 
+   4: if True:
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <boolean litteral>
+                      </boolean litteral>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+   5:  if False:  # Indentering (kort men helt lovlig)
+        <stmt>
+          <if stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <boolean litteral>
+                            </boolean litteral>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+            <suite>
+Asp parser error on line 5: Expected a NEWLINE but found a name!

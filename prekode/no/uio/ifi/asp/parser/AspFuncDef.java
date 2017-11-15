@@ -20,7 +20,10 @@ public class AspFuncDef extends AspStmt{
     }
 
     public int getNameSize(){
-        return name.size();
+        if(name != null){
+            return name.size();
+        }
+        return 0;
     }
 
     public AspSuite getSuite(){
@@ -71,6 +74,7 @@ public class AspFuncDef extends AspStmt{
         //-- Must be changed in part 4:
         Main.rlog.enterEval("AspFuncDef");
         RuntimeFunc func = new RuntimeFunc(this, curScope, funcName.value);
+        curScope.assign(funcName.value, func);
         Main.rlog.leaveEval("AspFuncDef");
         return func;
     }

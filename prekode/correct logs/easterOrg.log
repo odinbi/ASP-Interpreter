@@ -1,0 +1,1265 @@
+<program>
+   1: # Finn 1. påskedag for årene 2015-2020.
+   2: 
+   3: M_name = [""] * (12+1)
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <list display>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <string literal>
+                                        </string literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </list display>
+                    </atom>
+                  </primary>
+                  <factor opr>
+                  </factor opr>
+                  <primary>
+                    <atom>
+                      <inner expr>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <integer literal>
+                                        </integer literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                  <term opr>
+                                  </term opr>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <integer literal>
+                                        </integer literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </inner expr>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   4: M_name[3] = "mars"
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <subscription>
+        <expr>
+          <and test>
+            <not test>
+              <comparison>
+                <term>
+                  <factor>
+                    <primary>
+                      <atom>
+                        <integer literal>
+                        </integer literal>
+                      </atom>
+                    </primary>
+                  </factor>
+                </term>
+              </comparison>
+            </not test>
+          </and test>
+        </expr>
+      </subscription>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <string literal>
+                      </string literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   5: M_name[4] = "april"
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <subscription>
+        <expr>
+          <and test>
+            <not test>
+              <comparison>
+                <term>
+                  <factor>
+                    <primary>
+                      <atom>
+                        <integer literal>
+                        </integer literal>
+                      </atom>
+                    </primary>
+                  </factor>
+                </term>
+              </comparison>
+            </not test>
+          </and test>
+        </expr>
+      </subscription>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <string literal>
+                      </string literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   6: 
+   7: y = 2015
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+   8: while y <= 2020:
+  <stmt>
+    <while stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+              <comp opr>
+              </comp opr>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <integer literal>
+                      </integer literal>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+   9:    a = y % 19
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  10:    b = y // 100
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  11:    c = y % 100
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  12:    d = b // 4
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  13:    e = b % 4
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  14:    f = (b+8) // 25
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  15:    g = (b-f+1) // 3
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  16:    h = (19*a+b-d-g+15) % 30
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  17:    i = c // 4
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  18:    k = c % 4
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  19:    l = (32+2*e+2*i-h-k) % 7
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  20:    m = (a+11*h+22*l) // 451
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  21: 
+  22:    month = (h+l-7*m+114) // 31
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  23:    day = (h+l-7*m+114) % 31 + 1
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <inner expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                          <factor opr>
+                                          </factor opr>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <integer literal>
+                                              </integer literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </inner expr>
+                          </atom>
+                        </primary>
+                        <factor opr>
+                        </factor opr>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                      <term opr>
+                      </term opr>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+  24:    print(str(day) + ". " + M_name[month], y)
+        <stmt>
+          <expr stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                          <primary suffix>
+                            <arguments>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                            <primary suffix>
+                                              <arguments>
+                                                <expr>
+                                                  <and test>
+                                                    <not test>
+                                                      <comparison>
+                                                        <term>
+                                                          <factor>
+                                                            <primary>
+                                                              <atom>
+                                                                <name>
+                                                                </name>
+                                                              </atom>
+                                                            </primary>
+                                                          </factor>
+                                                        </term>
+                                                      </comparison>
+                                                    </not test>
+                                                  </and test>
+                                                </expr>
+                                              </arguments>
+                                            </primary suffix>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <string literal>
+                                              </string literal>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                        <term opr>
+                                        </term opr>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                            <primary suffix>
+                                              <subscription>
+                                                <expr>
+                                                  <and test>
+                                                    <not test>
+                                                      <comparison>
+                                                        <term>
+                                                          <factor>
+                                                            <primary>
+                                                              <atom>
+                                                                <name>
+                                                                </name>
+                                                              </atom>
+                                                            </primary>
+                                                          </factor>
+                                                        </term>
+                                                      </comparison>
+                                                    </not test>
+                                                  </and test>
+                                                </expr>
+                                              </subscription>
+                                            </primary suffix>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                              <expr>
+                                <and test>
+                                  <not test>
+                                    <comparison>
+                                      <term>
+                                        <factor>
+                                          <primary>
+                                            <atom>
+                                              <name>
+                                              </name>
+                                            </atom>
+                                          </primary>
+                                        </factor>
+                                      </term>
+                                    </comparison>
+                                  </not test>
+                                </and test>
+                              </expr>
+                            </arguments>
+                          </primary suffix>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </expr stmt>
+        </stmt>
+  25: 
+  26:    y = y+1
+        <stmt>
+          <assignment>
+            <name>
+            </name>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                      </factor>
+                      <term opr>
+                      </term opr>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+          </assignment>
+        </stmt>
+      </suite>
+    </while stmt>
+  </stmt>
+</program>
+PP> M_name = [""] * (12 + 1)
+PP> M_name[3] = "mars"
+PP> M_name[4] = "april"
+PP> y = 2015
+PP> while y <= 2020:
+PP>   a = y % 19
+PP>   b = y // 100
+PP>   c = y % 100
+PP>   d = b // 4
+PP>   e = b % 4
+PP>   f = (b + 8) // 25
+PP>   g = (b - f + 1) // 3
+PP>   h = (19 * a + b - d - g + 15) % 30
+PP>   i = c // 4
+PP>   k = c % 4
+PP>   l = (32 + 2 * e + 2 * i - h - k) % 7
+PP>   m = (a + 11 * h + 22 * l) // 451
+PP>   month = (h + l - 7 * m + 114) // 31
+PP>   day = (h + l - 7 * m + 114) % 31 + 1
+PP>   print(str(day) + ". " + M_name[month], y)
+PP>   y = y + 1

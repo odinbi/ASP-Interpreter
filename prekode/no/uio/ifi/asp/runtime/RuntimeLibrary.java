@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import no.uio.ifi.asp.parser.AspSyntax;
+import no.uio.ifi.asp.runtime.RuntimeFunc;
 
 public class RuntimeLibrary extends RuntimeScope {
     private Scanner keyboard = new Scanner(System.in);
@@ -17,31 +18,31 @@ public class RuntimeLibrary extends RuntimeScope {
             }});
         //float
         assign("float", new RuntimeFunc("float"){
-            public RuntimeValue evalFuncCall(RuntimeValue param, AspSyntax where){
-                checkNumericValue(param, "float", where);
-                return new RuntimeFloatValue(param.getFloatValue(param.toString(), where));
+            public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> param, AspSyntax where){
+                checkNumericValue(param.get(0), "float", where);
+                return new RuntimeFloatValue(param.get(0).getFloatValue(param.get(0).toString(), where));
             }
         });
         //int
         assign("int", new RuntimeFunc("int"){
-            public RuntimeValue evalFuncCall(RuntimeValue param, AspSyntax where){
-                checkNumericValue(param, "int", where);
-                return new RuntimeIntValue(param.getIntValue(param.toString(), where));
+            public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> param, AspSyntax where){
+                checkNumericValue(param.get(0), "int", where);
+                return new RuntimeIntValue(param.get(0).getIntValue(param.get(0).toString(), where));
             }
         });
         //str
         assign("str", new RuntimeFunc("str"){
-            public RuntimeValue evalFuncCall(RuntimeValue param, AspSyntax where){
-                return new RuntimeStringValue(param.toString());
+            public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> param, AspSyntax where){
+                return new RuntimeStringValue(param.get(0).toString());
             }
         });
         //input
         assign("input", new RuntimeFunc("input"){
-            public RuntimeValue evalFuncCall(RuntimeValue param, AspSyntax where){
-                if(!(param instanceof RuntimeStringValue)){
-                    RuntimeValue.runtimeError("Illegal paramter, needs to be of type string, was of type " + param.typeName()+"!", where);
+            public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> param, AspSyntax where){
+                if(!(param.get(0) instanceof RuntimeStringValue)){
+                    RuntimeValue.runtimeError("Illegal paramter, needs to be of type string, was of type " + param.get(0).typeName()+"!", where);
                 }
-                System.out.print(param.toString());
+                System.out.print(param.get(0).toString());
                 return new RuntimeStringValue(keyboard.nextLine());
             }
         });

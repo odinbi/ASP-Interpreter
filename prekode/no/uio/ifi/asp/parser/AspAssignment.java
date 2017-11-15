@@ -66,6 +66,7 @@ class AspAssignment extends AspStmt{
             RuntimeValue last = subscr.get(subscr.size()-1).eval(curScope);
             templist.evalAssignElem(last, val, this);
         }
+        //System.out.println(nm + " = " + val.toString());
         curScope.assign(nm, val);
         Main.rlog.leaveEval("AspAssignment");
         return val;

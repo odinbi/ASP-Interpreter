@@ -1,0 +1,516 @@
+<program>
+   1: 
+   2: # A program to compute the greatest common divisor
+   3: # of two numbers, i.e., the biggest number by which
+   4: # two numbers can be divided without a remainder.
+   5: 
+   6: def GCD (m, n):
+  <stmt>
+    <func def>
+      <name>
+      </name>
+      <name>
+      </name>
+      <name>
+      </name>
+      <suite>
+   7:    if n == 0:
+        <stmt>
+          <if stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <name>
+                            </name>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                    <comp opr>
+                    </comp opr>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <integer literal>
+                            </integer literal>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+            <suite>
+   8:       return m
+              <stmt>
+                <return stmt>
+                  <expr>
+                    <and test>
+                      <not test>
+                        <comparison>
+                          <term>
+                            <factor>
+                              <primary>
+                                <atom>
+                                  <name>
+                                  </name>
+                                </atom>
+                              </primary>
+                            </factor>
+                          </term>
+                        </comparison>
+                      </not test>
+                    </and test>
+                  </expr>
+                </return stmt>
+              </stmt>
+   9:    else:
+            </suite>
+            <suite>
+  10:       return GCD(n, m % n)
+              <stmt>
+                <return stmt>
+                  <expr>
+                    <and test>
+                      <not test>
+                        <comparison>
+                          <term>
+                            <factor>
+                              <primary>
+                                <atom>
+                                  <name>
+                                  </name>
+                                </atom>
+                                <primary suffix>
+                                  <arguments>
+                                    <expr>
+                                      <and test>
+                                        <not test>
+                                          <comparison>
+                                            <term>
+                                              <factor>
+                                                <primary>
+                                                  <atom>
+                                                    <name>
+                                                    </name>
+                                                  </atom>
+                                                </primary>
+                                              </factor>
+                                            </term>
+                                          </comparison>
+                                        </not test>
+                                      </and test>
+                                    </expr>
+                                    <expr>
+                                      <and test>
+                                        <not test>
+                                          <comparison>
+                                            <term>
+                                              <factor>
+                                                <primary>
+                                                  <atom>
+                                                    <name>
+                                                    </name>
+                                                  </atom>
+                                                </primary>
+                                                <factor opr>
+                                                </factor opr>
+                                                <primary>
+                                                  <atom>
+                                                    <name>
+                                                    </name>
+                                                  </atom>
+                                                </primary>
+                                              </factor>
+                                            </term>
+                                          </comparison>
+                                        </not test>
+                                      </and test>
+                                    </expr>
+                                  </arguments>
+                                </primary suffix>
+                              </primary>
+                            </factor>
+                          </term>
+                        </comparison>
+                      </not test>
+                    </and test>
+                  </expr>
+                </return stmt>
+              </stmt>
+  11: 
+  12: v1 = int(input("A number: "))
+            </suite>
+          </if stmt>
+        </stmt>
+      </suite>
+    </func def>
+  </stmt>
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                    <primary suffix>
+                      <arguments>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                      <primary suffix>
+                                        <arguments>
+                                          <expr>
+                                            <and test>
+                                              <not test>
+                                                <comparison>
+                                                  <term>
+                                                    <factor>
+                                                      <primary>
+                                                        <atom>
+                                                          <string literal>
+                                                          </string literal>
+                                                        </atom>
+                                                      </primary>
+                                                    </factor>
+                                                  </term>
+                                                </comparison>
+                                              </not test>
+                                            </and test>
+                                          </expr>
+                                        </arguments>
+                                      </primary suffix>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </arguments>
+                    </primary suffix>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+  13: v2 = int(input("Another number: "))
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                    <primary suffix>
+                      <arguments>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                      <primary suffix>
+                                        <arguments>
+                                          <expr>
+                                            <and test>
+                                              <not test>
+                                                <comparison>
+                                                  <term>
+                                                    <factor>
+                                                      <primary>
+                                                        <atom>
+                                                          <string literal>
+                                                          </string literal>
+                                                        </atom>
+                                                      </primary>
+                                                    </factor>
+                                                  </term>
+                                                </comparison>
+                                              </not test>
+                                            </and test>
+                                          </expr>
+                                        </arguments>
+                                      </primary suffix>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </arguments>
+                    </primary suffix>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+  14: 
+  15: res = GCD(v1,v2)
+  <stmt>
+    <assignment>
+      <name>
+      </name>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                    <primary suffix>
+                      <arguments>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </arguments>
+                    </primary suffix>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </assignment>
+  </stmt>
+  16: print('GCD(' + str(v1) + ',' + str(v2) + ') =', res)
+  <stmt>
+    <expr stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <name>
+                      </name>
+                    </atom>
+                    <primary suffix>
+                      <arguments>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <string literal>
+                                        </string literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                  <term opr>
+                                  </term opr>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                      <primary suffix>
+                                        <arguments>
+                                          <expr>
+                                            <and test>
+                                              <not test>
+                                                <comparison>
+                                                  <term>
+                                                    <factor>
+                                                      <primary>
+                                                        <atom>
+                                                          <name>
+                                                          </name>
+                                                        </atom>
+                                                      </primary>
+                                                    </factor>
+                                                  </term>
+                                                </comparison>
+                                              </not test>
+                                            </and test>
+                                          </expr>
+                                        </arguments>
+                                      </primary suffix>
+                                    </primary>
+                                  </factor>
+                                  <term opr>
+                                  </term opr>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <string literal>
+                                        </string literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                  <term opr>
+                                  </term opr>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                      <primary suffix>
+                                        <arguments>
+                                          <expr>
+                                            <and test>
+                                              <not test>
+                                                <comparison>
+                                                  <term>
+                                                    <factor>
+                                                      <primary>
+                                                        <atom>
+                                                          <name>
+                                                          </name>
+                                                        </atom>
+                                                      </primary>
+                                                    </factor>
+                                                  </term>
+                                                </comparison>
+                                              </not test>
+                                            </and test>
+                                          </expr>
+                                        </arguments>
+                                      </primary suffix>
+                                    </primary>
+                                  </factor>
+                                  <term opr>
+                                  </term opr>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <string literal>
+                                        </string literal>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                        <expr>
+                          <and test>
+                            <not test>
+                              <comparison>
+                                <term>
+                                  <factor>
+                                    <primary>
+                                      <atom>
+                                        <name>
+                                        </name>
+                                      </atom>
+                                    </primary>
+                                  </factor>
+                                </term>
+                              </comparison>
+                            </not test>
+                          </and test>
+                        </expr>
+                      </arguments>
+                    </primary suffix>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+    </expr stmt>
+  </stmt>
+</program>
+PP> def GCD (m, n):
+PP>   if n == 0:
+PP>     return m
+PP>   else:
+PP>     return GCD(n, m % n)
+PP> 
+PP> v1 = int(input("A number: "))
+PP> v2 = int(input("Another number: "))
+PP> res = GCD(v1, v2)
+PP> print("GCD(" + str(v1) + "," + str(v2) + ") =", res)

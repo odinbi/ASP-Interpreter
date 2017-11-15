@@ -27,6 +27,12 @@ public class RuntimeStringValue extends RuntimeValue {
     }
 
     @Override
+    public RuntimeStringValue evalSubscription(RuntimeValue val, AspSyntax where){
+        return getEntry(val, where);
+
+    }
+
+    @Override
     public String getStringValue(String what, AspSyntax where) {
         return stringValue;
     }

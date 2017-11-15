@@ -1,0 +1,75 @@
+<program>
+   1: if True:
+  <stmt>
+    <if stmt>
+      <expr>
+        <and test>
+          <not test>
+            <comparison>
+              <term>
+                <factor>
+                  <primary>
+                    <atom>
+                      <boolean litteral>
+                      </boolean litteral>
+                    </atom>
+                  </primary>
+                </factor>
+              </term>
+            </comparison>
+          </not test>
+        </and test>
+      </expr>
+      <suite>
+   2:     if False:
+        <stmt>
+          <if stmt>
+            <expr>
+              <and test>
+                <not test>
+                  <comparison>
+                    <term>
+                      <factor>
+                        <primary>
+                          <atom>
+                            <boolean litteral>
+                            </boolean litteral>
+                          </atom>
+                        </primary>
+                      </factor>
+                    </term>
+                  </comparison>
+                </not test>
+              </and test>
+            </expr>
+            <suite>
+   3:         a = 1
+              <stmt>
+                <assignment>
+                  <name>
+                  </name>
+                  <expr>
+                    <and test>
+                      <not test>
+                        <comparison>
+                          <term>
+                            <factor>
+                              <primary>
+                                <atom>
+                                  <integer litteral>
+                                  </integer litteral>
+                                </atom>
+                              </primary>
+                            </factor>
+                          </term>
+                        </comparison>
+                      </not test>
+                    </and test>
+                  </expr>
+                </assignment>
+              </stmt>
+   4:     else:
+            </suite>
+            <suite>
+   5:         a = 1.
+Asp scanner error on line 5: handleWord() could not recognize word: 1.

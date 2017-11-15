@@ -40,24 +40,31 @@ class AspPrimary extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //temporary solution
         Main.rlog.enterEval("AspPrimary");
         RuntimeValue atm = atom.eval(curScope);
+        Main.rlog.enterMessage(atm.toString());
         if(suffixes.size() > 0){
-            if(atm instanceof RuntimeFunc){
-                RuntimeArgumentsValue args = new RuntimeArgumentsValue();
-                for(AspPrimarySuffix suf : suffixes){
-                    args.add(suf.eval(curScope));
+            RuntimeValue val;
+            ArrayList<RuntimeValue> tmp = new ArrayList<>();
+            RuntimeValue retVal = null;
+            for(AspPrimarySuffix suf : suffixes){
+                val = suf.eval(curScope);
+                tmp.add(val);
+                if(suf instanceof AspSubscription){
+                    retVal = atm.evalSubscription(suf.eval(curScope), this);
+                } else if(val instanceof RuntimeStringValue){
+                    retVal = atm.evalFuncCall(tmp, curScope, this);
                 }
-                atm = atm.evalFuncCall(args.getRawList(), curScope, this);
-            } else if(!(atm instanceof RuntimeListValue || atm instanceof RuntimeDictionaryValue || atm instanceof RuntimeStringValue)){
-                atm.runtimeError("Could not recognize type: " + atm.toString() + "!", this);
-            } else{
-                for(AspPrimarySuffix suf : suffixes){
-                    atm = atm.evalSubscription(suf.eval(curScope), this);
+                else{
+                    RuntimeArgumentsValue temp = (RuntimeArgumentsValue)val;
+                    retVal = atm.evalFuncCall(temp.getRawList(), curScope, this);
                 }
+                tmp.clear();
             }
+            Main.rlog.enterMessage(atm.toString() + ", value: " + retVal.toString());
+            //curScope.assign(atm.toString(), retVal);
         }
+        Main.rlog.enterMessage(atm.toString() + ", value: " + curScope.find(atm.toString(), this));
         Main.rlog.leaveEval("AspPrimary");
         return atm;
     }

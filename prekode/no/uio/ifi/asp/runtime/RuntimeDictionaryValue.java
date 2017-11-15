@@ -17,6 +17,10 @@ public class RuntimeDictionaryValue extends RuntimeValue {
         varMap.put(key, value);
     }
 
+    public RuntimeValue evalSubscription(RuntimeValue val, AspSyntax where){
+        return getEntry(val, where);
+    }
+
     @Override
     protected String typeName() {
         return "dictionary";

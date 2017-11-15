@@ -49,7 +49,7 @@ class AspListDisplay extends AspAtom {
         RuntimeListValue lst = new RuntimeListValue();
         if(expr.size() > 0){
             for(int i = 0; i < expr.size(); i++){
-                lst.add(expr.get(i).eval(curScope));
+                lst.evalAppend(expr.get(i).eval(curScope));
             }
         }
         Main.rlog.enterMessage("Check list: " + lst);
