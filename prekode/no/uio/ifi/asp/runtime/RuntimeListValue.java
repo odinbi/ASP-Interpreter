@@ -13,33 +13,9 @@ public class RuntimeListValue extends RuntimeValue {
     public RuntimeListValue() {
     }
 
-    public void add(RuntimeValue value){
-        lst.add(value);
-    }
-
     @Override
     protected String typeName() {
         return "list";
-    }
-
-    public RuntimeValue evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
-        long index = indx.getIntValue(indx.toString(), where);
-        if(index >= lst.size()){
-            valSubscription(indx, where);
-        }
-        lst.set(index, val);
-    }
-
-    public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
-        long index = indx.getIntValue(indx.toString(), where);
-        try{
-            return lst.get(index);
-        }catch(ArrayIndexOutOfBoundsException ex){
-            for(long i = lst.size(); i <= index; i++){
-                lst.add(new RuntimeNoneValue());
-            }
-            return lst.get(index);
-        }
     }
 
     @Override
@@ -54,6 +30,41 @@ public class RuntimeListValue extends RuntimeValue {
         temp += "]";
         return temp;
     }
+
+    public void evalAppend(RuntimeValue value){
+        lst.add(value);
+    }
+
+    public void evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
+        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
+            int index = (int)indx.getIntValue(indx.toString(), where);
+            if(index >= lst.size()){
+                evalSubscription(indx, where);
+            }
+            lst.set(index, val);
+            return;
+        }
+        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
+        return;
+    }
+
+    public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
+        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
+            int index = (int)indx.getIntValue(indx.toString(), where);
+            if(index < lst.size()){
+                for(long i = lst.size(); i <= index; i++){
+                    lst.add(new RuntimeNoneValue());
+                }
+                return lst.get(index);
+
+            }
+            runtimeError("Array index out of bounds, index: " + indx.toString() + ", array length: " + lst.size() + "!", where);
+            return null;
+        }
+        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
+        return null;
+    }
+
 
     public RuntimeValue getEntry(int i){
         return lst.get(i);
@@ -98,7 +109,7 @@ public class RuntimeListValue extends RuntimeValue {
             RuntimeListValue temp = new RuntimeListValue();
             for(int i = 0; i < v.getIntValue(v.toString(), where); i++){
                 for(int j = 0; j < lst.size(); j++){
-                    temp.add(lst.get(j));
+                    temp.evalAppend(lst.get(j));
                 }
             }
             return temp;

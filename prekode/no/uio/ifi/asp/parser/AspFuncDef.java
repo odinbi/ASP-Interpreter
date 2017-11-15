@@ -6,13 +6,25 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
-class AspFuncDef extends AspStmt{
+public class AspFuncDef extends AspStmt{
     AspName funcName;
     ArrayList<AspName> name = new ArrayList<>();
     AspSuite suite;
 
     AspFuncDef(int n){
         super(n);
+    }
+
+    public String getNameValue(int index){
+        return name.get(index).value;
+    }
+
+    public int getNameSize(){
+        return name.size();
+    }
+
+    public AspSuite getSuite(){
+        return suite;
     }
 
     static AspFuncDef parse(Scanner s){

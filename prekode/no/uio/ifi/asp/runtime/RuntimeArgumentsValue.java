@@ -40,6 +40,10 @@ public class RuntimeArgumentsValue extends RuntimeValue {
         return lst.size();
     }
 
+    public ArrayList<RuntimeValue> getRawList(){
+        return lst;
+    }
+
     public RuntimeValue getEntry(int i){
         return lst.get(i);
     }

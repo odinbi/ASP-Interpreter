@@ -15,6 +15,16 @@ public class RuntimeStringValue extends RuntimeValue {
         return "string";
     }
 
+    @Override
+    public long getIntValue(String what, AspSyntax where){
+        long i = 0;
+        try{
+            i = Long.parseLong(stringValue);
+        }catch(NumberFormatException nfe){
+            runtimeError("could not convert string: " + stringValue + " to integer!", where);
+        }
+        return i;
+    }
 
     @Override
     public String getStringValue(String what, AspSyntax where) {

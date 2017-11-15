@@ -6,7 +6,7 @@ import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
 
-class AspSuite extends AspSyntax{
+public class AspSuite extends AspSyntax{
     ArrayList<AspStmt> stmts = new ArrayList<>();
 
     AspSuite(int n){

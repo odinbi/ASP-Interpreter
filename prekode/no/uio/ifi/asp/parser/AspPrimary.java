@@ -45,16 +45,16 @@ class AspPrimary extends AspSyntax {
         RuntimeValue atm = atom.eval(curScope);
         if(suffixes.size() > 0){
             if(atm instanceof RuntimeFunc){
-                try{
-                    atm = atm.evalFuncCall(suffixes.get(0).eval(curScope));
-                } catch(RuntimeReturnValue rtval){
-                    atm = rtval;
+                RuntimeArgumentsValue args = new RuntimeArgumentsValue();
+                for(AspPrimarySuffix suf : suffixes){
+                    args.add(suf.eval(curScope));
                 }
+                atm = atm.evalFuncCall(args.getRawList(), curScope, this);
             } else if(!(atm instanceof RuntimeListValue || atm instanceof RuntimeDictionaryValue || atm instanceof RuntimeStringValue)){
                 atm.runtimeError("Could not recognize type: " + atm.toString() + "!", this);
             } else{
                 for(AspPrimarySuffix suf : suffixes){
-                    atm = atm.evalSubscription(suf.eval(curScope));
+                    atm = atm.evalSubscription(suf.eval(curScope), this);
                 }
             }
         }

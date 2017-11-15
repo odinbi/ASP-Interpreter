@@ -60,12 +60,11 @@ class AspAssignment extends AspStmt{
         RuntimeValue val = expr.eval(curScope);
         if(subscr.size() > 0){
             RuntimeListValue templist = new RuntimeListValue();
-            AspSubscription last;
             for(int i = 0; i < subscr.size()-1; i++){
-                templist.evalSubscription(subscr.get(i).eval(curScope).toString(), this);
+                templist.evalSubscription(subscr.get(i).eval(curScope), this);
             }
-            last = subscr.get(subscr.size()-1);
-            val = templist.evalAssignElem(last, val, this);
+            RuntimeValue last = subscr.get(subscr.size()-1).eval(curScope);
+            templist.evalAssignElem(last, val, this);
         }
         curScope.assign(nm, val);
         Main.rlog.leaveEval("AspAssignment");

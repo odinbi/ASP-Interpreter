@@ -8,4 +8,8 @@ public class RuntimeReturnValue extends Exception {
     public RuntimeReturnValue(RuntimeValue v) {
 	value = v;
     }
+
+    public RuntimeValue getValue(){
+        return value;
+    }
 }
