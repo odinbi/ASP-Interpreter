@@ -8,4 +8,3 @@ PP> v1 = int(input("A number: "))
 PP> v2 = int(input("Another number: "))
 PP> res = GCD(v1, v2)
 PP> print("GCD(" + str(v1) + "," + str(v2) + ") =", res)
-Asp runtime error on line 12: Name A number:  not defined!

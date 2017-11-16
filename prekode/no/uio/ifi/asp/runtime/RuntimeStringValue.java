@@ -27,6 +27,17 @@ public class RuntimeStringValue extends RuntimeValue {
     }
 
     @Override
+    public double getFloatValue(String what, AspSyntax where){
+        double d = 0;
+        try{
+            d = Double.parseDouble(stringValue);
+        }catch(NumberFormatException nfe){
+            runtimeError("could not convert string: " + stringValue + " to integer!", where);
+        }
+        return d;
+    }
+
+    @Override
     public RuntimeStringValue evalSubscription(RuntimeValue val, AspSyntax where){
         return getEntry(val, where);
 

@@ -148,9 +148,14 @@ public abstract class RuntimeValue {
 	runtimeError("subscription undefined for "+typeName()+"!", where);
     }
 
+
     public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> actualParams,
 				     RuntimeScope scope, AspSyntax where) {
 	runtimeError("'Function call (...)' undefined for "+typeName()+"!", where);
 	return null;  // Required by the compiler!
+    }
+
+    public String getTypeName(){
+        return typeName();
     }
 }

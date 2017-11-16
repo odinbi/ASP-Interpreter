@@ -45,26 +45,28 @@ class AspPrimary extends AspSyntax {
         Main.rlog.enterMessage(atm.toString());
         if(suffixes.size() > 0){
             RuntimeValue val;
-            ArrayList<RuntimeValue> tmp = new ArrayList<>();
             RuntimeValue retVal = null;
             for(AspPrimarySuffix suf : suffixes){
                 val = suf.eval(curScope);
-                tmp.add(val);
                 if(suf instanceof AspSubscription){
+                    Main.rlog.enterMessage("Return was a subscription");
                     retVal = atm.evalSubscription(suf.eval(curScope), this);
-                } else if(val instanceof RuntimeStringValue){
-                    retVal = atm.evalFuncCall(tmp, curScope, this);
-                }
-                else{
+                } else{
+                    Main.rlog.enterMessage("Return was an argument");
                     RuntimeArgumentsValue temp = (RuntimeArgumentsValue)val;
                     retVal = atm.evalFuncCall(temp.getRawList(), curScope, this);
                 }
-                tmp.clear();
             }
-            Main.rlog.enterMessage(atm.toString() + ", value: " + retVal.toString());
-            //curScope.assign(atm.toString(), retVal);
+            if(atm == null){
+                Main.rlog.enterMessage("STRANGE BEHAVIOUR: atm is now set to null");
+            }
+            if(retVal == null){
+                Main.rlog.enterMessage("STRANGE BEHAVIOUR: retVal is now set to null");
+            }
+            if(atm != null && retVal != null)
+                Main.rlog.enterMessage(atm.toString() + ", value: " + retVal.toString());
+            return retVal;
         }
-        Main.rlog.enterMessage(atm.toString() + ", value: " + curScope.find(atm.toString(), this));
         Main.rlog.leaveEval("AspPrimary");
         return atm;
     }

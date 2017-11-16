@@ -62,12 +62,19 @@ class AspIfStmt extends AspStmt{
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspIfStmt");
+        RuntimeValue temp;
         int i = 0;
         for(i = 0; i < expr.size(); i++){
-            if(expr.get(i).eval(curScope).getBoolValue(expr.get(i).eval(curScope).toString(), this)){
+            temp = expr.get(i).eval(curScope);
+            Main.rlog.enterMessage("IF: " + temp.toString());
+            Main.rlog.enterMessage("VALUE: " + temp.getBoolValue(temp.toString(), this));
+            if(temp.getBoolValue(temp.toString(), this)){
                 suite.get(i).eval(curScope);
-                break;
+                return null;
             }
+        }
+        if(i < suite.size()){
+            suite.get(i).eval(curScope);
         }
         Main.rlog.leaveEval("AspIfStmt");
         return null;

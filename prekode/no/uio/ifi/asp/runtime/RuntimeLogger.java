@@ -11,6 +11,10 @@ public class RuntimeLogger {
         doLogEval = state;
     }
 
+    public void set(boolean state){
+        doLogEval = state;
+    }
+
     public void enterEval(String nonTerm){
         if(!doLogEval) return;
         ++evalLevel;
@@ -27,13 +31,13 @@ public class RuntimeLogger {
 
     public void enterMessage(String message){
         if(!doLogEval) return;
-        System.out.println(tabs + "     " + message);
+        System.out.println(tabs + " " + message);
     }
 
     public void updateTabs(){
         tabs = "";
         for(int i = 0; i <= evalLevel; i++){
-            tabs += "    ";
+            tabs += "  ";
         }
     }
 }

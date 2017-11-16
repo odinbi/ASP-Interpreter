@@ -13,12 +13,12 @@ public class Main {
 
     public static LogFile log = null;
 
-    public static RuntimeLogger rlog = null; //added for easier bug fixing
+    public static RuntimeLogger rlog = new RuntimeLogger(false); //added for easier bug fixing
 
     public static void main(String arg[]) {
         String fileName = null, baseFilename = null;
         boolean testExpr = false, testParser = false, testScanner = false,
-        logE = false, logP = false, logS = false, logY = false;
+        logE = false, logP = false, logS = false, logY = false, logR = false;
 
         System.out.println("This is the Ifi Asp interpreter (" +
         version + ")");
@@ -34,6 +34,8 @@ public class Main {
                 logS = true;
             } else if (a.equals("-logY")) {
                 logY = true;
+            } else if (a.equals("-logR")) {
+                logR = true;
             } else if (a.equals("-testexpr")) {
                 testExpr = true;
             } else if (a.equals("-testparser")) {
@@ -61,7 +63,7 @@ public class Main {
         if (logP || testParser) log.doLogParser = true;
         if (logS || testScanner) log.doLogScanner = true;
         if (logY || testExpr || testParser) log.doLogPrettyPrint = true;
-        if (logY) rlog = new RuntimeLogger(true);
+        if (logR) rlog.set(true);
 
         Scanner s = new Scanner(fileName);
         if (testScanner)
@@ -100,7 +102,6 @@ public class Main {
         }
 
         RuntimeScope emptyScope = new RuntimeScope();
-        rlog = new RuntimeLogger(true); //status: true ( prints eval help prints), false(no print)
         for (AspExpr e: exprs) {
             rlog.enterEval("Main");
             e.prettyPrint();  log.prettyWriteLn(" ==>");
@@ -155,6 +156,6 @@ public class Main {
 
     private static void usage() {
         error("Usage: java -jar asp.jar " +
-        "[-log{E|P|S|Y}] [-test{expr|parser|scanner}] file");
+        "[-log{E|P|S|Y|R}] [-test{expr|parser|scanner}] file");
     }
 }

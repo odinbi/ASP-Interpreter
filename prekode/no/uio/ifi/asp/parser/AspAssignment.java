@@ -57,6 +57,7 @@ class AspAssignment extends AspStmt{
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspAssignment");
         String nm = name.value;
+        Main.rlog.enterMessage("Name to assing value: " + nm);
         RuntimeValue val = expr.eval(curScope);
         if(subscr.size() > 0){
             RuntimeListValue templist = new RuntimeListValue();
@@ -65,9 +66,15 @@ class AspAssignment extends AspStmt{
             }
             RuntimeValue last = subscr.get(subscr.size()-1).eval(curScope);
             templist.evalAssignElem(last, val, this);
+            curScope.assign(nm, templist);
+        } else{
+            curScope.assign(nm, val);
         }
-        //System.out.println(nm + " = " + val.toString());
-        curScope.assign(nm, val);
+        if(val != null){
+            Main.rlog.enterMessage("From scope: " + nm + " = " + curScope.find(nm, this));
+            Main.rlog.enterMessage(nm + " = " + val.getTypeName());
+            Main.rlog.enterMessage(nm + " = " + val.toString());
+        }
         Main.rlog.leaveEval("AspAssignment");
         return val;
     }

@@ -36,8 +36,8 @@ class AspSubscription extends AspPrimarySuffix{
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspSubscription");
-        //RuntimeListValue temp = new RuntimeListValue(expr.eval(curScope));
+        RuntimeValue temp = expr.eval(curScope);
         Main.rlog.leaveEval("AspSubscription");
-        return expr.eval(curScope);
+        return temp;
     }
 }

@@ -27,6 +27,10 @@ public class RuntimeIntValue extends RuntimeValue {
         return intValue;
     }
 
+    public double getFloatValue(String what, AspSyntax where){
+        return (double) intValue;
+    }
+
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
