@@ -1,4 +1,4 @@
-# Finn 1. pÃ¥skedag for Ã¥rene 2015-2020.
+﻿# Finn 1. pÃ¥skedag for Ã¥rene 2015-2020.
 
 M_name = [""] * (12+1)
 M_name[3] = "mars"

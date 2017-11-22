@@ -61,10 +61,12 @@ class AspAssignment extends AspStmt{
         RuntimeValue val = expr.eval(curScope);
         if(subscr.size() > 0){
             RuntimeListValue templist = new RuntimeListValue();
-            for(int i = 0; i < subscr.size()-1; i++){
+            //Here is the bug, maybe
+            /*for(int i = 0; i < subscr.size()-1; i++){
                 templist.evalSubscription(subscr.get(i).eval(curScope), this);
-            }
+            }*/
             RuntimeValue last = subscr.get(subscr.size()-1).eval(curScope);
+            System.out.println("########################");
             templist.evalAssignElem(last, val, this);
             curScope.assign(nm, templist);
         } else{

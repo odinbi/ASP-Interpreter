@@ -56,8 +56,8 @@ public class AspExpr extends AspSyntax {
                 temp = temp.evalOr(andTest.eval(curScope), this);
             } else{
                 temp = andTest.eval(curScope);
+                doTest = true;
             }
-            if(!doTest) doTest = true;
         }
         Main.rlog.leaveEval("AspExpr");
         return temp;

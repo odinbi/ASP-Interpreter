@@ -26,6 +26,7 @@ class AspComparison extends AspSyntax {
     */
     static AspComparison parse(Scanner s) {
         Main.log.enterParser("comparison");
+
         AspComparison ac = new AspComparison(s.curLineNum());
         while(true){
             ac.term.add(AspTerm.parse(s));

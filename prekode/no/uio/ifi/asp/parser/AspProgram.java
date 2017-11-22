@@ -30,6 +30,7 @@ public class AspProgram extends AspSyntax {
     */
     public static AspProgram parse(Scanner s) {
         Main.log.enterParser("program");
+        
         AspProgram ap = new AspProgram(s.curLineNum());
         while(s.curToken().kind != eofToken){
             ap.stmts.add(AspStmt.parse(s));

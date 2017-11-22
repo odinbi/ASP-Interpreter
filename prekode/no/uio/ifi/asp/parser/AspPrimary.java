@@ -50,6 +50,8 @@ class AspPrimary extends AspSyntax {
                 val = suf.eval(curScope);
                 if(suf instanceof AspSubscription){
                     Main.rlog.enterMessage("Return was a subscription");
+                    //Here is the bug, maybe
+                    System.out.println("This is:" + suf.eval(curScope) + " atom: " + atm);
                     retVal = atm.evalSubscription(suf.eval(curScope), this);
                 } else{
                     Main.rlog.enterMessage("Return was an argument");
