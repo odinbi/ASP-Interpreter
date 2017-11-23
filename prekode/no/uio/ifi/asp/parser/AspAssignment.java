@@ -60,22 +60,17 @@ class AspAssignment extends AspStmt{
         Main.rlog.enterMessage("Name to assing value: " + nm);
         RuntimeValue val = expr.eval(curScope);
         if(subscr.size() > 0){
-            RuntimeListValue templist = new RuntimeListValue();
-            //Here is the bug, maybe
-            /*for(int i = 0; i < subscr.size()-1; i++){
+            RuntimeValue templist = curScope.find(nm, this);
+            for(int i = 0; i < subscr.size()-1; i++){
                 templist.evalSubscription(subscr.get(i).eval(curScope), this);
-            }*/
+            }
             RuntimeValue last = subscr.get(subscr.size()-1).eval(curScope);
-            System.out.println("########################");
             templist.evalAssignElem(last, val, this);
+            Main.rlog.enterMessage("ASSIGNING: " + nm + " = " + templist.toString());
             curScope.assign(nm, templist);
         } else{
+            Main.rlog.enterMessage("ASSIGNING: " + nm + " = " + val.toString());
             curScope.assign(nm, val);
-        }
-        if(val != null){
-            Main.rlog.enterMessage("From scope: " + nm + " = " + curScope.find(nm, this));
-            Main.rlog.enterMessage(nm + " = " + val.getTypeName());
-            Main.rlog.enterMessage(nm + " = " + val.toString());
         }
         Main.rlog.leaveEval("AspAssignment");
         return val;

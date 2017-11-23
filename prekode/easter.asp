@@ -1,4 +1,4 @@
-﻿# Finn 1. pÃ¥skedag for Ã¥rene 2015-2020.
+# Finn 1. pÃ¥skedag for Ã¥rene 2015-2020.
 
 M_name = [""] * (12+1)
 M_name[3] = "mars"
@@ -20,7 +20,11 @@ while y <= 2020:
    m = (a+11*h+22*l) // 451
 
    month = (h+l-7*m+114) // 31
+   print("month: ", month)
    day = (h+l-7*m+114) % 31 + 1
+   print("day ", day)
+   print("month: ", month)
+   print("year: ", y)
    print(str(day) + ". " + M_name[month], y)
 
    y = y+1

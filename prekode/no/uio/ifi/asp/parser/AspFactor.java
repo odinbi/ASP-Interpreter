@@ -51,7 +51,7 @@ class AspFactor extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspFactor");
         RuntimeValue temp = primary.get(0).eval(curScope);
-        String curopr = null;
+
         String curprefix = null;
         if(prefix != null){
             curprefix = prefix.eval(curScope).getOpr();
@@ -60,6 +60,7 @@ class AspFactor extends AspSyntax {
             }
         }
 
+        String curopr = null;
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
             Main.rlog.enterMessage("Current primary: " + temp.toString()

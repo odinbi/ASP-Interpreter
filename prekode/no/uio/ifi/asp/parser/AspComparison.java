@@ -50,35 +50,33 @@ class AspComparison extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
+        Main.rlog.enterEval("AspComparison");
         RuntimeValue temp = term.get(0).eval(curScope);
-        RuntimeValue rtrn = temp;
         RuntimeValue temp2;
         String opr = null;
-        Main.rlog.enterEval("AspComparison");
         for(int i = 0; i < cmpopr.size(); i++){
             opr = cmpopr.get(i).value.toString();
-            Main.rlog.enterMessage("Current term: " + temp.toString() + ", current comparison: " + opr + ", next term: " + term.get(i+1).eval(curScope).toString());
-            temp2 = temp;
-            temp = term.get(i+1).eval(curScope);
+            temp2 = term.get(i+1).eval(curScope);
+            Main.rlog.enterMessage("Current term: " + temp.toString() + ", current comparison: " + opr + ", next term: " + temp2.toString());
             if(opr.equals("<")){
-                rtrn = temp2.evalLess(temp, this);
+                temp = temp.evalLess(temp2, this);
             } else if(opr.equals(">")){
-                rtrn = temp2.evalGreater(temp, this);
+                temp = temp.evalGreater(temp2, this);
             } else if(opr.equals("==")){
-                rtrn = temp2.evalEqual(temp, this);
+                temp = temp.evalEqual(temp2, this);
             } else if(opr.equals(">=")){
-                rtrn = temp2.evalGreaterEqual(temp, this);
+                temp = temp.evalGreaterEqual(temp2, this);
             } else if(opr.equals("<=")){
-                rtrn = temp2.evalLessEqual(temp, this);
+                temp = temp.evalLessEqual(temp2, this);
             } else if(opr.equals("!=")){
-                rtrn = temp2.evalNotEqual(temp, this);
+                temp = temp.evalNotEqual(temp2, this);
             } else{
                 RuntimeValue.runtimeError("comparison operation undefined for operator "
                                                 + opr.toString() + "!", this);
             }
-            if(!rtrn.getBoolValue(rtrn.toString(), this)) break;
+            if(!temp.getBoolValue(temp.toString(), this)) break;
         }
         Main.rlog.leaveEval("AspComparison");
-        return rtrn;
+        return temp;
     }
 }

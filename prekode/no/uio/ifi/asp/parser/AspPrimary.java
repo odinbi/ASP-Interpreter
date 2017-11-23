@@ -46,13 +46,17 @@ class AspPrimary extends AspSyntax {
         if(suffixes.size() > 0){
             RuntimeValue val;
             RuntimeValue retVal = null;
+            int countIter = 0;
             for(AspPrimarySuffix suf : suffixes){
                 val = suf.eval(curScope);
+                Main.rlog.enterMessage("Itteration: " + countIter);
+                countIter++;
+                Main.rlog.enterMessage("Current suffix value: " + val.toString());
                 if(suf instanceof AspSubscription){
                     Main.rlog.enterMessage("Return was a subscription");
                     //Here is the bug, maybe
-                    System.out.println("This is:" + suf.eval(curScope) + " atom: " + atm);
-                    retVal = atm.evalSubscription(suf.eval(curScope), this);
+                    Main.rlog.enterMessage("Index: " + val + ", in list: " + atm);
+                    retVal = atm.evalSubscription(val, this);
                 } else{
                     Main.rlog.enterMessage("Return was an argument");
                     RuntimeArgumentsValue temp = (RuntimeArgumentsValue)val;
@@ -67,6 +71,7 @@ class AspPrimary extends AspSyntax {
             }
             if(atm != null && retVal != null)
                 Main.rlog.enterMessage(atm.toString() + ", value: " + retVal.toString());
+            Main.rlog.leaveEval("AspPrimary");
             return retVal;
         }
         Main.rlog.leaveEval("AspPrimary");

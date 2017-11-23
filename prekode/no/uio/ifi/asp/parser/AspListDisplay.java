@@ -53,7 +53,6 @@ class AspListDisplay extends AspAtom {
             }
         }
         Main.rlog.enterMessage("Check list: " + lst);
-        curScope.assign(lst.toString(), lst);
         Main.rlog.leaveEval("AspListDisplay");
         return lst;
     }

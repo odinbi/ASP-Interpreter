@@ -35,41 +35,47 @@ public class RuntimeListValue extends RuntimeValue {
         lst.add(value);
     }
     //Old version:
-    /* public void evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
+     public void evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
       if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
           int index = (int)indx.getIntValue(indx.toString(), where);
           if(index >= lst.size()){
               evalSubscription(indx, where);
+              /*for(long i = lst.size(); i <= index; i++){
+                  lst.add(new RuntimeNoneValue());
+              }*/
           }
           lst.set(index, val);
           return;
       }
       runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
       return;
-  } */
-
-    public void evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
-        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
-            int index = (int)indx.getIntValue(indx.toString(), where);
-
-            if(index >= lst.size()){
-                for(long i = lst.size(); i <= index; i++){
-                    lst.add(new RuntimeNoneValue());
-                }
-            }
-            lst.set(index, val);
-            return;
-        }
-        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
-        return;
-    }
+  }
 
     //Old version
-    /*public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
+    public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
         if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
             int index = (int)indx.getIntValue(indx.toString(), where);
             if(index < lst.size()){
-                for(long i = lst.size(); i <= index; i++){
+                return lst.get(index);
+
+            }
+            for(long i = lst.size(); i <= index; i++){
+                lst.add(new RuntimeNoneValue());
+            }
+            //runtimeError("Array index out of bounds, index: " + indx.toString() + ", array length: " + lst.size() + "!", where);
+            return null;
+        }
+        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
+        return null;
+    }
+
+    //Here is the bug, maybe
+    /*public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
+        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
+            int index = (int)indx.getIntValue(indx.toString(), where);
+            System.out.println("Size: " + lst.size() + " Index: " + index);
+            if(index < lst.size()){
+                for(long i <= lst.size(); i <= index; i++){
                     lst.add(new RuntimeNoneValue());
                 }
                 return lst.get(index);
@@ -81,25 +87,6 @@ public class RuntimeListValue extends RuntimeValue {
         runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
         return null;
     } */
-
-    //Here is the bug, maybe
-    public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
-        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
-            int index = (int)indx.getIntValue(indx.toString(), where);
-            System.out.println("Size: " + lst.size() + " Index: " + index);
-            if(index < lst.size()){
-                /*for(long i <= lst.size(); i <= index; i++){
-                    lst.add(new RuntimeNoneValue());
-                }*/
-                return lst.get(index);
-
-            }
-            runtimeError("Array index out of bounds, index: " + indx.toString() + ", array length: " + lst.size() + "!", where);
-            return null;
-        }
-        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
-        return null;
-    }
 
 
     public RuntimeValue getEntry(int i){

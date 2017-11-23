@@ -40,16 +40,18 @@ class AspTerm extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        RuntimeValue temp = factor.get(0).eval(curScope);
-        String curopr = null;
         Main.rlog.enterEval("AspTerm");
+        RuntimeValue temp = factor.get(0).eval(curScope);
+        RuntimeValue temp2;
+        String curopr = null;
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
-            Main.rlog.enterMessage("Current factor: " + temp.toString() + ", current operator: " + curopr + ", next factor: " + factor.get(i+1).eval(curScope).toString());
+            temp2 = factor.get(i+1).eval(curScope);
+            Main.rlog.enterMessage("Current factor: " + temp.toString() + ", current operator: " + curopr + ", next factor: " + temp2.toString());
             if(curopr.equals("+")){
-                temp = temp.evalAdd(factor.get(i+1).eval(curScope), this);
+                temp = temp.evalAdd(temp2, this);
             } else if(curopr.equals("-")){
-                temp = temp.evalSubtract(factor.get(i+1).eval(curScope), this);
+                temp = temp.evalSubtract(temp2, this);
             } else{
                 RuntimeValue.runtimeError("term operation undefined for operator "
                                                 + curopr + "!", this);
