@@ -30,12 +30,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue ) {
-            floatValue += v.getIntValue(v.toString(), where);
-            return this;
+            temp = floatValue + v.getIntValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue += v.getFloatValue(v.toString(), where);
-            return this;
+            temp = floatValue + v.getFloatValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'+' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -43,12 +44,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalDivide(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue) {
-            floatValue /= v.getIntValue(v.toString(), where);
-            return this;
+            temp = floatValue / v.getIntValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue /= v.getFloatValue(v.toString(), where);
-            return this;
+            temp = floatValue / v.getFloatValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'/' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -98,12 +100,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalIntDivide(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue) {
-            floatValue = Math.floor(floatValue/v.getIntValue(v.toString(), where));
-            return this;
+            temp = Math.floor(floatValue/v.getIntValue(v.toString(), where));
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue = Math.floor(floatValue/v.getFloatValue(v.toString(), where));
-            return this;
+            temp = Math.floor(floatValue/v.getFloatValue(v.toString(), where));
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'//' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -139,14 +142,15 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue) {
-            floatValue = floatValue - v.getIntValue(v.toString(), where)
+            temp = floatValue - v.getIntValue(v.toString(), where)
                     * Math.floor(floatValue/v.getIntValue(v.toString(), where));
-            return this;
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue = floatValue - v.getFloatValue(v.toString(), where)
+            temp = floatValue - v.getFloatValue(v.toString(), where)
                   * Math.floor(floatValue/v.getFloatValue(v.toString(), where));
-            return this;
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'%' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -154,12 +158,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue) {
-            floatValue *= v.getIntValue(v.toString(), where);
-            return this;
+            temp = floatValue * v.getIntValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue *= v.getFloatValue(v.toString(), where);
-            return this;
+            temp = floatValue * v.getFloatValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'*' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!
@@ -167,8 +172,8 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalNegate(AspSyntax where) {
-        floatValue *= -1;
-        return this;
+        double temp = floatValue * -1;
+        return new RuntimeFloatValue(temp);
     }
 
     @Override
@@ -178,12 +183,13 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalSubtract(RuntimeValue v, AspSyntax where) {
+        double temp;
         if (v instanceof RuntimeIntValue) {
-            floatValue -= v.getIntValue(v.toString(), where);
-            return this;
+            temp = floatValue - v.getIntValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         } else if (v instanceof RuntimeFloatValue){
-            floatValue -= v.getFloatValue(v.toString(), where);
-            return this;
+            temp = floatValue - v.getFloatValue(v.toString(), where);
+            return new RuntimeFloatValue(temp);
         }
         runtimeError("'-' undefined for "+typeName()+"!", where);
         return null;  // Required by the compiler!

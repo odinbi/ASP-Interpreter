@@ -35,8 +35,8 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalAdd(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue += v.getIntValue(v.toString(), where);
-            return this;
+            long temp = intValue + v.getIntValue(v.toString(), where);
+            return new RuntimeIntValue(temp);
     	} else if (v instanceof RuntimeFloatValue){
             double temp = v.getFloatValue(v.toString(), where) + (double)intValue;
             return new RuntimeFloatValue(temp);
@@ -104,8 +104,8 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalIntDivide(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue = (long)Math.floor(intValue/v.getIntValue(v.toString(), where));
-            return this;
+            long temp = (long)Math.floor(intValue/v.getIntValue(v.toString(), where));
+            return new RuntimeIntValue(temp);
     	} else if (v instanceof RuntimeFloatValue){
             double temp = Math.floor(intValue/v.getIntValue(v.toString(), where));
             return new RuntimeFloatValue(temp);
@@ -145,8 +145,8 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalModulo(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue = Math.floorMod(intValue, v.getIntValue(v.toString(), where));
-            return this;
+            long temp = Math.floorMod(intValue, v.getIntValue(v.toString(), where));
+            return new RuntimeIntValue(temp);
     	} else if (v instanceof RuntimeFloatValue){
             double temp = intValue - v.getFloatValue(v.toString(), where)
                     * Math.floor(intValue/v.getFloatValue(v.toString(), where));
@@ -159,8 +159,8 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalMultiply(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue *= v.getIntValue(v.toString(), where);
-            return this;
+            long temp = intValue * v.getIntValue(v.toString(), where);
+            return new RuntimeIntValue(temp);
     	} else if (v instanceof RuntimeFloatValue){
             double temp = v.getFloatValue(v.toString(), where) * (double) intValue;
             return new RuntimeFloatValue(temp);
@@ -171,8 +171,8 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalNegate(AspSyntax where) {
-        intValue *= -1;
-        return this;
+        long temp = intValue * -1;
+        return new RuntimeIntValue(temp);
     }
 
     @Override
@@ -183,7 +183,7 @@ public class RuntimeIntValue extends RuntimeValue {
     @Override
     public RuntimeValue evalSubtract(RuntimeValue v, AspSyntax where) {
         if (v instanceof RuntimeIntValue) {
-            intValue -= v.getIntValue(v.toString(), where);
+            long temp = intValue - v.getIntValue(v.toString(), where);
             return this;
     	} else if (v instanceof RuntimeFloatValue){
             double temp = v.getFloatValue(v.toString(), where) - (double)intValue;

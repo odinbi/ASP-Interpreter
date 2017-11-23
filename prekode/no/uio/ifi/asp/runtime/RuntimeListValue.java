@@ -108,25 +108,6 @@ public class RuntimeListValue extends RuntimeValue {
     }
 
     @Override
-    public RuntimeListValue evalAdd(RuntimeValue v, AspSyntax where) {
-        if(v instanceof RuntimeIntValue){
-            RuntimeValue[] lstArray = new RuntimeValue[lst.size()];
-            for(int i = 0; i < lst.size(); i++){
-                lstArray[i] = lst.get(i);
-            }
-            lst.clear();
-            for(int i = 0; i < v.getIntValue(v.toString(), where); i++){
-                for(RuntimeValue rv : lstArray){
-                    lst.add(rv);
-                }
-            }
-            return this;
-        }
-        runtimeError("'+' undefined for "+typeName()+"!", where);
-    	return null;  // Required by the compiler!
-    }
-
-    @Override
     public RuntimeListValue evalMultiply(RuntimeValue v, AspSyntax where){
         if(v instanceof RuntimeIntValue){
             RuntimeListValue temp = new RuntimeListValue();
