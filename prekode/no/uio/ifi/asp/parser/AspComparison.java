@@ -51,32 +51,34 @@ class AspComparison extends AspSyntax {
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspComparison");
-        RuntimeValue temp = term.get(0).eval(curScope);
+        RuntimeValue temp;
         RuntimeValue temp2;
+        RuntimeValue retval = term.get(0).eval(curScope);
         String opr = null;
         for(int i = 0; i < cmpopr.size(); i++){
             opr = cmpopr.get(i).value.toString();
+            temp = term.get(i).eval(curScope);
             temp2 = term.get(i+1).eval(curScope);
             Main.rlog.enterMessage("Current term: " + temp.toString() + ", current comparison: " + opr + ", next term: " + temp2.toString());
             if(opr.equals("<")){
-                temp = temp.evalLess(temp2, this);
+                retval = temp.evalLess(temp2, this);
             } else if(opr.equals(">")){
-                temp = temp.evalGreater(temp2, this);
+                retval = temp.evalGreater(temp2, this);
             } else if(opr.equals("==")){
-                temp = temp.evalEqual(temp2, this);
+                retval = temp.evalEqual(temp2, this);
             } else if(opr.equals(">=")){
-                temp = temp.evalGreaterEqual(temp2, this);
+                retval = temp.evalGreaterEqual(temp2, this);
             } else if(opr.equals("<=")){
-                temp = temp.evalLessEqual(temp2, this);
+                retval = temp.evalLessEqual(temp2, this);
             } else if(opr.equals("!=")){
-                temp = temp.evalNotEqual(temp2, this);
+                retval = temp.evalNotEqual(temp2, this);
             } else{
                 RuntimeValue.runtimeError("comparison operation undefined for operator "
                                                 + opr.toString() + "!", this);
             }
-            if(!temp.getBoolValue(temp.toString(), this)) break;
+            if(!retval.getBoolValue(retval.toString(), this)) break;
         }
         Main.rlog.leaveEval("AspComparison");
-        return temp;
+        return retval;
     }
 }

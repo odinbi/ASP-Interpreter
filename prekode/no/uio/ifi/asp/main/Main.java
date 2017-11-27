@@ -13,7 +13,7 @@ public class Main {
 
     public static LogFile log = null;
 
-    public static RuntimeLogger rlog = new RuntimeLogger(true); //added for easier bug fixing
+    public static RuntimeLogger rlog = new RuntimeLogger(false); //added for easier bug fixing
 
     public static void main(String arg[]) {
         String fileName = null, baseFilename = null;

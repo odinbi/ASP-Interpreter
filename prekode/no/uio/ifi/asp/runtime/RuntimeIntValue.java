@@ -177,7 +177,7 @@ public class RuntimeIntValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalPositive(AspSyntax where) {
-        return this;
+        return new RuntimeIntValue(intValue);
     }
 
     @Override

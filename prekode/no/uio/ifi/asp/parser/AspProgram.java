@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
 import no.uio.ifi.asp.scanner.Scanner;
-import static no.uio.ifi.asp.scanner.TokenKind.*;
 import no.uio.ifi.asp.scanner.TokenKind;
+import static no.uio.ifi.asp.scanner.TokenKind.*;
+import static no.uio.ifi.asp.runtime.RuntimeValue.runtimeError;
 
 public class AspProgram extends AspSyntax {
     ArrayList<AspStmt> stmts = new ArrayList<>();
@@ -30,7 +31,7 @@ public class AspProgram extends AspSyntax {
     */
     public static AspProgram parse(Scanner s) {
         Main.log.enterParser("program");
-        
+
         AspProgram ap = new AspProgram(s.curLineNum());
         while(s.curToken().kind != eofToken){
             ap.stmts.add(AspStmt.parse(s));
@@ -55,7 +56,11 @@ public class AspProgram extends AspSyntax {
         Main.rlog.enterEval("AspProgram");
         RuntimeValue buffer = new RuntimeNoneValue();
         for(AspStmt stmt : stmts){
-            buffer = stmt.eval(curScope);
+            try{
+                buffer = stmt.eval(curScope);
+            } catch(RuntimeReturnValue rrv){
+                runtimeError("Return statement not inside function", this);
+            }
         }
         Main.rlog.leaveEval("AspProgram");
         return buffer;

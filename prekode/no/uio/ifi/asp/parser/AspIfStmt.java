@@ -66,8 +66,6 @@ class AspIfStmt extends AspStmt{
         int i = 0;
         for(i = 0; i < expr.size(); i++){
             temp = expr.get(i).eval(curScope);
-            Main.rlog.enterMessage("IF: " + temp.toString());
-            Main.rlog.enterMessage("VALUE: " + temp.getBoolValue(temp.toString(), this));
             if(temp.getBoolValue(temp.toString(), this)){
                 suite.get(i).eval(curScope);
                 return null;

@@ -58,6 +58,7 @@ class AspAndTest extends AspSyntax {
                 first = false;
             } else{
                 temp = temp.evalAnd(notTest.eval(curScope), this);
+                if(!temp.getBoolValue(temp.toString(), this)) break;
             }
         }
         Main.rlog.leaveEval("AspAndTest");

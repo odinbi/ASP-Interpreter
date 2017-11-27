@@ -54,6 +54,7 @@ public class AspExpr extends AspSyntax {
         for(AspAndTest andTest : andTests){
             if(doTest){
                 temp = temp.evalOr(andTest.eval(curScope), this);
+                if(temp.getBoolValue(temp.toString(), this)) break;
             } else{
                 temp = andTest.eval(curScope);
                 doTest = true;

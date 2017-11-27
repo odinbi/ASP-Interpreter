@@ -47,7 +47,9 @@ class AspTerm extends AspSyntax {
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
             temp2 = factor.get(i+1).eval(curScope);
-            Main.rlog.enterMessage("Current factor: " + temp.toString() + ", current operator: " + curopr + ", next factor: " + temp2.toString());
+            Main.rlog.enterMessage("Current factor: " + temp.toString()
+            + ", current operator: " + curopr + ", next factor: " + temp2.toString());
+
             if(curopr.equals("+")){
                 temp = temp.evalAdd(temp2, this);
             } else if(curopr.equals("-")){

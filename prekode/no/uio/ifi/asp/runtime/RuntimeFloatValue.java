@@ -178,7 +178,7 @@ public class RuntimeFloatValue extends RuntimeValue {
 
     @Override
     public RuntimeValue evalPositive(AspSyntax where) {
-        return this;
+        return new RuntimeFloatValue(floatValue);
     }
 
     @Override

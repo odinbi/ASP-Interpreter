@@ -34,24 +34,20 @@ public class RuntimeListValue extends RuntimeValue {
     public void evalAppend(RuntimeValue value){
         lst.add(value);
     }
-    //Old version:
+
      public void evalAssignElem(RuntimeValue indx, RuntimeValue val, AspSyntax where){
-      if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
-          int index = (int)indx.getIntValue(indx.toString(), where);
-          if(index >= lst.size()){
-              evalSubscription(indx, where);
-              /*for(long i = lst.size(); i <= index; i++){
-                  lst.add(new RuntimeNoneValue());
-              }*/
-          }
-          lst.set(index, val);
-          return;
-      }
-      runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
-      return;
+         if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
+             int index = (int)indx.getIntValue(indx.toString(), where);
+             if(index >= lst.size()){
+                 evalSubscription(indx, where);
+             }
+             lst.set(index, val);
+             return;
+         }
+         runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
+         return;
   }
 
-    //Old version
     public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
         if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
             int index = (int)indx.getIntValue(indx.toString(), where);
@@ -62,32 +58,11 @@ public class RuntimeListValue extends RuntimeValue {
             for(long i = lst.size(); i <= index; i++){
                 lst.add(new RuntimeNoneValue());
             }
-            //runtimeError("Array index out of bounds, index: " + indx.toString() + ", array length: " + lst.size() + "!", where);
             return null;
         }
         runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
         return null;
     }
-
-    //Here is the bug, maybe
-    /*public RuntimeValue evalSubscription(RuntimeValue indx, AspSyntax where){
-        if(indx instanceof RuntimeIntValue || indx instanceof RuntimeFloatValue){
-            int index = (int)indx.getIntValue(indx.toString(), where);
-            System.out.println("Size: " + lst.size() + " Index: " + index);
-            if(index < lst.size()){
-                for(long i <= lst.size(); i <= index; i++){
-                    lst.add(new RuntimeNoneValue());
-                }
-                return lst.get(index);
-
-            }
-            runtimeError("Array index out of bounds, index: " + indx.toString() + ", array length: " + lst.size() + "!", where);
-            return null;
-        }
-        runtimeError("Illegal index value, expected an integer or float, got: " + indx.toString() + "!", where);
-        return null;
-    } */
-
 
     public RuntimeValue getEntry(int i){
         return lst.get(i);
@@ -98,7 +73,6 @@ public class RuntimeListValue extends RuntimeValue {
         if(v instanceof RuntimeIntValue){
             return lst.get((int)v.getIntValue(v.toString(), where));
         }
-        System.out.println("List: " + lst + ", Index: " + v.toString());
         runtimeError("getEntry undefined for " + v.typeName() + "!", where);
         return null;
     }

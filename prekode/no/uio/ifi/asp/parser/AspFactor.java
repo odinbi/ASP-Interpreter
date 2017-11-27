@@ -51,10 +51,10 @@ class AspFactor extends AspSyntax {
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspFactor");
         RuntimeValue temp = primary.get(0).eval(curScope);
-
-        String curprefix = null;
+        RuntimeValue temp2;
+        
         if(prefix != null){
-            curprefix = prefix.eval(curScope).getOpr();
+            String curprefix = prefix.eval(curScope).getOpr();
             if(curprefix.equals("-")){
                 temp.evalNegate(this);
             }
@@ -63,17 +63,17 @@ class AspFactor extends AspSyntax {
         String curopr = null;
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
-            Main.rlog.enterMessage("Current primary: " + temp.toString()
-                + ", current operator: " + curopr + ", next primary "
-                + primary.get(i+1).eval(curScope).toString());
+            temp2 = primary.get(i+1).eval(curScope);
+            Main.rlog.enterMessage(temp.toString() + " " + curopr + " "
+                                    + temp2.toString());
             if(curopr.equals("*")){
-                temp = temp.evalMultiply(primary.get(i+1).eval(curScope), this);
+                temp = temp.evalMultiply(temp2, this);
             } else if(curopr.equals("/")){
-                temp = temp.evalDivide(primary.get(i+1).eval(curScope), this);
+                temp = temp.evalDivide(temp2, this);
             } else if(curopr.equals("//")){
-                temp = temp.evalIntDivide(primary.get(i+1).eval(curScope), this);
+                temp = temp.evalIntDivide(temp2, this);
             } else if(curopr.equals("%")){
-                temp = temp.evalModulo(primary.get(i+1).eval(curScope), this);
+                temp = temp.evalModulo(temp2, this);
             } else{
                 RuntimeValue.runtimeError("factor operation undefined for operator "
                                                 + curopr + "!", this);

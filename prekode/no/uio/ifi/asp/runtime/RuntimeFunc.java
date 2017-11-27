@@ -25,29 +25,24 @@ public class RuntimeFunc extends RuntimeValue{
 
     @Override
     public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> args, RuntimeScope scope, AspSyntax where){
-        if(def != null){
-            if(def.getNameSize() != args.size()){
-                runtimeError("illegal number of arguments to "+typeName()+" " + name + "!", where);
-                return null;
-            }
-            RuntimeScope newScope = new RuntimeScope(scope);;
-            for(int i = 0; i < args.size(); i++){
-                newScope.assign(def.getNameValue(i), args.get(i));
-            }
-            RuntimeValue returnVal;
-            try{
-                returnVal = runFunction(newScope);
-            }catch(RuntimeReturnValue rrv){
-                returnVal = rrv.value;
-            }
-            return returnVal;
+        RuntimeValue returnVal = null;
+        RuntimeScope newScope = new RuntimeScope(scope);
+
+        if(def.getNameSize() != args.size()){
+            runtimeError("illegal number of arguments to "+typeName()+" " + name + "!", where);
+            return null;
         }
-        return null;
+        for(int i = 0; i < args.size(); i++){
+            newScope.assign(def.getNameValue(i), args.get(i));
+        }
+        try{
+            def.getSuite().eval(newScope);
+        }catch(RuntimeReturnValue rrv){
+            returnVal = rrv.getValue();
+        }
+        return returnVal;
     }
 
-    public RuntimeValue runFunction(RuntimeScope scope) throws RuntimeReturnValue{
-        return def.getSuite().eval(scope);
-    }
     @Override
     public String typeName(){
         return "function";

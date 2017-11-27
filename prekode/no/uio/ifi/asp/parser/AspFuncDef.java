@@ -35,12 +35,10 @@ public class AspFuncDef extends AspStmt{
         AspFuncDef func = new AspFuncDef(s.curLineNum());
         skip(s, defToken);
         func.funcName = AspName.parse(s);
-        //skip(s, nameToken);
         skip(s, leftParToken);
         if(s.curToken().kind != rightParToken){
             while(true){
                 func.name.add(AspName.parse(s));
-                //skip(s, nameToken);
                 if(s.curToken().kind != commaToken) break;
                 skip(s, commaToken);
             }
@@ -71,7 +69,6 @@ public class AspFuncDef extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        //-- Must be changed in part 4:
         Main.rlog.enterEval("AspFuncDef");
         RuntimeFunc func = new RuntimeFunc(this, curScope, funcName.value);
         curScope.assign(funcName.value, func);

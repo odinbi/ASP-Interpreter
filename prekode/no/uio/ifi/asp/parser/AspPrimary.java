@@ -4,6 +4,7 @@ import no.uio.ifi.asp.main.*;
 import no.uio.ifi.asp.runtime.*;
 import no.uio.ifi.asp.scanner.Scanner;
 import static no.uio.ifi.asp.scanner.TokenKind.*;
+import static no.uio.ifi.asp.runtime.RuntimeValue.runtimeError;
 import no.uio.ifi.asp.scanner.TokenKind;
 
 class AspPrimary extends AspSyntax {
@@ -41,38 +42,26 @@ class AspPrimary extends AspSyntax {
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspPrimary");
+        boolean catcher = false;
         RuntimeValue atm = atom.eval(curScope);
         Main.rlog.enterMessage(atm.toString());
-        if(suffixes.size() > 0){
-            RuntimeValue val;
-            RuntimeValue retVal = null;
-            int countIter = 0;
-            for(AspPrimarySuffix suf : suffixes){
-                val = suf.eval(curScope);
-                Main.rlog.enterMessage("Itteration: " + countIter);
-                countIter++;
-                Main.rlog.enterMessage("Current suffix value: " + val.toString());
-                if(suf instanceof AspSubscription){
-                    Main.rlog.enterMessage("Return was a subscription");
-                    //Here is the bug, maybe
-                    Main.rlog.enterMessage("Index: " + val + ", in list: " + atm);
-                    retVal = atm.evalSubscription(val, this);
-                } else{
-                    Main.rlog.enterMessage("Return was an argument");
-                    RuntimeArgumentsValue temp = (RuntimeArgumentsValue)val;
-                    retVal = atm.evalFuncCall(temp.getRawList(), curScope, this);
+
+        for(AspPrimarySuffix suf : suffixes){
+            if(catcher){
+                runtimeError("Illegal function call", this);
+            }
+            if(suf instanceof AspSubscription){
+                RuntimeValue val = suf.eval(curScope);
+                Main.rlog.enterMessage("Suffix is a subscription");
+                atm = atm.evalSubscription(val, this);
+            } else{
+                Main.rlog.enterMessage("Suffix is an argument");
+                RuntimeArgumentsValue temp = (RuntimeArgumentsValue)suf.eval(curScope);
+                atm = atm.evalFuncCall(temp.getRawList(), curScope, this);
+                if(atm instanceof RuntimeNoneValue){
+                    catcher = true;
                 }
             }
-            if(atm == null){
-                Main.rlog.enterMessage("STRANGE BEHAVIOUR: atm is now set to null");
-            }
-            if(retVal == null){
-                Main.rlog.enterMessage("STRANGE BEHAVIOUR: retVal is now set to null");
-            }
-            if(atm != null && retVal != null)
-                Main.rlog.enterMessage(atm.toString() + ", value: " + retVal.toString());
-            Main.rlog.leaveEval("AspPrimary");
-            return retVal;
         }
         Main.rlog.leaveEval("AspPrimary");
         return atm;
