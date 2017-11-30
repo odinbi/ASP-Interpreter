@@ -42,6 +42,7 @@ public class AspSuite extends AspSyntax{
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspSuite");
+
         for(AspStmt stmt : stmts){
             stmt.eval(curScope);
         }

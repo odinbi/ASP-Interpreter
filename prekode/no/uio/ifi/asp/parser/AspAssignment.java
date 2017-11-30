@@ -57,6 +57,7 @@ class AspAssignment extends AspStmt{
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         Main.rlog.enterEval("AspAssignment");
         String nm = name.value;
+
         Main.rlog.enterMessage("Name to assing value: " + nm);
         RuntimeValue val = expr.eval(curScope);
         if(subscr.size() > 0){

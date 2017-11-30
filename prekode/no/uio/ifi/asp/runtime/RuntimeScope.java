@@ -22,6 +22,17 @@ public class RuntimeScope {
         decls.put(id, val);
     }
 
+    public RuntimeScope search(String id){
+        RuntimeScope temp = null;
+        if(outer != null){
+            temp = outer.search(id);
+        }
+        if(temp == null && decls.get(id) != null){
+            return this;
+        }
+        return temp;
+    }
+
 
     public RuntimeValue find(String id, AspSyntax where) {
         RuntimeValue v = decls.get(id);

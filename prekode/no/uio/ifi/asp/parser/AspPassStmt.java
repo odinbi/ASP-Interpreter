@@ -28,8 +28,7 @@ class AspPassStmt extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspPassStmt");
-        Main.rlog.leaveEval("AspPassStmt");
+        trace("pass");
         return null;
     }
 }
