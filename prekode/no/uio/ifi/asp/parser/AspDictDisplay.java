@@ -61,12 +61,10 @@ class AspDictDisplay extends AspAtom {
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
         RuntimeDictionaryValue dict = new RuntimeDictionaryValue(str.get(0).value, expr.get(0).eval(curScope));
-        Main.rlog.enterEval("AspDictDisplay");
-        Main.rlog.enterMessage("current dictionary: " + dict.toString());
         for(int i = 1; i < str.size(); i++){
             dict.addEntry(str.get(i).value, expr.get(i).eval(curScope));
         }
-        Main.rlog.leaveEval("AspDictDisplay");
+        trace("dict " + dict.showInfo());
         return dict;
     }
 }

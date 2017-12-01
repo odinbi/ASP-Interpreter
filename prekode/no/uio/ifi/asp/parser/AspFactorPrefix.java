@@ -37,7 +37,6 @@ class AspFactorPrefix extends AspSyntax {
 
     @Override
     public RuntimeOperatorValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspFactorPrefix");
         RuntimeOperatorValue opr = null;
         switch (value) {
             case plusToken:
@@ -50,7 +49,6 @@ class AspFactorPrefix extends AspSyntax {
                 RuntimeValue.runtimeError("Illegal factor prefix "
                                     + value.toString() + "!", this);
         }
-        Main.rlog.leaveEval("AspFactorPrefix");
         return opr;
     }
 }

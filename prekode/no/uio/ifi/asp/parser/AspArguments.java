@@ -54,12 +54,10 @@ class AspArguments extends AspPrimarySuffix{
 
     @Override
     public RuntimeArgumentsValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspArguments");
         RuntimeArgumentsValue args = new RuntimeArgumentsValue();
         for(AspExpr arg : expr){
             args.add(arg.eval(curScope));
         }
-        Main.rlog.leaveEval("AspArguments");
         return args;
     }
 }

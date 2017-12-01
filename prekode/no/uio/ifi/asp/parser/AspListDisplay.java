@@ -45,15 +45,11 @@ class AspListDisplay extends AspAtom {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspListDisplay");
         RuntimeListValue lst = new RuntimeListValue();
-        if(expr.size() > 0){
-            for(int i = 0; i < expr.size(); i++){
-                lst.evalAppend(expr.get(i).eval(curScope));
-            }
+        for(int i = 0; i < expr.size(); i++){
+            lst.evalAppend(expr.get(i).eval(curScope));
         }
-        Main.rlog.enterMessage("Check list: " + lst);
-        Main.rlog.leaveEval("AspListDisplay");
+        trace("list " + lst.showInfo());
         return lst;
     }
 }

@@ -49,10 +49,9 @@ class AspFactor extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspFactor");
         RuntimeValue temp = primary.get(0).eval(curScope);
         RuntimeValue temp2;
-        
+
         if(prefix != null){
             String curprefix = prefix.eval(curScope).getOpr();
             if(curprefix.equals("-")){
@@ -64,8 +63,6 @@ class AspFactor extends AspSyntax {
         for(int i = 0; i < oprs.size(); i++){
             curopr = oprs.get(i).value.toString();
             temp2 = primary.get(i+1).eval(curScope);
-            Main.rlog.enterMessage(temp.toString() + " " + curopr + " "
-                                    + temp2.toString());
             if(curopr.equals("*")){
                 temp = temp.evalMultiply(temp2, this);
             } else if(curopr.equals("/")){
@@ -79,7 +76,7 @@ class AspFactor extends AspSyntax {
                                                 + curopr + "!", this);
             }
         }
-        Main.rlog.leaveEval("AspFactor");
+        trace("Factor " + temp.showInfo());
         return temp;
     }
 }

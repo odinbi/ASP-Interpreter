@@ -39,7 +39,6 @@ class AspFactorOpr extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspFactorOpr");
         RuntimeOperatorValue opr = null;
         switch (value) {
             case astToken:
@@ -58,7 +57,6 @@ class AspFactorOpr extends AspSyntax {
                 RuntimeValue.runtimeError("Illegal factor operator "
                                     + value.toString() + "!", this);
         }
-        Main.rlog.leaveEval("AspFactorOpr");
         return opr;
     }
 }

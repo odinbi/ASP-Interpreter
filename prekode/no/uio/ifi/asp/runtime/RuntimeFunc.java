@@ -25,8 +25,7 @@ public class RuntimeFunc extends RuntimeValue{
 
     @Override
     public RuntimeValue evalFuncCall(ArrayList<RuntimeValue> args, RuntimeScope scope, AspSyntax where){
-        RuntimeScope defScope = scope;
-        RuntimeScope newScope = new RuntimeScope(defScope);
+        RuntimeScope newScope = new RuntimeScope(scope);
         //checks that number of arguments given matches number expected
         if(def.getNameSize() != args.size()){
             runtimeError("illegal number of arguments to "+typeName()+" " + name + "!", where);

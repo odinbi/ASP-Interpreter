@@ -12,7 +12,6 @@ abstract class AspPrimarySuffix extends AspSyntax {
     }
 
     static AspPrimarySuffix parse(Scanner s){
-        Main.log.enterParser("primary suffix");
         AspPrimarySuffix suffix = null;
         switch(s.curToken().kind){
             case leftBracketToken:
@@ -23,7 +22,6 @@ abstract class AspPrimarySuffix extends AspSyntax {
                 parserError("Expected an [ or ( but found a " +
                             s.curToken().kind + "!", s.curLineNum());
         }
-        Main.log.leaveParser("primary suffix");
         return suffix;
     }
 }

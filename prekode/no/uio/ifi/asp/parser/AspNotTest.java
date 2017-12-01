@@ -45,12 +45,10 @@ class AspNotTest extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspNotTest");
         RuntimeValue temp = comparison.eval(curScope);
         if(doNot){
             temp = temp.evalNot(this);
         }
-        Main.rlog.leaveEval("AspNotTest");
         return temp;
     }
 }

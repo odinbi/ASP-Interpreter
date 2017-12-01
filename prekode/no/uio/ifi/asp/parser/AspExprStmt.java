@@ -40,9 +40,7 @@ class AspExprStmt extends AspStmt{
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspExprStmt");
         RuntimeValue temp = expr.eval(curScope);
-        Main.rlog.leaveEval("AspExprStmt");
         return temp;
     }
 }

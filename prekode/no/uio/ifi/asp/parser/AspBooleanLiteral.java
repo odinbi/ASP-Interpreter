@@ -49,9 +49,8 @@ class AspBooleanLiteral extends AspAtom {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspBooleanLiteral");
         RuntimeBoolValue temp = new RuntimeBoolValue(value);
-        Main.rlog.leaveEval("AspBooleanLiteral");
+        trace("boolean " + temp.showInfo());
         return temp;
     }
 }

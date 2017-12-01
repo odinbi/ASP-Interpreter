@@ -53,7 +53,6 @@ public class AspProgram extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspProgram");
         RuntimeValue buffer = new RuntimeNoneValue();
         for(AspStmt stmt : stmts){
             try{
@@ -62,7 +61,7 @@ public class AspProgram extends AspSyntax {
                 runtimeError("Return statement not inside function", this);
             }
         }
-        Main.rlog.leaveEval("AspProgram");
+        trace("program " + buffer.showInfo());
         return buffer;
     }
 }

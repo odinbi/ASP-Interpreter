@@ -50,9 +50,7 @@ class AspComparison extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspComparison");
-        RuntimeValue temp;
-        RuntimeValue temp2;
+        RuntimeValue temp, temp2;
         RuntimeValue retval = term.get(0).eval(curScope);
         String opr = null;
         for(int i = 0; i < cmpopr.size(); i++){
@@ -78,7 +76,7 @@ class AspComparison extends AspSyntax {
             }
             if(!retval.getBoolValue(retval.toString(), this)) break;
         }
-        Main.rlog.leaveEval("AspComparison");
+        trace("comparison " + retval.showInfo());
         return retval;
     }
 }

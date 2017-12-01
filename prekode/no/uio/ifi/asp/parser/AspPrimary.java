@@ -41,29 +41,24 @@ class AspPrimary extends AspSyntax {
 
     @Override
     public RuntimeValue eval(RuntimeScope curScope) throws RuntimeReturnValue {
-        Main.rlog.enterEval("AspPrimary");
-        boolean catcher = false;
+        boolean noMoreCalls = false;
         RuntimeValue atm = atom.eval(curScope);
-        Main.rlog.enterMessage(atm.toString());
 
         for(AspPrimarySuffix suf : suffixes){
-            if(catcher){
+            if(noMoreCalls){
                 runtimeError("Illegal function call", this);
-            }
-            if(suf instanceof AspSubscription){
+            } else if(suf instanceof AspSubscription){
                 RuntimeValue val = suf.eval(curScope);
-                Main.rlog.enterMessage("Suffix is a subscription");
                 atm = atm.evalSubscription(val, this);
             } else{
-                Main.rlog.enterMessage("Suffix is an argument");
-                RuntimeArgumentsValue temp = (RuntimeArgumentsValue)suf.eval(curScope);
-                atm = atm.evalFuncCall(temp.getRawList(), curScope, this);
+                RuntimeArgumentsValue val = (RuntimeArgumentsValue)suf.eval(curScope);
+                atm = atm.evalFuncCall(val.getRawList(), curScope, this);
                 if(atm instanceof RuntimeNoneValue){
-                    catcher = true;
+                    noMoreCalls = true;
                 }
             }
         }
-        Main.rlog.leaveEval("AspPrimary");
+        trace("Primary " + atm.showInfo());
         return atm;
     }
 }

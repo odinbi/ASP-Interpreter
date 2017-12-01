@@ -17,4 +17,9 @@ public class RuntimeOperatorValue extends RuntimeValue {
     protected String typeName(){
         return "operator";
     }
+
+    @Override
+    public String toString(){
+        return value;
+    }
 }
