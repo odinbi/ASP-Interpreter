@@ -55,7 +55,6 @@ class AspTerm extends AspSyntax {
                                                 + curopr + "!", this);
             }
         }
-        trace("term " + temp.showInfo());
         return temp;
     }
 }

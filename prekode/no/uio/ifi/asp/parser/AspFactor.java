@@ -76,7 +76,6 @@ class AspFactor extends AspSyntax {
                                                 + curopr + "!", this);
             }
         }
-        trace("Factor " + temp.showInfo());
         return temp;
     }
 }

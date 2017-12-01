@@ -58,7 +58,6 @@ class AspPrimary extends AspSyntax {
                 }
             }
         }
-        trace("Primary " + atm.showInfo());
         return atm;
     }
 }

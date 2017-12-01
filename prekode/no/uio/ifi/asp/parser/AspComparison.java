@@ -76,7 +76,6 @@ class AspComparison extends AspSyntax {
             }
             if(!retval.getBoolValue(retval.toString(), this)) break;
         }
-        trace("comparison " + retval.showInfo());
         return retval;
     }
 }

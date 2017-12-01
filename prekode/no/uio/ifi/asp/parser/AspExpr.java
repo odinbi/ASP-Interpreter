@@ -59,7 +59,6 @@ public class AspExpr extends AspSyntax {
                 doTest = true;
             }
         }
-        trace("expr " + temp.showInfo());
         return temp;
     }
 }

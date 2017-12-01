@@ -61,7 +61,7 @@ public class AspProgram extends AspSyntax {
                 runtimeError("Return statement not inside function", this);
             }
         }
-        trace("program " + buffer.showInfo());
+        trace("program");
         return buffer;
     }
 }
